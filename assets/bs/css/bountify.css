@@ -1,0 +1,277 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body
+{
+    background: #332f2c;
+    cursor: url('../../img/inventory/unit/kursory/CUR_default.png'), auto;  
+    color: #dddddd;
+    font-family: Arial;
+}
+/* Item atlas: http://i.imgur.com/ngGK5MF.png
+ * Table atlas: http://i.imgur.com/nOqKSbE.png
+*/
+a, a:link, a:visited { 
+  color: #c00;
+  text-decoration: none;
+  
+  -webkit-transition: all 0.3s ease;  
+  transition: all 0.3s ease;
+}
+a:hover { 
+  color: #ff5c19;
+  text-decoration: underline;
+}  
+a:active { 
+  color: #6aff19;
+}
+input[type="range"]
+{
+    width: 400px;
+}
+.inventory-table
+{
+}
+.inventory-row
+{
+    display: flex;
+	flex-direction: row;
+	justify-content: flex-start; /* align items in Main Axis */
+	align-items: flex-start; /* align items in Cross Axis */
+	align-content: flex-start; /* Extra space in Cross Axis */
+}
+.myHcell
+{
+    width: auto;
+    height: auto;
+    
+    flex-shrink: 0;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* align items in Main Axis */
+    align-items: center; /* align items in Cross Axis */
+    align-content: center; /* Extra space in Cross Axis */
+}
+.my-cell
+{
+    width: 400px;
+    height: 100px;
+    
+    flex-shrink: 0;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* align items in Main Axis */
+    align-items: center; /* align items in Cross Axis */
+    align-content: center; /* Extra space in Cross Axis */
+    border:1px solid;
+}
+.my-cell:first-of-type{ width:100px;}
+.my-cell:nth-of-type(2){
+    
+    justify-content: left; /* align items in Main Axis */
+    align-items: left; /* align items in Cross Axis */
+    align-content: left; /* Extra space in Cross Axis */
+}
+.inventory-cell
+{
+    width: 36px;
+    height: 36px;
+    
+    flex-shrink: 0;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* align items in Main Axis */
+    align-items: center; /* align items in Cross Axis */
+    align-content: center; /* Extra space in Cross Axis */
+    
+    background-image: url('../../img/inventory/nOqKSbE.png');
+    background-position: -229px -331px;
+}
+/* left */
+.inventory-cell:first-child
+{
+    width: 38px;
+    padding-left: 2px;
+    
+    background-position: -190px -331px;
+}
+/* right */
+.inventory-cell:last-child
+{
+    width: 38px;
+    padding-right: 2px;
+    
+    background-position: -266px -331px;
+}
+    
+/* top ROW */
+.inventory-row:first-child .inventory-cell
+{
+    height: 38px;
+    padding-top: 2px;
+    
+    background-position: -229px -292px;
+}
+/* bottom ROW */
+.inventory-row:last-child .inventory-cell
+{
+    height: 38px;
+    padding-bottom: 2px;
+    
+    background-position: -229px -368px;
+}
+/* top left */
+.inventory-row:first-child .inventory-cell:first-child
+{
+    width: 38px;
+    height: 38px;
+    
+    background-position: -190px -292px;
+}
+/* top right */
+.inventory-row:first-child .inventory-cell:last-child
+{
+    width: 38px;
+    height: 38px;
+    
+    background-position: -266px -292px;
+}
+/* bottom left */
+.inventory-row:last-child .inventory-cell:first-child
+{
+    width: 38px;
+    height: 38px;
+    
+    background-position: -190px -368px;
+}
+/* bottom right */
+.inventory-row:last-child .inventory-cell:last-child
+{
+    width: 38px;
+    height: 38px;
+    
+    background-position: -266px -368px;
+}
+/* single horizontal */
+.inventory-row:only-child .inventory-cell
+{
+    height: 40px;
+    
+    background-position: -613px -286px;
+}
+/* single horizontal left */
+.inventory-row:only-child .inventory-cell:first-child
+{
+    width: 38px;
+    height: 40px;
+    
+    background-position: -574px -286px;
+}
+/* single horizontal right */
+.inventory-row:only-child .inventory-cell:last-child
+{
+    width: 38px;
+    height: 40px;
+    
+    background-position: -650px -286px;
+}
+/* single vertical */
+.inventory-row .inventory-cell:only-child
+{
+    width: 40px;
+    
+    background-position: -563px -463px;
+}
+/* single vertical top */
+.inventory-row:first-child .inventory-cell:only-child
+{
+    width: 40px;
+    height: 38px;
+    
+    background-position: -563px -424px;
+}
+/* single vertical bottom */
+.inventory-row:last-child .inventory-cell:only-child
+{
+    width: 40px;
+    height: 38px;
+    
+    background-position: -563px -500px;
+}
+/* single by singel */
+.inventory-row:only-child .inventory-cell:only-child
+{
+    width: 40px;
+    height: 40px;
+    
+    background-position: -30px -288px;
+}
+/* ITEMS */
+.inventory-item
+{
+    width: 34px;
+    height: 34px;
+    background-image: url('../../img/inventory/626e171c9.png');
+    background-repeat: no-repeat;
+
+    cursor: hand;
+    cursor: pointer;
+    
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+.inventory-item:hover{
+   background-color:rgba(30,80,190,0.4);
+}
+.inventory-item-sortable-placeholder
+{
+    display: none;
+}
+.inventory-item.ui-sortable-helper, .inventory-item.ui-draggable-dragging
+{
+    opacity: .6;
+}
+.inventory-item.magic::before{
+    content:'';
+    display:block;
+    width: 34px;
+    height: 34px;
+    background-image: url('../../img/inventory/BorderMagicV11.png');
+}
+.inventory-item.rare::before{
+    content:'';
+    display:block;
+    width: 34px;
+    height: 34px;
+    background-image: url('../../img/inventory/BorderRareV11.png');
+}
+.inventory-item.unique::before{
+    content:'';
+    display:block;
+    width: 34px;
+    height: 34px;    
+    background-image: url('../../img/inventory/BorderUniqueV11.png');
+}
+
+.inventory-item.springBerries{          background-position: -102px -136px; }
+.inventory-item.vegetables{             background-position: -272px -68px;  }
+.inventory-item.fruits{                 background-position: -306px -68px;  }
+.inventory-item.meat{                   background-position: -306px -34px;  }
+.inventory-item.meatDish{               background-position: -272px -34px;  }
+
+.inventory-item.sword{                  background-position: -170px -544px; }
+.inventory-item.swordLyssandrasBlade{   background-position: -374px -544px; }
+.inventory-item.swordSheathedInAtumn{   background-position: -408px -544px; }
+
+.inventory-item.potionOfPower{          background-position: -374px -1496px;}
+
+.inventory-item.warBow{                 background-position: -408px -340px; }
+
+.inventory-item.battleAxe{              background-position: -34px -476px;  }
+.inventory-item.battleAxeEofR{          background-position: -68px -476px;  }
