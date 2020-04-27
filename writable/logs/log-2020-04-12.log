@@ -1,0 +1,651 @@
+CRITICAL - 2020-04-12 12:44:07 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:45:25 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:45:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:45:28 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:46:06 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:46:08 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:46:55 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:48:18 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:48:18 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:48:19 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:48:19 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:48:20 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:48:20 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:48:20 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:48:26 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:48:45 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:49:46 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:49:47 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:49:47 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:49:49 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:50:30 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:51:05 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:51:57 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:52:16 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:52:48 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:52:49 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:52:49 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:52:49 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:52:49 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:53:43 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:54:11 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:54:11 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:54:45 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NULL' at line 3
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('SELECT `status`...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `status`...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `status`...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1819): CodeIgniter\Database\BaseConnection->query('SELECT `status`...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(25): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(99): App\Models\ChatsModel->getStats()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->chat()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 12:55:59 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1190): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1700): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(25): CodeIgniter\Model->__call('get_stats', Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 12:56:48 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1190): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1700): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(25): CodeIgniter\Model->__call('get_stats', Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 12:57:08 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1190): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1700): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(25): CodeIgniter\Model->__call('get_stats', Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 12:57:08 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1190): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1700): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(25): CodeIgniter\Model->__call('get_stats', Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 12:57:31 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1190): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1700): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(25): CodeIgniter\Model->__call('get_stats', Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 12:57:32 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1190): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1700): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(25): CodeIgniter\Model->__call('get_stats', Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 12:57:35 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1190): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1700): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(25): CodeIgniter\Model->__call('get_stats', Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 12:57:50 --> You must set the database table to be used with your query.
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1190): CodeIgniter\Database\BaseConnection->table(NULL)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Model.php(1700): CodeIgniter\Model->builder()
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(25): CodeIgniter\Model->__call('get_stats', Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 12:58:01 --> Undefined variable: status
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(7): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 7, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(33): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-12 23:22:52 --> Column 'pengirim' cannot be null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `ch...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ch...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ch...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ch...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(15): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(48): App\Models\ChatsModel->messageInsert(Array)
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-12 16:24:47 --> Undefined index: nama
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 9, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(33): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-12 16:24:49 --> Undefined index: nama
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 9, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(33): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-12 17:08:57 --> Invalid file: Acme\Blog\Views\index.php
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Acme\\Blog\\Views...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('Acme\\Blog\\Views...', Array, true)
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(32): view('Acme\\Blog\\Views...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 18:17:20 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(73): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 73, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->logout()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-04-12 18:17:48 --> 
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\HTTP\RedirectResponse.php(92): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidRedirectRoute('')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(798): CodeIgniter\HTTP\RedirectResponse->route(false)
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(75): redirect('http://localhos...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->logout()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 18:18:00 --> 
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\HTTP\RedirectResponse.php(92): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidRedirectRoute('')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(798): CodeIgniter\HTTP\RedirectResponse->route(false)
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(75): redirect('http://localhos...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->logout()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-04-12 19:53:02 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Login.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 19, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Login->index()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-04-12 19:58:03 --> Undefined variable: request
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(37): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 37, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-04-12 20:02:37 --> Too few arguments to function App\Controllers\Chat::__construct(), 0 passed in C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php on line 882 and exactly 1 expected
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:02:41 --> Too few arguments to function App\Controllers\Chat::__construct(), 0 passed in C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php on line 882 and exactly 1 expected
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:02:42 --> Too few arguments to function App\Controllers\Chat::__construct(), 0 passed in C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php on line 882 and exactly 1 expected
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:03:27 --> Too few arguments to function App\Controllers\Chat::__construct(), 0 passed in C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php on line 882 and exactly 1 expected
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:03:30 --> Too few arguments to function App\Controllers\Chat::__construct(), 0 passed in C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php on line 882 and exactly 1 expected
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:04:51 --> Too few arguments to function App\Controllers\Chat::__construct(), 0 passed in C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php on line 882 and exactly 1 expected
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:04:52 --> Too few arguments to function App\Controllers\Chat::__construct(), 0 passed in C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php on line 882 and exactly 1 expected
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:05:15 --> Undefined variable: request
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(9): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 9, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-04-12 20:09:18 --> Call to a member function getPost() on null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:10:35 --> Call to a member function getPost() on null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:10:43 --> Class 'CodeIgniter\BaseController' not found
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Router\Router.php(549): include_once()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Router\Router.php(192): CodeIgniter\Router\Router->autoRoute('chat')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(785): CodeIgniter\Router\Router->handle('chat')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-04-12 20:10:52 --> Call to a member function getPost() on null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:11:12 --> Call to a member function getPost() on null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:11:13 --> Call to a member function getPost() on null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2020-04-12 20:11:47 --> Call to a member function isAJAX() on null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}

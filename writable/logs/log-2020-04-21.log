@@ -1,0 +1,51 @@
+CRITICAL - 2020-04-21 07:14:39 --> Undefined variable: imgL
+#0 C:\xampp\htdocs\warhammer\app\Views\bountify.php(128): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 128, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('bountify', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Bountify.php(13): view('bountify', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Bountify->index()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bountify))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-21 07:22:09 --> Undefined property: App\Controllers\Bountify::$chats
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Bountify.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'C:\\xampp\\htdocs...', 12, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Bountify->index()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bountify))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-04-21 07:39:21 --> syntax error, unexpected end of file
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(340): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(264): CodeIgniter\Autoloader\Autoloader->loadLegacy('BGModel.php')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('BGModel')
+#3 [internal function]: spl_autoload_call('BGModel')
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\ModelFactory.php(82): class_exists('BGModel')
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\ModelFactory.php(48): CodeIgniter\Database\ModelFactory::createClass('BGModel', NULL)
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(729): CodeIgniter\Database\ModelFactory::get('BGModel', true, NULL)
+#7 C:\xampp\htdocs\warhammer\app\Controllers\Bountify.php(8): model('BGModel')
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Bountify->__construct()
+#9 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#10 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2020-04-21 07:50:01 --> Array to string conversion
+#0 C:\xampp\htdocs\warhammer\app\Views\bountify.php(128): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string...', 'C:\\xampp\\htdocs...', 128, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('bountify', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Bountify.php(15): view('bountify', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Bountify->index()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bountify))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-21 07:54:12 --> Invalid argument supplied for foreach()
+#0 C:\xampp\htdocs\warhammer\app\Views\bountify.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 126, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('bountify', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Bountify.php(15): view('bountify', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Bountify->index()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bountify))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

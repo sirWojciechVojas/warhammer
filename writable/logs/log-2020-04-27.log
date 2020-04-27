@@ -1,0 +1,197 @@
+CRITICAL - 2020-04-27 02:29:11 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:30:07 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:30:46 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:31:18 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:33:49 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:34:47 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:37:05 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:38:25 --> Column 'teks' cannot be null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `ch...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ch...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ch...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ch...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(16): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(47): App\Models\ChatsModel->messageInsert(Array)
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-27 02:40:10 --> Column 'teks' cannot be null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `ch...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ch...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ch...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ch...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(16): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(47): App\Models\ChatsModel->messageInsert(Array)
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-27 02:41:37 --> Column 'teks' cannot be null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `ch...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ch...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ch...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ch...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(16): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(47): App\Models\ChatsModel->messageInsert(Array)
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-27 02:41:59 --> Column 'teks' cannot be null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `ch...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ch...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ch...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ch...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(16): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(47): App\Models\ChatsModel->messageInsert(Array)
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-27 02:42:13 --> Column 'teks' cannot be null
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `ch...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ch...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ch...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ch...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(16): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(47): App\Models\ChatsModel->messageInsert(Array)
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2020-04-27 02:43:08 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:43:34 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:45:02 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:51:10 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(51): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:56:03 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(5): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 5, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(51): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-04-27 02:56:19 --> Undefined variable: session
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(50): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 50, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-04-27 02:56:39 --> Undefined variable: status
+#0 C:\xampp\htdocs\warhammer\app\Views\chat.php(7): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 7, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(236): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1071): CodeIgniter\View\View->render('chat', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(53): view('chat', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->send()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
