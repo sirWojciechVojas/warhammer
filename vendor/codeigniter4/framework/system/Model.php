@@ -40,16 +40,17 @@
 namespace CodeIgniter;
 
 use Closure;
-use CodeIgniter\Exceptions\ModelException;
-use Config\Database;
-use CodeIgniter\I18n\Time;
-use CodeIgniter\Pager\Pager;
 use CodeIgniter\Database\BaseBuilder;
 use CodeIgniter\Database\BaseConnection;
+use CodeIgniter\Database\BaseResult;
 use CodeIgniter\Database\ConnectionInterface;
-use CodeIgniter\Validation\ValidationInterface;
-use CodeIgniter\Database\Exceptions\DataException;
 use CodeIgniter\Database\Exceptions\DatabaseException;
+use CodeIgniter\Database\Exceptions\DataException;
+use CodeIgniter\Exceptions\ModelException;
+use CodeIgniter\I18n\Time;
+use CodeIgniter\Pager\Pager;
+use CodeIgniter\Validation\ValidationInterface;
+use Config\Database;
 use ReflectionClass;
 use ReflectionProperty;
 use stdClass;
@@ -266,45 +267,60 @@ class Model
 	 */
 
 	/**
+	 * Whether to trigger the defined callbacks
+	 *
+	 * @var boolean
+	 */
+	protected $allowCallbacks = true;
+
+	/**
+	 * Used by allowCallbacks() to override the
+	 * model's allowCallbacks setting.
+	 *
+	 * @var boolean
+	 */
+	protected $tempAllowCallbacks;
+
+	/**
 	 * Callbacks for beforeInsert
 	 *
-	 * @var type
+	 * @var array
 	 */
 	protected $beforeInsert = [];
 	/**
 	 * Callbacks for afterInsert
 	 *
-	 * @var type
+	 * @var array
 	 */
 	protected $afterInsert = [];
 	/**
 	 * Callbacks for beforeUpdate
 	 *
-	 * @var type
+	 * @var array
 	 */
 	protected $beforeUpdate = [];
 	/**
 	 * Callbacks for afterUpdate
 	 *
-	 * @var type
+	 * @var array
 	 */
 	protected $afterUpdate = [];
 	/**
 	 * Callbacks for afterFind
 	 *
-	 * @var type
+	 * @var array
 	 */
 	protected $afterFind = [];
 	/**
 	 * Callbacks for beforeDelete
 	 *
-	 * @var type
+	 * @var array
 	 */
 	protected $beforeDelete = [];
 	/**
 	 * Callbacks for afterDelete
 	 *
-	 * @var type
+	 * @var array
 	 */
 	protected $afterDelete = [];
 
@@ -338,6 +354,7 @@ class Model
 
 		$this->tempReturnType     = $this->returnType;
 		$this->tempUseSoftDeletes = $this->useSoftDeletes;
+		$this->tempAllowCallbacks = $this->allowCallbacks;
 
 		if (is_null($validation))
 		{
@@ -430,7 +447,7 @@ class Model
 	 * @param integer $limit
 	 * @param integer $offset
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 	public function findAll(int $limit = 0, int $offset = 0)
 	{
@@ -470,22 +487,30 @@ class Model
 		{
 			$builder->where($this->table . '.' . $this->deletedField, null);
 		}
+		else
+		{
+			if ($this->useSoftDeletes === true && empty($builder->QBGroupBy) && ! empty($this->primaryKey))
+			{
+				$builder->groupBy($this->table . '.' . $this->primaryKey);
+			}
+		}
 
 		// Some databases, like PostgreSQL, need order
 		// information to consistently return correct results.
-		if (empty($builder->QBOrderBy) && ! empty($this->primaryKey))
+		if (! empty($builder->QBGroupBy) && empty($builder->QBOrderBy) && ! empty($this->primaryKey))
 		{
 			$builder->orderBy($this->table . '.' . $this->primaryKey, 'asc');
 		}
 
 		$row = $builder->limit(1, 0)
-				->get();
+					   ->get();
 
 		$row = $row->getFirstRow($this->tempReturnType);
 
 		$eventData = $this->trigger('afterFind', ['data' => $row]);
 
-		$this->tempReturnType = $this->returnType;
+		$this->tempReturnType     = $this->returnType;
+		$this->tempUseSoftDeletes = $this->useSoftDeletes;
 
 		return $eventData['data'];
 	}
@@ -493,14 +518,13 @@ class Model
 	//--------------------------------------------------------------------
 
 	/**
-
 	 * Captures the builder's set() method so that we can validate the
 	 * data here. This allows it to be used with any of the other
 	 * builder methods and still get validated data, like replace.
 	 *
-	 * @param mixed               $key    Field name, or an array of field/value pairs
-	 * @param string              $value  Field value, if $key is a single field
-	 * @param boolean             $escape Whether to escape values and identifiers
+	 * @param mixed   $key    Field name, or an array of field/value pairs
+	 * @param string  $value  Field value, if $key is a single field
+	 * @param boolean $escape Whether to escape values and identifiers
 	 *
 	 * @return $this
 	 */
@@ -548,8 +572,12 @@ class Model
 		else
 		{
 			$response = $this->insert($data, false);
-			// call insert directly if you want the ID or the record object
-			if ($response !== false)
+
+			if ($response instanceof BaseResult)
+			{
+				$response = $response->resultID !== false;
+			}
+			elseif ($response !== false)
 			{
 				$response = true;
 			}
@@ -577,7 +605,7 @@ class Model
 			$properties = $data->toRawArray($onlyChanged);
 
 			// Always grab the primary key otherwise updates will fail.
-			if (! empty($properties) && ! empty($primaryKey) && ! in_array($primaryKey, $properties))
+			if (! empty($properties) && ! empty($primaryKey) && ! in_array($primaryKey, $properties) && ! empty($data->{$primaryKey}))
 			{
 				$properties[$primaryKey] = $data->{$primaryKey};
 			}
@@ -651,7 +679,7 @@ class Model
 	 * @param array|object $data
 	 * @param boolean      $returnID Whether insert ID should be returned or not.
 	 *
-	 * @return integer|string|boolean
+	 * @return BaseResult|integer|string|false
 	 * @throws \ReflectionException
 	 */
 	public function insert($data = null, bool $returnID = true)
@@ -688,10 +716,15 @@ class Model
 			$data = (array) $data;
 		}
 
+		if (empty($data))
+		{
+			throw DataException::forEmptyDataset('insert');
+		}
+
 		// Validate data before saving.
 		if ($this->skipValidation === false)
 		{
-			if ($this->cleanRules(false)->validate($data) === false)
+			if ($this->cleanRules()->validate($data) === false)
 			{
 				return false;
 			}
@@ -722,7 +755,7 @@ class Model
 				->insert();
 
 		// If insertion succeeded then save the insert ID
-		if ($result)
+		if ($result->resultID)
 		{
 			$this->insertID = $this->db->insertID();
 		}
@@ -747,9 +780,8 @@ class Model
 	 *
 	 * @param array   $set       An associative array of insert values
 	 * @param boolean $escape    Whether to escape values and identifiers
-	 *
-	 * @param integer $batchSize
-	 * @param boolean $testing
+	 * @param integer $batchSize The size of the batch to run
+	 * @param boolean $testing   True means only number of records is returned, false will execute the query
 	 *
 	 * @return integer|boolean Number of rows inserted or FALSE on failure
 	 */
@@ -759,14 +791,14 @@ class Model
 		{
 			foreach ($set as $row)
 			{
-				if ($this->cleanRules(false)->validate($row) === false)
+				if ($this->cleanRules()->validate($row) === false)
 				{
 					return false;
 				}
 			}
 		}
 
-		return $this->builder()->insertBatch($set, $escape, $batchSize, $testing);
+		return $this->builder()->testMode($testing)->insertBatch($set, $escape, $batchSize);
 	}
 
 	//--------------------------------------------------------------------
@@ -816,6 +848,12 @@ class Model
 		if (is_object($data))
 		{
 			$data = (array) $data;
+		}
+
+		// If it's still empty here, means $data is no change or is empty object
+		if (empty($data))
+		{
+			throw DataException::forEmptyDataset('update');
 		}
 
 		// Validate data before saving.
@@ -883,7 +921,7 @@ class Model
 			}
 		}
 
-		return $this->builder()->updateBatch($set, $index, $batchSize, $returnSQL);
+		return $this->builder()->testMode($returnSQL)->updateBatch($set, $index, $batchSize);
 	}
 
 	//--------------------------------------------------------------------
@@ -892,15 +930,15 @@ class Model
 	 * Deletes a single record from $this->table where $id matches
 	 * the table's primaryKey
 	 *
-	 * @param integer|array|null $id    The rows primary key(s)
-	 * @param boolean            $purge Allows overriding the soft deletes setting.
+	 * @param integer|string|array|null $id    The rows primary key(s)
+	 * @param boolean                   $purge Allows overriding the soft deletes setting.
 	 *
-	 * @return mixed
+	 * @return BaseResult|boolean
 	 * @throws \CodeIgniter\Database\Exceptions\DatabaseException
 	 */
 	public function delete($id = null, bool $purge = false)
 	{
-		if (! empty($id) && is_numeric($id))
+		if (! empty($id) && (is_numeric($id) || is_string($id)))
 		{
 			$id = [$id];
 		}
@@ -921,7 +959,9 @@ class Model
 				{
 					throw new DatabaseException('Deletes are not allowed unless they contain a "where" or "like" clause.');
 				}
+				// @codeCoverageIgnoreStart
 				return false;
+				// @codeCoverageIgnoreEnd
 			}
 			$set[$this->deletedField] = $this->setDate();
 
@@ -1118,21 +1158,28 @@ class Model
 	 * @param string  $group   Will be used by the pagination library
 	 *                         to identify a unique pagination set.
 	 * @param integer $page    Optional page number (useful when the page number is provided in different way)
+	 * @param integer $segment Optional URI segment number (if page number is provided by URI segment)
 	 *
 	 * @return array|null
 	 */
-	public function paginate(int $perPage = 20, string $group = 'default', int $page = 0)
+	public function paginate(int $perPage = null, string $group = 'default', int $page = null, int $segment = 0)
 	{
 		$pager = \Config\Services::pager(null, null, false);
-		$page  = $page >= 1 ? $page : $pager->getCurrentPage($group);
+
+		if ($segment)
+		{
+			$pager->setSegment($segment);
+		}
+
+		$page = $page >= 1 ? $page : $pager->getCurrentPage($group);
 
 		$total = $this->countAllResults(false);
 
 		// Store it in the Pager library so it can be
 		// paginated in the views.
-		$this->pager = $pager->store($group, $page, $perPage, $total);
-
-		$offset = ($page - 1) * $perPage;
+		$this->pager = $pager->store($group, $page, $perPage, $total, $segment);
+		$perPage     = $this->pager->getPerPage($group);
+		$offset      = ($page - 1) * $perPage;
 
 		return $this->findAll($perPage, $offset);
 	}
@@ -1258,13 +1305,10 @@ class Model
 		{
 			case 'int':
 				return $currentDate;
-				break;
 			case 'datetime':
 				return date('Y-m-d H:i:s', $currentDate);
-				break;
 			case 'date':
 				return date('Y-m-d', $currentDate);
-				break;
 			default:
 				throw ModelException::forNoDateFormat(get_class($this));
 		}
@@ -1311,7 +1355,7 @@ class Model
 		}
 
 		// Still here? Grab the database-specific error, if any.
-		$error = $this->db->getError();
+		$error = $this->db->error();
 
 		return $error['message'] ?? null;
 	}
@@ -1368,6 +1412,37 @@ class Model
 	//--------------------------------------------------------------------
 
 	/**
+	 * Allows to set validation rules.
+	 * It could be used when you have to change default or override current validate rules.
+	 *
+	 * @param array $validationRules
+	 *
+	 * @return void
+	 */
+	public function setValidationRules(array $validationRules)
+	{
+		$this->validationRules = $validationRules;
+	}
+
+	//--------------------------------------------------------------------
+
+	/**
+	 * Allows to set field wise validation rules.
+	 * It could be used when you have to change default or override current validate rules.
+	 *
+	 * @param string       $field
+	 * @param string|array $fieldRules
+	 *
+	 * @return void
+	 */
+	public function setValidationRule(string $field, $fieldRules)
+	{
+		$this->validationRules[$field] = $fieldRules;
+	}
+
+	//--------------------------------------------------------------------
+
+	/**
 	 * Should validation rules be removed before saving?
 	 * Most handy when doing updates.
 	 *
@@ -1394,7 +1469,9 @@ class Model
 	 */
 	public function validate($data): bool
 	{
-		if ($this->skipValidation === true || empty($this->validationRules) || empty($data))
+		$rules = $this->getValidationRules();
+
+		if ($this->skipValidation === true || empty($rules) || empty($data))
 		{
 			return true;
 		}
@@ -1405,8 +1482,6 @@ class Model
 		{
 			$data = (array) $data;
 		}
-
-		$rules = $this->validationRules;
 
 		// ValidationRules can be either a string, which is the group name,
 		// or an array of rules.
@@ -1425,10 +1500,6 @@ class Model
 		{
 			return true;
 		}
-
-		// Replace any placeholders (i.e. {id}) in the rules with
-		// the value found in $data, if exists.
-		$rules = $this->fillPlaceholders($rules, $data);
 
 		$this->validation->setRules($rules, $this->validationMessages);
 		$valid = $this->validation->run($data, null, $this->DBGroup);
@@ -1481,6 +1552,10 @@ class Model
 	 * The value of {id} would be replaced with the actual id in the form data:
 	 *
 	 *  'required|is_unique[users,email,id,13]'
+	 *
+	 * @codeCoverageIgnore
+	 *
+	 * @deprecated use fillPlaceholders($rules, $data) from Validation instead
 	 *
 	 * @param array $rules
 	 * @param array $data
@@ -1537,6 +1612,13 @@ class Model
 	{
 		$rules = $this->validationRules;
 
+		// ValidationRules can be either a string, which is the group name,
+		// or an array of rules.
+		if (is_string($rules))
+		{
+			$rules = $this->validation->loadRuleGroup($rules);
+		}
+
 		if (isset($options['except']))
 		{
 			$rules = array_diff_key($rules, array_flip($options['except']));
@@ -1579,7 +1661,31 @@ class Model
 			$this->builder()->where($this->table . '.' . $this->deletedField, null);
 		}
 
-		return $this->builder()->countAllResults($reset, $test);
+		// When $reset === false, the $tempUseSoftDeletes will be
+		// dependant on $useSoftDeletes value because we don't
+		// want to add the same "where" condition for the second time
+		$this->tempUseSoftDeletes = ($reset === true)
+			? $this->useSoftDeletes
+			: ($this->useSoftDeletes === true
+				? false
+				: $this->useSoftDeletes);
+
+		return $this->builder()->testMode($test)->countAllResults($reset);
+	}
+
+	/**
+	 * Sets $tempAllowCallbacks value so that we can temporarily override
+	 * the setting. Resets after the next trigger.
+	 *
+	 * @param boolean $val
+	 *
+	 * @return Model
+	 */
+	public function allowCallbacks(bool $val = true)
+	{
+		$this->tempAllowCallbacks = $val;
+
+		return $this;
 	}
 
 	/**
@@ -1595,6 +1701,8 @@ class Model
 	 * data for callback methods (like an array of key/value pairs to insert
 	 * or update, an array of results, etc)
 	 *
+	 * If callbacks are not allowed then returns $eventData immediately.
+	 *
 	 * @param string $event
 	 * @param array  $eventData
 	 *
@@ -1603,6 +1711,14 @@ class Model
 	 */
 	protected function trigger(string $event, array $eventData)
 	{
+		$allowed                  = $this->tempAllowCallbacks;
+		$this->tempAllowCallbacks = $this->allowCallbacks;
+
+		if (! $allowed)
+		{
+			return $eventData;
+		}
+
 		// Ensure it's a valid event
 		if (! isset($this->{$event}) || empty($this->{$event}))
 		{
@@ -1707,6 +1823,11 @@ class Model
 		// and break intermingling of model and builder methods.
 		if ($name !== 'builder' && empty($result))
 		{
+			if (! method_exists($this->builder(), $name))
+			{
+				$className = get_class($this);
+				throw new \BadMethodCallException("Call to undefined method $className::$name");
+			}
 			return $result;
 		}
 		if ($name !== 'builder' && ! $result instanceof BaseBuilder)

@@ -7,7 +7,7 @@
 				<div class="panel-heading">
 					<strong><?=$session->get['user'];?></strong>
 					<a href="<?= base_url('login/logout') ?>" class="btn btn-danger btn-xs pull-right">WYLOGUJ</a>
-					<?php 
+					<?php
 						if ($session->get('akses') == 'ADMIN') {
 							echo "<a href=".base_url('chat')." class=\"btn btn-primary btn-xs\" title=\"User Perlu Persetujuan\"><i class=\"glyphicon glyphicon-comment\"></i> Chatbox</a>";
 							if($s->status == TRUE) {
@@ -34,7 +34,7 @@
 							<td><?= $o->nama ?></td>
 							<td><?= $o->user ?></td>
 							<td><?= $o->pass ?></td>
-							<td> 
+							<td>
 								<?php
 									if ($o->status == TRUE) {
 										echo "<a href=".base_url("chat/pending/nonaktif/$o->user")." class=\"btn btn-xs btn-warning\" title=\"Nonaktifkan\"><i class=\"glyphicon glyphicon-warning-sign\"></i></a>";
@@ -42,8 +42,6 @@
 										echo "<a href=".base_url("chat/pending/aktif/$o->user")." class=\"btn btn-xs btn-success\" title=\"Aktifkan\"><i class=\"glyphicon glyphicon-check\"></i></a>";
 									}
 								?>
-								
-								
 								<a href="<?= base_url("chat/pending/hapus/$o->user") ?>" class="btn btn-xs btn-danger" title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
 							</td>
 						</tbody>

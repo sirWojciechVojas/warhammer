@@ -1,0 +1,24 @@
+CRITICAL - 2020-06-16 13:21:58 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(79): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 79, Array)
+#1 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(55): App\Models\ChatsModel->getAvaibleSorT('bijatyka, gro\xC5\xBA...', 'zdolnosci')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-06-16 13:22:00 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(79): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 79, Array)
+#1 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(55): App\Models\ChatsModel->getAvaibleSorT('bijatyka, gro\xC5\xBA...', 'zdolnosci')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-06-16 13:22:59 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(79): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 79, Array)
+#1 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(55): App\Models\ChatsModel->getAvaibleSorT('bijatyka, gro\xC5\xBA...', 'zdolnosci')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}

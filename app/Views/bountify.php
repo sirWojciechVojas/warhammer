@@ -7,7 +7,7 @@
     <br />
     Kolumn:<input type="range" id="column-count" min="1" max="50" step="1" value="3" /><label for="column-count"></label>
 </div>
-    
+
 <div class="inventory-table" id="personal-inventory">
     <div class="inventory-row">
         <div class="inventory-cell">
@@ -39,7 +39,7 @@
     </div>
     <div class="inventory-row">
         <div class="inventory-cell">
-            <div class="inventory-item battleAxe" data-item-type="weapon axe"></div>    
+            <div class="inventory-item battleAxe" data-item-type="weapon axe"></div>
         </div>
         <div class="inventory-cell">
         </div>

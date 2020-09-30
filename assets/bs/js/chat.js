@@ -24,7 +24,7 @@ chat.get_messages = function () {
 }
 
 $('#msg').keypress(function(event) {
-    //check if user have press enter without shift 
+    //check if user have press enter without shift
     if (event.keyCode == 13 && event.shiftKey == false) {
 		chat.msg_contents = $('#msg').val(); //get the value of the textarea
 
@@ -43,8 +43,8 @@ $('#msg').keypress(function(event) {
 				}
 			}
 		});
-		
-		
+
+
 		$('#msg').val(''); //clear the form
 		return false; //and don't allow the new line to be printed
 	}

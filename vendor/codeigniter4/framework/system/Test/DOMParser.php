@@ -142,8 +142,8 @@ class DOMParser
 		// If Element is null, we're just scanning for text
 		if (is_null($element))
 		{
-			$content = $this->dom->saveHTML();
-			return strpos($content, $search) !== false;
+			$content = $this->dom->saveHTML($this->dom->documentElement);
+			return mb_strpos($content, $search) !== false;
 		}
 
 		$result = $this->doXPath($search, $element);
@@ -298,9 +298,7 @@ class DOMParser
 
 		$xpath = new \DOMXPath($this->dom);
 
-		$result = $xpath->query($path);
-
-		return $result;
+		return $xpath->query($path);
 	}
 
 	/**

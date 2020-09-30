@@ -1,0 +1,27 @@
+CRITICAL - 2020-09-27 23:19:52 --> Unknown database 'test'
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(278): mysqli->select_db('test')
+#1 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(355): CodeIgniter\Database\MySQLi\Connection->setDatabase('test')
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(193): App\Models\ChatsModel->ransomTrait(Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->ransom_trait()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-27 23:20:42 --> Unknown database 'test'
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(278): mysqli->select_db('test')
+#1 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(355): CodeIgniter\Database\MySQLi\Connection->setDatabase('test')
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(193): App\Models\ChatsModel->ransomTrait(Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->ransom_trait()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2020-09-27 23:21:02 --> Unknown database 'test'
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(278): mysqli->select_db('test')
+#1 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(355): CodeIgniter\Database\MySQLi\Connection->setDatabase('test')
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(193): App\Models\ChatsModel->ransomTrait(Array)
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->ransom_trait()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}

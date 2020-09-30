@@ -273,9 +273,10 @@ if (! function_exists('link_tag'))
 	 * @param  string  $title
 	 * @param  string  $media
 	 * @param  boolean $indexPage should indexPage be added to the CSS path.
+     	 * @param  string  $hreflang
 	 * @return string
 	 */
-	function link_tag($href = '', string $rel = 'stylesheet', string $type = 'text/css', string $title = '', string $media = '', bool $indexPage = false): string
+	function link_tag($href = '', string $rel = 'stylesheet', string $type = 'text/css', string $title = '', string $media = '', bool $indexPage = false, string $hreflang = ''): string
 	{
 		$link = '<link ';
 
@@ -286,6 +287,7 @@ if (! function_exists('link_tag'))
 			$type      = $href['type'] ?? $type;
 			$title     = $href['title'] ?? $title;
 			$media     = $href['media'] ?? $media;
+            		$hreflang  = $href['hreflang'] ?? '';
 			$indexPage = $href['indexPage'] ?? $indexPage;
 			$href      = $href['href'] ?? '';
 		}
@@ -306,7 +308,17 @@ if (! function_exists('link_tag'))
 			$link .= 'href="' . $href . '" ';
 		}
 
-		$link .= 'rel="' . $rel . '" type="' . $type . '" ';
+		if ($hreflang !== '')
+		{
+		    $link .= 'hreflang="' . $hreflang .'" ';
+		}
+
+		$link .= 'rel="' . $rel . '" ';
+
+		if (! in_array($rel, ['alternate','canonical']))
+		{
+		    $link .= 'type="' . $type . '" ';
+		}
 
 		if ($media !== '')
 		{
@@ -321,7 +333,8 @@ if (! function_exists('link_tag'))
 		return $link . '/>';
 	}
 }
-	// ------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------
 
 if (! function_exists('video'))
 {
@@ -382,9 +395,7 @@ if (! function_exists('video'))
 					. "\n";
 		}
 
-		$video .= "</video>\n";
-
-		return $video;
+		return $video . "</video>\n";
 	}
 }
 
@@ -447,9 +458,7 @@ if (! function_exists('audio'))
 			$audio .= "\n" . _space_indent() . $unsupportedMessage . "\n";
 		}
 
-		$audio .= "</audio>\n";
-
-		return $audio;
+		return $audio . "</audio>\n";
 	}
 }
 
@@ -501,9 +510,7 @@ if (! function_exists('_media'))
 			$media .= _space_indent() . $unsupportedMessage . "\n";
 		}
 
-		$media .= '</' . $name . ">\n";
-
-		return $media;
+		return $media . ('</' . $name . ">\n");
 	}
 }
 
@@ -545,9 +552,7 @@ if (! function_exists('source'))
 			$source .= ' ' . $attributes;
 		}
 
-		$source .= ' />';
-
-		return $source;
+		return $source . ' />';
 	}
 }
 
@@ -623,9 +628,7 @@ if (! function_exists('object'))
 			$object .= _space_indent() . $param . "\n";
 		}
 
-		$object .= "</object>\n";
-
-		return $object;
+		return $object . "</object>\n";
 	}
 }
 

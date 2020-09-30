@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * CodeIgniter
  *
@@ -40,10 +39,10 @@
 
 namespace CodeIgniter\HTTP;
 
-use Config\App;
-use Config\Format;
 use CodeIgniter\HTTP\Exceptions\HTTPException;
 use CodeIgniter\Pager\PagerInterface;
+use Config\App;
+use Config\Format;
 
 /**
  * Representation of an outgoing, getServer-side response.
@@ -231,7 +230,7 @@ class Response extends Message implements ResponseInterface
 	/**
 	 * Constructor
 	 *
-	 * @param App $config
+	 * @param \Config\App $config
 	 */
 	public function __construct($config)
 	{
@@ -442,6 +441,7 @@ class Response extends Message implements ResponseInterface
 	 * Converts the $body into JSON and sets the Content Type header.
 	 *
 	 * @param array|string $body
+	 * @param boolean      $name
 	 *
 	 * @return $this
 	 */
@@ -783,7 +783,7 @@ class Response extends Message implements ResponseInterface
 		{
 			if ($method !== 'refresh')
 			{
-				$code = ($_SERVER['REQUEST_METHOD'] !== 'GET') ? 303 : 307;
+				$code = ($_SERVER['REQUEST_METHOD'] !== 'GET') ? 303 : ($code === 302 ? 307 : $code);
 			}
 		}
 
@@ -810,14 +810,14 @@ class Response extends Message implements ResponseInterface
 	 * Accepts an arbitrary number of binds (up to 7) or an associative
 	 * array in the first parameter containing all the values.
 	 *
-	 * @param string|array  $name     Cookie name or array containing binds
-	 * @param string        $value    Cookie value
-	 * @param string        $expire   Cookie expiration time in seconds
-	 * @param string        $domain   Cookie domain (e.g.: '.yourdomain.com')
-	 * @param string        $path     Cookie path (default: '/')
-	 * @param string        $prefix   Cookie name prefix
-	 * @param boolean|false $secure   Whether to only transfer cookies via SSL
-	 * @param boolean|false $httponly Whether only make the cookie accessible via HTTP (no javascript)
+	 * @param string|array $name     Cookie name or array containing binds
+	 * @param string       $value    Cookie value
+	 * @param string       $expire   Cookie expiration time in seconds
+	 * @param string       $domain   Cookie domain (e.g.: '.yourdomain.com')
+	 * @param string       $path     Cookie path (default: '/')
+	 * @param string       $prefix   Cookie name prefix
+	 * @param boolean      $secure   Whether to only transfer cookies via SSL
+	 * @param boolean      $httponly Whether only make the cookie accessible via HTTP (no javascript)
 	 *
 	 * @return $this
 	 */
@@ -986,6 +986,7 @@ class Response extends Message implements ResponseInterface
 
 		$name = $prefix . $name;
 
+		$cookieHasFlag = false;
 		foreach ($this->cookies as &$cookie)
 		{
 			if ($cookie['name'] === $name)
@@ -1000,12 +1001,27 @@ class Response extends Message implements ResponseInterface
 				}
 				$cookie['value']   = '';
 				$cookie['expires'] = '';
-
+				$cookieHasFlag     = true;
 				break;
 			}
 		}
 
+		if (! $cookieHasFlag)
+		{
+			$this->setCookie($name, '', '', $domain, $path, $prefix);
+		}
+
 		return $this;
+	}
+
+	/**
+	 * Returns all cookies currently set.
+	 *
+	 * @return array
+	 */
+	public function getCookies()
+	{
+		return $this->cookies;
 	}
 
 	/**

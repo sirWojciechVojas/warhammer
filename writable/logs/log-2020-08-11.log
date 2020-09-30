@@ -1,0 +1,27 @@
+CRITICAL - 2020-08-11 16:56:04 --> syntax error, unexpected '}'
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(340): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(264): CodeIgniter\Autoloader\Autoloader->loadLegacy('ChatsModel.php')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('ChatsModel')
+#3 [internal function]: spl_autoload_call('ChatsModel')
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\ModelFactory.php(82): class_exists('ChatsModel')
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\ModelFactory.php(48): CodeIgniter\Database\ModelFactory::createClass('ChatsModel', NULL)
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(729): CodeIgniter\Database\ModelFactory::get('ChatsModel', true, NULL)
+#7 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(9): model('ChatsModel')
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#9 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#10 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2020-08-11 17:11:30 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+WHERE `USEDNAME_ID` = 4' at line 1
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('UPDATE `w_bg_cu...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `w_bg_cu...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `w_bg_cu...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2410): CodeIgniter\Database\BaseConnection->query('UPDATE `w_bg_cu...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(247): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(93): App\Models\ChatsModel->updatePD()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->ransom_pd()
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#10 {main}

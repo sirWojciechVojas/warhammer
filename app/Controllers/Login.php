@@ -1,5 +1,7 @@
 <?php namespace App\Controllers;
 
+use App\Models\UserModel;
+
 class Login extends BaseController {
 	var $a;
 	var $session;
@@ -7,75 +9,95 @@ class Login extends BaseController {
 		//parent::__construct();
 		$this->session = \Config\Services::session();
 		$this->request = \Config\Services::request();
-		$auth = model('auth');
-		$chats = model('chats');
-		$regis = model('regis');
+		$this->auth = model('AuthModel');
+		$this->chats = model('ChatsModel');
+		$this->regis = model('RegisModel');
+		$this->BG = model('BGModel');
 	}
- 
+
 	function index(){
-		$session = \Config\Services::session();
+		//$session = \Config\Services::session();
 		//$session->destroy();
-		$BG = model('BGModel');		
-		if ($session->get('sesi') == TRUE) {
-			$session->setFlashdata('done', '<div class="alert alert-warning alert-dismissable">
-														<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-														<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Tidak perlu, Anda Sudah Login!</strong>
-													</div>');
+		if ($this->session->get('isLoggedIn') == TRUE) {
+			$this->session->setFlashdata('done', '<div class="alert alert-warning alert-dismissable">
+												<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+												<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Nie musisz się logować!</strong>
+											</div>');
 			return redirect()->to(base_url('chat'));
 		} else {
-			$data['BG']=$BG->getBGinfo();
+			$data['BG']=$this->BG->getBGinfo();
 			//$this->printr($data['BG']);
-			$data['session']=$session;
+			$data['session']=$this->session;
 			$js['js']='login.inc.js';
 			echo view('header');
 			echo view('login',$data);
 			echo view('footer',$js);
 		}
-		
+
 	}
- 
-	function auth() {
-		$session = \Config\Services::session();
-		$request = \Config\Services::request();
-		$auth = model('AuthModel');
-		$where    = array(
-						'user' => $request->getPost('user'),
-						'pass' => $request->getPost('pass')
-					);
-		$cek      = $auth->cek_login('users',$where);
-			
-		if($cek->resultID->num_rows > 0) {
- 
-			foreach($cek->getResult() as $row) {
-				$nama  = $row->nama;
-				$user  = $row->user;
-				$akses = $row->akses;
+
+	function auth()
+	{
+		$data = [];
+		helper(['form']);
+
+		if ($this->request->getMethod() == 'post') {
+			//let's do the validation here
+			$rules = [
+				'user' => 'required|min_length[5]|max_length[20]',
+				'nameBG' => 'required|min_length[5]|max_length[32]',
+				'pass' => 'required|min_length[3]|max_length[32]|validateUser[user,nameBG,pass]',
+			];
+
+			$errors = [
+				'pass' => [
+					'validateUser' => 'Imię BG, Login lub hasło są niepoprawne!'
+				]
+			];
+			//echo $this->validate($rules, $errors);
+
+			if (! $this->validate($rules, $errors)) {
+				$data['validation'] = $this->validator;
+				$this->session->setFlashdata('gagal','<div class="alert alert-danger alert-dismissable">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<i class="fa fa-exclamation-circle">&nbsp;</i><strong>Imię BG, Nazwa użytkownika i/lub hasło są niepoprawne!</strong>
+				</div>');
+				return redirect()->to(base_url('login'));
+			}else{
+				$model = new UserModel();
+
+				$user = $model->where('user', $this->request->getVar('user'))
+											->first();
+
+				$this->setUserSession($user);
+				//$session->setFlashdata('success', 'Successful Registration');
+				return redirect()->to(base_url('chat'));
 			}
 
-			$sesi = array(
-						'nama'  => $nama,
-						'user'  => $user,
-						'akses' => $akses,
-						'sesi'  => TRUE
-					);
-			
-			$session->set($sesi);
-
-			return redirect()->to(base_url('chat'));
- 
-		} else {
-			$session->setFlashdata('gagal', '<div class="alert alert-danger alert-dismissable">
-														<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-														<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Username/Password Salah!</strong>
-													</div>');
-			return redirect()->to(base_url('login'));
 		}
-	
 	}
- 
+	private function setUserSession($user)
+	{
+		if($user['role']=='GAME MASTER') $USEDNAME='Richard Krupse';
+		else $USEDNAME=$user['role'];
+		$data = [
+				'ID'  => $this->auth->getBgId($USEDNAME)['ID'],
+				'USER_ID' => $user['USER_ID'],
+				'user' => $user['user'],
+				'USEDNAME' => $USEDNAME,
+				'role' => $user['role'],
+				'status' => $user['status'],
+				'akses' => $user['akses'],
+				'isLoggedIn'  => TRUE
+			];
+
+		session()->set($data);
+		return true;
+
+	}
+
 	function logout(){
-		$session = \Config\Services::session();
-		$session->destroy();
+		$this->session->destroy();
 		return redirect()->to(base_url());
 	}
 
@@ -83,28 +105,31 @@ class Login extends BaseController {
 								REGISTER
 	===============================================================*/
 	public function register() {
-		echo view('header');
-		echo view('regis');
-		echo view('footer');
+		$data['BG']=$this->BG->getBGinfo();
+		$data['session'] = $this->session;
+		$js['js']='login.inc.js';
+		echo view('headerV');
+		echo view('regis',$data);
+		echo view('footerV',$js);
 	}
 
 	public function regis() {
-		return $regis->daftar();
+		return $this->regis->daftar();
 	}
 
 	public function aktif($user) {
-		$regis->aktif($user);
+		$this->regis->aktif($user);
 		redirect(base_url('chat/pending'));
-	
+
 	}
 
 	public function nonaktif($user) {
-		$regis->nonaktif($user);
+		$this->regis->nonaktif($user);
 		redirect(base_url('chat/pending'));
 	}
 
 	public function deleteUser($user) {
-		$regis->deleteUser($user);
+		$this->regis->deleteUser($user);
 		redirect(base_url('chat/pending'));
 	}
 

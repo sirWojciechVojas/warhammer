@@ -1,0 +1,70 @@
+CRITICAL - 2020-06-17 12:06:45 --> A non-numeric value encountered
+#0 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(79): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'C:\\xampp\\htdocs...', 79, Array)
+#1 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(55): App\Models\ChatsModel->getAvaibleSorT('bijatyka, gro\xC5\xBA...', 'zdolnosci')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->index()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-06-17 12:13:18 --> Too few arguments to function App\Models\ChatsModel::getSorTCurrent(), 1 passed in C:\xampp\htdocs\warhammer\app\Controllers\Chat.php on line 120 and exactly 2 expected
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(120): App\Models\ChatsModel->getSorTCurrent('um')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->awans()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-06-17 12:14:01 --> Too few arguments to function App\Models\ChatsModel::getSorTCurrent(), 1 passed in C:\xampp\htdocs\warhammer\app\Controllers\Chat.php on line 120 and exactly 2 expected
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(120): App\Models\ChatsModel->getSorTCurrent('um')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->awans()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-06-17 12:14:04 --> Too few arguments to function App\Models\ChatsModel::getSorTCurrent(), 1 passed in C:\xampp\htdocs\warhammer\app\Controllers\Chat.php on line 120 and exactly 2 expected
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(120): App\Models\ChatsModel->getSorTCurrent('um')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->awans()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-06-17 12:14:14 --> Too few arguments to function App\Models\ChatsModel::getSorTCurrent(), 1 passed in C:\xampp\htdocs\warhammer\app\Controllers\Chat.php on line 120 and exactly 2 expected
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(120): App\Models\ChatsModel->getSorTCurrent('um')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->awans()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-06-17 12:14:24 --> Too few arguments to function App\Models\ChatsModel::getSorTCurrent(), 1 passed in C:\xampp\htdocs\warhammer\app\Controllers\Chat.php on line 120 and exactly 2 expected
+#0 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(120): App\Models\ChatsModel->getSorTCurrent('um')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->awans()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2020-06-17 13:27:25 --> syntax error, unexpected 'public' (T_PUBLIC)
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(340): CodeIgniter\Autoloader\Autoloader->requireFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Autoloader\Autoloader.php(264): CodeIgniter\Autoloader\Autoloader->loadLegacy('ChatsModel.php')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('ChatsModel')
+#3 [internal function]: spl_autoload_call('ChatsModel')
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\ModelFactory.php(82): class_exists('ChatsModel')
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\ModelFactory.php(48): CodeIgniter\Database\ModelFactory::createClass('ChatsModel', NULL)
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(729): CodeIgniter\Database\ModelFactory::get('ChatsModel', true, NULL)
+#7 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(9): model('ChatsModel')
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(882): App\Controllers\Chat->__construct()
+#9 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(393): CodeIgniter\CodeIgniter->createController()
+#10 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2020-06-17 14:30:44 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '0) VALUES ((NULL,'31',NULL,'3',0,1,1))' at line 1
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(330): mysqli->query('INSERT INTO `w_...')
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `w_...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `w_...')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2206): CodeIgniter\Database\BaseConnection->query('INSERT INTO `w_...', Array, false)
+#4 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(217): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(185): App\Models\ChatsModel->insertSorT(Array, 'zd')
+#6 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(124): App\Controllers\Chat->awansLoop(Array, Array, 'zd')
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(910): App\Controllers\Chat->awans()
+#8 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#9 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}

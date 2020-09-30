@@ -1,48 +1,156 @@
 <?php namespace App\Controllers;
 
-class Chat extends BaseController {
-	
+use App\Models\ChatsModel;
+
+Class Chat extends BaseController {
+
+	public $CI = NULL;
 
 	public function __construct() {
+		parent::__construct();
 		$this->regis = model('RegisModel');
 		$this->chats = model('ChatsModel');
+		$this->BG = model('BGModel');
+		$this->session = \Config\Services::session();
+		$this->request = \Config\Services::request();
+		$this->bgId = $this->session->get('ID');
 	}
 
 	public function index() {
-		echo session('user').'<br>';
+		//echo session('user').'<br>';
 		$session = \Config\Services::session();
 		$request = \Config\Services::request();
 		$ses=$session->get('user');
-		echo 'zalogowano użytkownika: <b>'.$ses.'</b><br>';
-		if ($session->get('sesi') == FALSE) {
+		//echo 'zalogowano użytkownika: <b>'.$ses.'</b><br>';
+		if ($session->get('isLoggedIn') == FALSE) {
 			$session->setFlashdata('login', '<div class="alert alert-warning alert-dismissable">
-														<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-														<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Anda Harus Login!</strong>
-													</div>');
-			return redirect()->to(base_url('public/login'));
+												<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+												<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Musisz się zalogować!</strong>
+											</div>');
+			return redirect()->to(base_url('login'));
 		} else {
 			$data['ajax'] = false;
 			$data['orang'] = $this->regis->orang();
+			$data['BG'] = $this->chats->getCechy2();
+			$data['BGs']=$this->BG->getBGinfo();
+			$table = $this->chats->getCechy();
+
+			$data['skills']= $this->chats->getAllSkills();
+			$data['talents']= $this->chats->getAllTalents();
+			$data['i']=0;
+			$Glowne_ini=array_splice($table[0], 14, 8);
+			$Drugo1_ini=array_splice($table[0], 14, 4);
+			$Drugo2_ini=array_splice($table[0], 14, 4);
+			$Glowne_adv=array_splice($table[1], 22, 8);
+			$Drugo1_adv=array_splice($table[1], 22, 4);
+			// $Drugo2_adv nie ma schematu rozwoju
+			$Glowne_cur=array_splice($table[1], 4, 8);
+			$Drugo1_cur=array_splice($table[1], 4, 4);
+			$Drugo2_cur=array_splice($table[1], 4, 6);//tu error zmień 5->4
+
+			// $this->printr($Drugo1_ini);
+			// $this->printr($Glowne_cur);
+			// $this->printr($Drugo1_cur);
+			// $this->printr($Drugo2_cur);
+
+
+			$data['Glowne'] = array($Glowne_ini,$Glowne_adv,$Glowne_cur);
+			$data['Drugo1'] = array($Drugo1_ini,$Drugo1_adv,$Drugo1_cur);
+			$data['Drugo2'] = array($Drugo2_ini,$Drugo2_cur);
+			$data['RestInfo'] = $table;
+			$data['curCareer'] = $this->chats->getProfesje($data['BG']['CURCAREER_ID']);
+			$data['prevCareer'] = $this->chats->getProfesje($data['BG']['PREVCAREER_IDs']);
+			$data['aSkills'] = $this->chats->getAvaibleSorT($data['curCareer']['AVAIBLESKILLS'],'umiejetnosci');
+			$data['aTalents'] = $this->chats->getAvaibleSorT($data['curCareer']['AVAIBLETALENTS'],'zdolnosci');
+			$data['mGold'] = $this->chats->getGold();
+			$data['diaryLi'] = $this->chats->getdiaryLi();
+			//$this->printr($this->chats->dupa());
+			// $this->printr($data['diaryLi']);
+/*
+			foreach($this->chats->getSkillsCurrentId() as $IdNum){
+				$data['allMySkills'][]=$data['skills'][$IdNum['NAME']-1];
+			}
+*/
+			$data['allMySkillsId'] = $this->chats->getSorTCurrentId('um');
+			$data['allMySkills'] = $this->chats->getSorTCurrent('um','umiejetnosci');
+			// $this->printr($data['allMySkills']);
+			$data['allMyTalentsId'] = $this->chats->getSorTCurrentId('zd');
+			$data['allMyTalents'] = $this->chats->getSorTCurrent('zd','zdolnosci');
+
+			//$data['oProfessions'] = $this->chats->getProfesje($data['BG']['OUTPUTPROFESSION']);
+			//$a=array_keys($data['BG']);
+
+			$data['PD'] = $this->chats->getPD();
+			$data['HP'] = $this->chats->getHP();
+			//$this->printr($data['HP']);
+
+			//$this->printr( $this->generujKod(128));
+			//$this->printr($data['aSkills']);
+			//$this->printr($data['aTalents']);
+			//$this->printr($data['curCareer']);
 			$data['status'] = $this->chats->getStatus();
 			$data['chat']   = $this->chats->chatContent()->getResult();
 			$data['dices']  = array(2,4,6,8,10,12,20,100);
 			$data['session']=$session;
+			//$this->printr($_SESSION);
+
 			$js['js']='chat.inc.js';
 			echo view('header');
 			echo view('chat', $data);
 			echo view('footer',$js);
 		}
 	}
-
-	public function send() {
+	public function update_hp() {
+		$ile=$_POST['ile'];
+		return json_encode($this->chats->updateHP($ile));
+	}
+	public function gain_pd() {
+		$ile = $this->request->getPost('ile');
+		return json_encode($this->chats->gainPD($ile));
+	}
+	public function rozne() {
 		$request = \Config\Services::request();
-		$session = \Config\Services::session();
+		// $data['skillName'] = 'Kuglarstwo';
+		$data['skillName'] = $request->getPost('skillName');
+		setlocale(LC_ALL, "en_US.utf8");
+		$skillBaseName = preg_replace("/'/", "", iconv("utf-8", "ascii//TRANSLIT", preg_replace('/\s+/', '', mb_strtolower($data['skillName']))));
+		$data['skillsDetails']= $this->chats->getSkillsDetails($skillBaseName);
+
+		return view('rozne',$data);
+		//return json_encode($data['skillsDetails']);
+	}
+	public function dialogBox() {
+		$data['prefix'] = $this->request->getPost('prefix');
+		$data['hBrass'] = $this->request->getPost('hBrass');
+		$data['HP'] = $this->chats->getHP();
+		if($data['prefix']=='PD') $data['HP']->buttons = array(1,2,5,10,20,50,'reset');
+		elseif($data['prefix']=='Brass') $data['HP']->buttons = array(1,2,5,10,20,'reset');
+		//print_r($data['HP']);
+		if($this->request->getPost('key')){
+			$data['traitName'] = $this->request->getPost('key');
+			$data['traitAct'] = $this->request->getPost('traitAct');
+			$data['traitAdv'] = $this->request->getPost('traitAdv');
+			$data['wTrait'] = $this->request->getPost('wTrait');
+			$data['NazwaCechy'] = $this->chats->getNazwyCech()[$this->request->getPost('key')];
+			$data['titleBar2'] = $this->request->getPost('titleBar').$data['NazwaCechy'];
+		}
+		else $data['titleBar2'] = $this->request->getPost('titleBar');
+
+		$data['umzd'] = $this->request->getPost('umzd');
+		$data['titleBar'] = mb_strtolower($this->request->getPost('titleBar'));
+		$data['idUm'] = $this->request->getPost('idUm');
+		$data['details'] = $this->request->getPost('details');
+
+		return view('dialogBox',$data);
+	}
+	public function send() {
 		date_default_timezone_set('Europe/Warsaw');
 		$date = date('Y-m-d H:i:s');
 		$message = array(
-			'pengirim' => session('user'),
+			'user' => session('user'),
+			'role' => session('role'),
 			'waktu' => $date,
-			'teks' => $request->getPost('message')
+			'teks' => $this->request->getPost('message')
 		);
 		//$this->printr($message);
 		$this->chats->messageInsert($message);
@@ -50,26 +158,178 @@ class Chat extends BaseController {
 		$data['chat']=$this->chats->chatContent()->getResult();
 		$data['status'] = $this->chats->getStatus();
 		$data['ajax']=true;
-		$data['session']=$session;
+		$data['session']=$this->session;
 		//return 'VOJAS';
 		return view('chat', $data);
 		//return redirect()->to(base_url('chat'));
 	}
 
+	public function awans() {
+
+		$data['BG'] = $this->chats->getCechy2();
+		$data['curCareer'] = $this->chats->getProfesje($data['BG']['CURCAREER_ID']);
+	//	$data['curCareer'] = $this->chats->getProfesje($data['BG']['PREVCAREER_IDs']);
+		$data['aSkills'] = $this->chats->getAvaibleSorTId($data['curCareer']['AVAIBLESKILLS']);
+		// $data['aTalents'] = $this->chats->getAvaibleSorTId($data['curCareer']['AVAIBLETALENTS']);
+		$getSkillsCurrent = $this->chats->getSorTCurrentId('um');
+		//$getTalentsCurrent = $this->chats->getSorTCurrentId('zd');
+		// $this->printr($getTalentsCurrent);
+		//$this->printr($data['aSkills']);
+
+		$this->awansLoop($data['aSkills'],$getSkillsCurrent,'um',0);
+
+		//$elegy[0][0]=15;
+		//$this->awansLoop($elegy,$getTalentsCurrent,'zd');
+
+		//$this->printr( $this->generujKod(128));
+		//$this->printr($data['curCareer']);
+
+		//return json_encode($this->chats->getProfesje(67));
+		//return json_encode($getSkillsCurrent);
+		//return 'wszystko ok!';
+	}
+	public function ransom_trait() {
+		$data['traitName']=$this->request->getPost('traitName');
+		$data['traitInc']=$this->request->getPost('traitInc');
+		$data['traitAct']=$this->request->getPost('traitAct');
+		$data['expCost']=$this->request->getPost('expCost');
+		$model = new ChatsModel();
+		$model->ransomTrait($data);
+	}
+	public function ransom_pd() {
+		//$getSOrT=$this->request->getPost('getSOrT');//to ktore chcemy dodac
+		$co = $this->request->getPost('co'); //um lub zd
+		$getSOrT[0][0] = $this->request->getPost('idUm');
+		//if(is_nan($this->request->getPost('details'))) $getSOrT=1;
+		// return var_dump($this->request->getPost('details'));
+		$details = $this->request->getPost('details');
+		if($details!=="") $getSOrT[0][0] .= '|'.$details;
+		// return 	json_encode($getSOrT);
+		// return json_encode($getSOrT);
+		$this->chats->updatePD();
+		//$this->printr($getSOrT);
+		$getCurrent = $this->chats->getSorTCurrentId($co);//get Skills Or Talents Current
+		//$this->printr($getSOrT);
+		$this->awansLoop($getSOrT,$getCurrent,$co,1);
+	}
+	public function awansLoop($SorT,$gSorTC,$tbl,$status){
+
+		foreach($SorT as $val1){
+			$i=count($val1);
+			$i = ($i==2)? $this->generujKod(128): $i;//kod powiązań umiejetnosci "albo"
+			foreach($val1 as $val2){
+				$a=0;
+				if(preg_match('#\|#',$val2)){
+					$v=explode('|',$val2);
+					$val2=$v[0];
+					$val3=$v[1];
+				}
+				else $val3=null;
+				foreach($gSorTC as $row){
+					//if($row['SKILLNAME']==$val2 && $row['SKILLNAME']==$val3 && $row['BGNAME']==$this->bgId)	$a=1;
+					if($row['NAME']==$val2 && $row['DETAILS']==$val3 && $row['BGNAME']==$this->bgId){ $id=(int) $row['ID']; $a=1; $b=$row['STATUS']; $c=$row['LEVEL'];}
+
+				}
+				if($status==1) $b++;
+				else $c++;
+				if($a==1){
+					$allUpdate[]=array(
+						'ID'=>$id,
+						/*'SKILLNAME'=>$val2,
+						'DETAILS'=>$val3,
+						'BGNAME'=>$this->bgId,*/
+						'STATUS'=>$b,
+						'LEVEL'=>$c,
+						/*'CONNECT'=> $i*/
+					);
+				}
+				else {
+					$allInsert[]=array(
+						'ID'=>NULL,
+						'NAME'=>$val2,
+						'DETAILS'=>$val3,
+						'BGNAME'=>$this->bgId,
+						'STATUS'=>0,
+						'LEVEL'=>1,
+						'CONNECT'=> $i
+					);
+				}
+
+				//$i++;
+			}
+		}
+
+		//$this->printr($getSkillsCurrent);
+		if(isset($allUpdate)){
+			//$this->printr($allUpdate);
+			$this->chats->updateSorT($allUpdate,$id,$tbl);
+		}
+		if(isset($allInsert)){
+			// $this->printr($allInsert);
+			//$this->printr($tbl);
+			$this->chats->insertSorT($allInsert,$tbl);
+		}
+
+	}
+	public function brass() {
+		$brass = $this->request->getPost('brass');
+		$this->chats->updateGold($brass);
+	}
+	public function generujKod($dlugoscKodu) {
+		$znaki = "abcdefghijkmnoprstuwxyzq"; //bez małego L
+		$znaki .= "ABCDEFGHIJKLMNPRSTUWZYXQ"; // bez O
+		$znaki .= "123456789"; // bez 0
+		$dl = strlen($znaki) - 1;
+		$wynik=null;
+		for($i =0; $i < $dlugoscKodu; $i++)
+		  {
+		   $losuj = rand(0, $dl);
+		   $wynik .=  $znaki[$losuj];
+		   }
+		return $wynik;
+	}
+
+	public function inventory() {
+		// $wspV=25.744;
+		// $this->request->isAJAX()
+		$wspV=40;
+		$data['w']=floor($this->request->getPost('w')/$wspV);
+		$data['imax']=$this->request->getPost('nrRow');
+		$data['jmax']=round($this->request->getPost('w')/$wspV);
+		// header( "Content-Type: application/json" );
+
+		$d['imax']=1;
+		$d['jmax']=13;
+		$output=array(
+			'ground'   => view('inventory',$d),
+			// 'ground'   => 'elegancko',
+			// 'personal' => view('inventory', $data),
+			'personal' => 'super',
+		);
+		// echo view('inventory', $data);
+		//$this->printr($respond);
+		// echo json_encode($output);
+		return json_encode($output);
+
+		// return json_encode($respond);
+	}
+	public function change() {
+		$this->session->set($this->request->getPost('sesi'));
+	}
 	public function open() {
 		return $this->chats->main(TRUE);
 	}
 
-	public function maintenance() { 
+	public function maintenance() {
 		return $this->chats->main(FALSE);
 	}
 
 	public function pending() {
 		if (session('sesi') == FALSE) {
 			session()->setFlashdata('login', '<div class="alert alert-warning alert-dismissable">
-														<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-														<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Anda Harus Login!</strong>
-													</div>');
+												<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+												<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Musisz się zalogować!</strong>
+											</div>');
 			return redirect()->to(base_url());
 		} else {
 			$data['orang'] = $this->regis->orang();

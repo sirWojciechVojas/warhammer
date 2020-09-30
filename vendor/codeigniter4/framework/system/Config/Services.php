@@ -39,6 +39,8 @@
 namespace CodeIgniter\Config;
 
 use CodeIgniter\Cache\CacheFactory;
+use CodeIgniter\Database\ConnectionInterface;
+use CodeIgniter\Database\MigrationRunner;
 use CodeIgniter\Debug\Exceptions;
 use CodeIgniter\Debug\Iterator;
 use CodeIgniter\Debug\Timer;
@@ -70,10 +72,8 @@ use CodeIgniter\Typography\Typography;
 use CodeIgniter\Validation\Validation;
 use CodeIgniter\View\Cell;
 use CodeIgniter\View\Parser;
-use Config\App;
-use CodeIgniter\Database\ConnectionInterface;
-use CodeIgniter\Database\MigrationRunner;
 use CodeIgniter\View\RendererInterface;
+use Config\App;
 use Config\Cache;
 use Config\Images;
 use Config\Logger;
@@ -152,6 +152,23 @@ class Services extends BaseService
 	//--------------------------------------------------------------------
 
 	/**
+	 * The commands utility for running and working with CLI commands.
+	 *
+	 * @param boolean $getShared
+	 *
+	 * @return \CodeIgniter\CLI\Commands|mixed
+	 */
+	public static function commands(bool $getShared = true)
+	{
+		if ($getShared)
+		{
+			return static::getSharedInstance('commands');
+		}
+
+		return new \CodeIgniter\CLI\Commands();
+	}
+
+	/**
 	 * The CURL Request class acts as a simple HTTP client for interacting
 	 * with other servers, typically through APIs.
 	 *
@@ -207,8 +224,7 @@ class Services extends BaseService
 		{
 			$config = new \Config\Email();
 		}
-		$email = new \CodeIgniter\Email\Email($config);
-		return $email;
+		return new \CodeIgniter\Email\Email($config);
 	}
 
 	/**
@@ -232,8 +248,7 @@ class Services extends BaseService
 		}
 
 		$encryption = new Encryption($config);
-		$encrypter  = $encryption->initialize($config);
-		return $encrypter;
+		return $encryption->initialize($config);
 	}
 
 	//--------------------------------------------------------------------
@@ -342,9 +357,9 @@ class Services extends BaseService
 	 * Acts as a factory for ImageHandler classes and returns an instance
 	 * of the handler. Used like Services::image()->withFile($path)->rotate(90)->save();
 	 *
-	 * @param string  $handler
-	 * @param mixed   $config
-	 * @param boolean $getShared
+	 * @param string|null         $handler
+	 * @param \Config\Images|null $config
+	 * @param boolean             $getShared
 	 *
 	 * @return \CodeIgniter\Images\Handlers\BaseHandler
 	 */
@@ -502,7 +517,7 @@ class Services extends BaseService
 
 		if (empty($config))
 		{
-			$config = new \Config\Pager();
+			$config = config('Pager');
 		}
 
 		if (! $view instanceof RendererInterface)
@@ -542,7 +557,7 @@ class Services extends BaseService
 			$viewPath = $paths->viewDirectory;
 		}
 
-		return new Parser($config, $viewPath, static::locator(true), CI_DEBUG, static::logger(true));
+		return new Parser($config, $viewPath, static::locator(), CI_DEBUG, static::logger());
 	}
 
 	//--------------------------------------------------------------------
@@ -577,7 +592,7 @@ class Services extends BaseService
 			$viewPath = $paths->viewDirectory;
 		}
 
-		return new \CodeIgniter\View\View($config, $viewPath, static::locator(true), CI_DEBUG, static::logger(true));
+		return new \CodeIgniter\View\View($config, $viewPath, static::locator(), CI_DEBUG, static::logger());
 	}
 
 	//--------------------------------------------------------------------
@@ -705,7 +720,7 @@ class Services extends BaseService
 
 		if (empty($routes))
 		{
-			$routes = static::routes(true);
+			$routes = static::routes();
 		}
 
 		return new Router($routes, $request);
@@ -759,10 +774,10 @@ class Services extends BaseService
 			$config = config(App::class);
 		}
 
-		$logger = static::logger(true);
+		$logger = static::logger();
 
 		$driverName = $config->sessionDriver;
-		$driver     = new $driverName($config, static::request()->getIpAddress());
+		$driver     = new $driverName($config, static::request()->getIPAddress());
 		$driver->setLogger($logger);
 
 		$session = new Session($driver, $config);

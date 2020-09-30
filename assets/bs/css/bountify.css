@@ -4,36 +4,33 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
-body
-{
-    background: #332f2c;
-    cursor: url('../../img/inventory/unit/kursory/CUR_default.png'), auto;  
-    color: #dddddd;
-    font-family: Arial;
-}
-/* Item atlas: http://i.imgur.com/ngGK5MF.png
- * Table atlas: http://i.imgur.com/nOqKSbE.png
+/*
+Item atlas: http://i.imgur.com/ngGK5MF.png
+Table atlas: http://i.imgur.com/nOqKSbE.png
 */
-a, a:link, a:visited { 
-  color: #c00;
-  text-decoration: none;
-  
-  -webkit-transition: all 0.3s ease;  
-  transition: all 0.3s ease;
-}
-a:hover { 
+.inventory-table a,.inventory-table a:link,.inventory-table a:visited {
+    color: #c00;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+.inventory-table a:hover {
   color: #ff5c19;
   text-decoration: underline;
-}  
-a:active { 
+}
+.inventory-table a:active {
   color: #6aff19;
 }
 input[type="range"]
 {
     width: 400px;
 }
-.inventory-table
-{
+
+.inventory-row.severalSlots:first-of-type{margin-top: 40px !important;}
+.inventory-row.severalSlots{margin-top: 22px !important;}
+@media (max-width: 1366px) {
+    .inventory-row.severalSlots:first-of-type{margin-top: 24px !important;}
+    .inventory-row.severalSlots{margin-top: 7px !important;}
 }
 .inventory-row
 {
@@ -41,15 +38,13 @@ input[type="range"]
 	flex-direction: row;
 	justify-content: flex-start; /* align items in Main Axis */
 	align-items: flex-start; /* align items in Cross Axis */
-	align-content: flex-start; /* Extra space in Cross Axis */
+    align-content: flex-start; /* Extra space in Cross Axis */
 }
 .myHcell
 {
     width: auto;
     height: auto;
-    
     flex-shrink: 0;
-    
     display: flex;
     flex-direction: row;
     justify-content: center; /* align items in Main Axis */
@@ -60,9 +55,7 @@ input[type="range"]
 {
     width: 400px;
     height: 100px;
-    
     flex-shrink: 0;
-    
     display: flex;
     flex-direction: row;
     justify-content: center; /* align items in Main Axis */
@@ -72,7 +65,6 @@ input[type="range"]
 }
 .my-cell:first-of-type{ width:100px;}
 .my-cell:nth-of-type(2){
-    
     justify-content: left; /* align items in Main Axis */
     align-items: left; /* align items in Cross Axis */
     align-content: left; /* Extra space in Cross Axis */
@@ -81,15 +73,15 @@ input[type="range"]
 {
     width: 36px;
     height: 36px;
-    
+
     flex-shrink: 0;
-    
+
     display: flex;
     flex-direction: row;
     justify-content: center; /* align items in Main Axis */
     align-items: center; /* align items in Cross Axis */
     align-content: center; /* Extra space in Cross Axis */
-    
+
     background-image: url('../../img/inventory/nOqKSbE.png');
     background-position: -229px -331px;
 }
@@ -98,7 +90,7 @@ input[type="range"]
 {
     width: 38px;
     padding-left: 2px;
-    
+
     background-position: -190px -331px;
 }
 /* right */
@@ -106,16 +98,16 @@ input[type="range"]
 {
     width: 38px;
     padding-right: 2px;
-    
+
     background-position: -266px -331px;
 }
-    
+
 /* top ROW */
 .inventory-row:first-child .inventory-cell
 {
     height: 38px;
     padding-top: 2px;
-    
+
     background-position: -229px -292px;
 }
 /* bottom ROW */
@@ -123,7 +115,7 @@ input[type="range"]
 {
     height: 38px;
     padding-bottom: 2px;
-    
+
     background-position: -229px -368px;
 }
 /* top left */
@@ -131,7 +123,7 @@ input[type="range"]
 {
     width: 38px;
     height: 38px;
-    
+
     background-position: -190px -292px;
 }
 /* top right */
@@ -139,7 +131,7 @@ input[type="range"]
 {
     width: 38px;
     height: 38px;
-    
+
     background-position: -266px -292px;
 }
 /* bottom left */
@@ -147,7 +139,7 @@ input[type="range"]
 {
     width: 38px;
     height: 38px;
-    
+
     background-position: -190px -368px;
 }
 /* bottom right */
@@ -155,14 +147,14 @@ input[type="range"]
 {
     width: 38px;
     height: 38px;
-    
+
     background-position: -266px -368px;
 }
 /* single horizontal */
 .inventory-row:only-child .inventory-cell
 {
     height: 40px;
-    
+
     background-position: -613px -286px;
 }
 /* single horizontal left */
@@ -170,7 +162,7 @@ input[type="range"]
 {
     width: 38px;
     height: 40px;
-    
+
     background-position: -574px -286px;
 }
 /* single horizontal right */
@@ -178,14 +170,14 @@ input[type="range"]
 {
     width: 38px;
     height: 40px;
-    
+
     background-position: -650px -286px;
 }
 /* single vertical */
 .inventory-row .inventory-cell:only-child
 {
     width: 40px;
-    
+
     background-position: -563px -463px;
 }
 /* single vertical top */
@@ -193,7 +185,7 @@ input[type="range"]
 {
     width: 40px;
     height: 38px;
-    
+
     background-position: -563px -424px;
 }
 /* single vertical bottom */
@@ -201,15 +193,45 @@ input[type="range"]
 {
     width: 40px;
     height: 38px;
-    
+
     background-position: -563px -500px;
+}
+/* By sir Wojciech Vojas */
+.inventory-row.severalSlots .inventory-cell:only-child
+{
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* align items in Main Axis */
+    align-items: center; /* align items in Cross Axis */
+    align-content: center; /* Extra space in Cross Axis */
+
+    background-image: url('../../img/inventory/nOqKSbE.png');
+    background-position: -30px -288px;
+}
+
+.inventory-row.severalSlots .inventory-cell:only-child.Head{
+    background:  url('../../img/inventory/invB/1Head.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;
+    background-blend-mode: screen;
+}
+.inventory-row.severalSlots .inventory-cell:only-child.Cape{
+    background:  url('../../img/inventory/invB/2Cape.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;
+    background-blend-mode: screen;
+}
+.inventory-row.severalSlots .inventory-cell:only-child.Body{
+    background:  url('../../img/inventory/invB/3Body.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;
+    background-blend-mode: screen;
 }
 /* single by singel */
 .inventory-row:only-child .inventory-cell:only-child
 {
     width: 40px;
     height: 40px;
-    
+
     background-position: -30px -288px;
 }
 /* ITEMS */
@@ -222,7 +244,7 @@ input[type="range"]
 
     cursor: hand;
     cursor: pointer;
-    
+
     -webkit-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
@@ -255,9 +277,63 @@ input[type="range"]
     content:'';
     display:block;
     width: 34px;
-    height: 34px;    
+    height: 34px;
     background-image: url('../../img/inventory/BorderUniqueV11.png');
 }
+
+.inventory-item.armorMail{              background-position:  -442px -1088px;}
+/* 1 kolumna */
+.inventory-item.adraCurrency{           background-position: 0px 0px;}
+.inventory-item.Oil{                    background-position: 0px -34px;}
+.inventory-item.Poultry{                background-position: 0px -68px;}
+.inventory-item.sweetPie{               background-position: 0px -102px;}
+.inventory-item.goldenCelery{           background-position: 0px -136px;}
+.inventory-item.Ruby{                   background-position: 0px -170px;}
+.inventory-item.Velune{                 background-position: 0px -204px;}
+/* background-position: 0px -238px
+background-position: 0px -272px
+background-position: 0px -306px
+background-position: 0px -340px
+background-position: 0px -374px
+background-position: 0px -408px
+background-position: 0px -442px
+background-position: 0px -476px
+background-position: 0px -510px
+background-position: 0px -544px
+background-position: 0px -578px
+background-position: 0px -612px
+background-position: 0px -646px
+background-position: 0px -680px
+background-position: 0px -714px
+background-position: 0px -748px
+background-position: 0px -782px
+background-position: 0px -816px
+background-position: 0px -850px
+background-position: 0px -884px
+background-position: 0px -918px
+background-position: 0px -952px
+background-position: 0px -986px
+background-position: 0px -1020px
+background-position: 0px -1054px
+background-position: 0px -1088px
+background-position: 0px -1087px
+background-position: 0px -1086px
+background-position: 0px -1085px
+background-position: 0px -1084px
+background-position: 0px -1083px
+background-position: 0px -1082px
+background-position: 0px -1081px
+background-position: 0px -1080px
+background-position: 0px -1079px
+background-position: 0px -1078px
+background-position: 0px -1077px
+background-position: 0px -1076px
+background-position: 0px -1075px
+background-position: 0px -1074px
+background-position: 0px -1073px
+background-position: 0px -1072px */
+
+
 
 .inventory-item.springBerries{          background-position: -102px -136px; }
 .inventory-item.vegetables{             background-position: -272px -68px;  }
@@ -270,6 +346,7 @@ input[type="range"]
 .inventory-item.swordSheathedInAtumn{   background-position: -408px -544px; }
 
 .inventory-item.potionOfPower{          background-position: -374px -1496px;}
+.inventory-item.potionOfMmm{            background-position: -340px -1496px;}
 
 .inventory-item.warBow{                 background-position: -408px -340px; }
 

@@ -7,8 +7,8 @@ class BGModel extends Model {
 
 	public function getBGinfo(){
 		$db = \Config\Database::connect();
-		//return $db->table('chat')->orderBy('waktu','ASC')->get(); 
-		return $db->table('w_bg_init')->orderBy('USEDNAME','ASC')->get()->getResult();
+		//return $db->table('chat')->orderBy('waktu','ASC')->get();
+		return $db->table('w_bg_start')->orderBy('ID','ASC')->get()->getResult();
 	}
 	public function imgInTheDir($fName){
 		//$dir = base_url('../warhammer/assets/img/inventory/unit/').$fName;
@@ -24,10 +24,10 @@ class BGModel extends Model {
     				}
 					return $fileName;
     			closedir($dh);
-				return "$dir is not a directory"; 
+				return "$dir nie jest katalogiem";
 			}
 		}
-		
+
 	}
 
 }

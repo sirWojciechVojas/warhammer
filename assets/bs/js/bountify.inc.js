@@ -6,7 +6,7 @@ jQuery.fn.extend({
             var $children = $(this).children();
             var rowCountDifference = targetCount - $children.length;
             //console.log('row count diff: ' + rowCountDifference);
-           
+
             if(rowCountDifference > 0)
             {
                 // Add items
@@ -27,29 +27,29 @@ jQuery.fn.extend({
     // Origin: Davy8 (http://stackoverflow.com/a/5212193/796832)
     parentToAnimate: function(newParent, duration) {
         duration = duration || 'slow';
-        
+
         var $element = $(this);
         //console.log($element);
         if($element.length > 0)
         {
-            
+
             newParent = $(newParent); // Allow passing in either a JQuery object or selector
             var oldOffset = $element.offset();
             $(this).appendTo(newParent);
             var newOffset = $element.offset();
-            
-            
+
+
             var temp = $element.clone().appendTo('body');
-            
+
             temp.css({
                 'position': 'absolute',
                 'left': oldOffset.left,
                 'top': oldOffset.top,
                 'zIndex': 1000
             });
-            
+
             $element.hide();
-                
+
             temp.animate({
                 'top': newOffset.top,
                 'left': newOffset.left
@@ -57,7 +57,7 @@ jQuery.fn.extend({
                 $element.show();
                 temp.remove();
             });
-            
+
             //console.log("parentTo Animate done");
         }
     }
@@ -65,11 +65,11 @@ jQuery.fn.extend({
 
 $('#row-count').on('input propertychange change', function() {
     var targetRowCount = $(this).val();
-    //console.log('target count: ' + targetRowCount);
+    console.log('target count: ' + targetRowCount);
     $('label[for="'+$(this).attr('id')+'"]').html(targetRowCount);
-      
+
     $('#personal-inventory.inventory-table').addRemoveItems(targetRowCount);
-    
+
     refreshSortableInventoryList();
 }).trigger('change');
 
@@ -77,9 +77,9 @@ $('#column-count').on('input propertychange change', function() {
     var targetColumnCount = $(this).val();
     //console.log('target count: ' + targetColumnCount);
     $('label[for="'+$(this).attr('id')+'"]').html(targetColumnCount);
-        
+
     $('#personal-inventory.inventory-table .inventory-row').addRemoveItems(targetColumnCount);
-    
+
     refreshSortableInventoryList();
 }).trigger('change');
 
@@ -95,36 +95,40 @@ function refreshSortableInventoryList()
         connectWith: '.inventory-cell',
         placeholder: 'inventory-item-sortable-placeholder',
         receive: function( event, ui ) {
-            var attrWhitelist = $(this).closest('.inventory-table').attr('data-item-filter-whitelist');
-            var attrBlackList = $(this).closest('.inventory-table').attr('data-item-filter-blacklist');
+            // var attrWhitelist = $(this).closest('.inventory-table').attr('data-item-filter-whitelist');
+            var attrWhitelist = $(this).closest('.inventory-row').attr('data-item-filter-whitelist');//zmiana by sWV :)
+            //alert(attrWhitelist);
+            // var attrBlackList = $(this).closest('.inventory-table').attr('data-item-filter-blacklist');
+            var attrBlackList = $(this).closest('.inventory-row').attr('data-item-filter-blacklist');//zmiana by sWV :)
             var itemFilterWhitelistArray = attrWhitelist ? attrWhitelist.split(/\s+/) : [];
             var itemFilterBlacklistArray = attrBlackList ? attrBlackList.split(/\s+/) : [];
             //console.log(itemFilterWhitelistArray);
-            //console.log(itemFilterBlacklistArray);  
-            
+            //console.log(itemFilterBlacklistArray);
+
             var attrTypeList = $(ui.item).attr('data-item-type');
             var itemTypeListArray = attrTypeList ? attrTypeList.split(/\s+/) : [];
             //console.log(itemTypeListArray);
-            
+
             var canMoveIntoSlot = verifyWithWhiteBlackLists(itemTypeListArray, itemFilterWhitelistArray, itemFilterBlacklistArray)
-            
+
             if(!canMoveIntoSlot)
             {
                 console.log("Can't move to this slot");
+                $('.imBottom').html('<div>W to miejsce jedynie możesz przenieść przedmioty dla kategorii jak: </div>'+attrWhitelist);
                 //$(ui.sender).sortable('cancel');
                 $(ui.item).parentToAnimate($(ui.sender), 200);
             }
-            else                
+            else
             {
-            
+
                 // Swap places of items if dragging on top of another
                 // Add the items in this list to the list the new item was from
                 $(this).children().not(ui.item).parentToAnimate($(ui.sender), 200);
-                
+
                 // $(this) is the list the item is being moved into
                 // $(ui.sender) is the list the item came from
                 // Don't forget the move swap items as well
-                
+
                 // $(this).attr('data-slot-position-x');
                 // $(this).attr('data-slot-position-y');
                 // $(ui.sender).attr('data-slot-position-x');
@@ -144,11 +148,11 @@ function verifyWithWhiteBlackLists(itemList, whiteList, blackList)
 {
     // itemList should contain tags
     // whiteList and blackList can contain tags and tag queries
-    
+
     // If we have a matching tags to some tag query in the whiteList but not in the blackList, then return true
     // Else return false
-    
-    
+
+
     console.group("Lists");
     console.log(itemList);
     console.log(whiteList);
@@ -159,16 +163,16 @@ function verifyWithWhiteBlackLists(itemList, whiteList, blackList)
     // Save the calculations, no filtering
     if(whiteList.length == 0 && blackList.length == 0)
         return true;
-    
 
-    
+
+
     // Check if the itemList has an item in the blackList
     var inBlackList = false;
     $.each(blackList, function(index, value) {
         var itemBlack = value;
         var itemBlackAndArray = itemBlack.split(/\+/);
         console.log(itemBlackAndArray);
-        
+
         var andedResult = true;
         for(var i = 0; i < itemBlackAndArray.length; i++)
         {
@@ -181,21 +185,21 @@ function verifyWithWhiteBlackLists(itemList, whiteList, blackList)
                 andedResult = andedResult && false;
             }
         }
-        
+
         if(andedResult)
             inBlackList = true;
     });
-    
+
     inBlackList = blackList.length > 0 ? inBlackList : false;
-    
-    
+
+
     // Check if the itemList has an item in the whiteList
     var inWhiteList = false;
     $.each(whiteList, function(index, value) {
         var itemWhite = value;
         var itemWhiteAndArray = itemWhite.split(/\+/);
         //console.log(itemWhiteAndArray);
-        
+
         var andedResult = true;
         for(var i = 0; i < itemWhiteAndArray.length; i++)
         {
@@ -209,19 +213,19 @@ function verifyWithWhiteBlackLists(itemList, whiteList, blackList)
             }
         }
         //console.log("andedResult: " + andedResult);
-        
+
         if(andedResult)
             inWhiteList = true;
-       
+
     });
-    
+
     inWhiteList = whiteList.length > 0 ? inWhiteList : false;
-    
-    
+
+
     console.log("inWhite: " + inWhiteList + " - inBlack: " + inBlackList);
-    
+
     if((whiteList.length == 0 || inWhiteList) && !inBlackList)
         return true;
-    
+
     return false;
 }

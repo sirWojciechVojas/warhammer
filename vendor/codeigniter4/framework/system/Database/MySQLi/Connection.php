@@ -103,7 +103,7 @@ class Connection extends BaseConnection implements ConnectionInterface
 		{
 			$hostname = ($persistent === true) ? 'p:' . $this->hostname : $this->hostname;
 			$port     = empty($this->port) ? null : $this->port;
-			$socket   = null;
+			$socket   = '';
 		}
 
 		$client_flags = ($this->compress === true) ? MYSQLI_CLIENT_COMPRESS : 0;
@@ -326,8 +326,19 @@ class Connection extends BaseConnection implements ConnectionInterface
 				$res->free();
 			}
 		}
-
-		return $this->connID->query($this->prepQuery($sql));
+		try
+		{
+			return $this->connID->query($this->prepQuery($sql));
+		}
+		catch (\mysqli_sql_exception $e)
+		{
+			log_message('error', $e);
+			if ($this->DBDebug)
+			{
+				throw $e;
+			}
+		}
+		return false;
 	}
 
 	//--------------------------------------------------------------------
@@ -424,8 +435,6 @@ class Connection extends BaseConnection implements ConnectionInterface
 			'\\' . '_',
 		], $str
 		);
-
-		return $str;
 	}
 
 	//--------------------------------------------------------------------

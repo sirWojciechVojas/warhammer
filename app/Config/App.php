@@ -21,7 +21,8 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost/warhammer/public';
+	public $baseURL = 'http://localhost:8080/warhammer/public';
+	//public $baseURL = 'http://192.168.0.8:8080/warhammer/public';
 
 	/*
 	|--------------------------------------------------------------------------
@@ -99,7 +100,8 @@ class App extends BaseConfig
 	| dates with the date helper, and can be retrieved through app_timezone()
 	|
 	*/
-	public $appTimezone = 'America/Chicago';
+	//public $appTimezone = 'America/Chicago';
+	public $appTimezone = 'Europe/Warsaw';
 
 	/*
 	|--------------------------------------------------------------------------

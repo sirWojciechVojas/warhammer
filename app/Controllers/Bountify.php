@@ -1,7 +1,7 @@
 <?php namespace App\Controllers;
 
 class Bountify extends BaseController{
-	
+
 	var $var1;
 	var $var2;
 	public function __construct() {

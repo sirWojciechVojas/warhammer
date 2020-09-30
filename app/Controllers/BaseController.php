@@ -35,11 +35,19 @@ class BaseController extends Controller
 		echo'<pre>';
 		print_r($x);
 		echo'</pre>';
+		exit();
 	}
 	public function vardump($x){
 		echo'<pre>';
 		var_dump($x);
 		echo'</pre>';
+	}
+	public function ucfirst_utf8($str) {
+    if (mb_check_encoding($str, 'UTF-8')) {
+        $first = mb_substr(mb_strtoupper($str, 'UTF-8'), 0, 1, 'UTF-8');
+        return $first . mb_substr(mb_strtolower($str, 'UTF-8'), 1, mb_strlen($str), 'UTF-8');
+    } else
+        return $str;
 	}
 	/**
 	 * An array of helpers to be loaded automatically upon

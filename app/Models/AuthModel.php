@@ -5,19 +5,21 @@ use CodeIgniter\Model;
 class AuthModel extends Model {
 
 	public function __construct() {
-		$db = \Config\Database::connect();
-		$request = \Config\Services::request();
+		$this->db = \Config\Database::connect();
+		$this->request = \Config\Services::request();
 	}
 
 	public function cek_login(){
-				$db = \Config\Database::connect();
-				$request = \Config\Services::request();
 		$where    = array(
-						'user' => $request->getPost('user'),
-						'pass' => $request->getPost('pass'),
+						'role' => $this->request->getPost('nameBG'),
+						'user' => $this->request->getPost('user'),
+						'pass' => $this->request->getPost('pass'),
 						'status' => TRUE
 					);
-		return $db->table('users')->getWhere($where);
+		return $this->db->table('users')->getWhere($where);
+	}
+	public function getBgId($USEDNAME) {
+		return $this->db->table('w_bg_start')->select(['ID'])->where('USEDNAME',$USEDNAME)->get()->getRowArray();
 	}
 
 }

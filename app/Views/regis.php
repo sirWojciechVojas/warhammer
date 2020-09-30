@@ -1,24 +1,40 @@
-<div class="container">
-	<div class="row">
-		<div class="col-sm-6 col-md-4 col-md-offset-4">
-			<br><br><br>
-			<div class="account-wall"><br>
-				<h4 class="text-center" style="margin-top: -10px">DAFTAR</h4><br>
-				<img class="profile-img" src="assets/img/photo.png" alt="HILANG">
-				<form class="form-signin" action="<?= base_url('auth/regis') ?>" method="post">
-				<?= $this->session->flashdata('fail'); ?>
+<div class="container h-100">
+	<div class="row align-items-center h-100 justify-content-md-center">
+		<div class="col-sm-8 col-md-4">
+			<div class="account-wall REG"><br>
+				<h4 class="text-center" style="margin-top: -10px">Rejestracja</h4><br>
+				<img class="profile-img" src="<?= base_url('../warhammer/assets/img/photo.png') ?>" alt="Avatar">
+				<form class="form-signin" action="<?= base_url('login/regis') ?>" method="post">
+				<?= $session->getFlashdata('fail'); ?>
 					<div class="form-group">
-						<input name="nama" type="text" class="form-control" placeholder="Nama" required autofocus>
+						<input name="nameBG" type="text" readonly="true" class="form-control" placeholder="Imię Bohatera Gracza" required>
 					</div>
 					<div class="form-group">
-						<input name="user" type="text" class="form-control" placeholder="Username" required>
+						<input name="user" type="text" class="form-control" placeholder="Nazwa użytkownika" required autofocus>
 					</div>
 					<div class="form-group">
-						<input name="pass" type="password" class="form-control" placeholder="Password" required>
+						<input name="passFirst" type="password" class="form-control" placeholder="Hasło" required>
 					</div>
-					<input type="submit" name="regis" value="Daftar" class="btn btn-lg btn-success btn-block">
-					<a href="<?= base_url() ?>" class="btn btn-lg btn-primary btn-block">Login</a>
+					<div class="form-group">
+						<input name="passCheck" type="password" class="form-control" placeholder="Powtórz Hasło" required>
+					</div>
+					<input type="submit" name="regis" value="Zarejestruj" class="btn btn-lg btn-success btn-block">
+					<a href="<?= base_url() ?>" class="btn btn-lg btn-primary btn-block">Logowanie</a>
 				</form>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 BG0">
+			<div class="account-wall BG"><br>
+				<h4 class="text-center" style="margin-top: -10px">Wybierz Bohatera</h4><br>
+				<ul style="list-style: none;">
+				<?php foreach($BG as $id): ?>
+					<li>
+						<img class="profile-img" src="<?= base_url("../warhammer/assets/img/$id->USEDNAME.png") ?>" alt="Avatar">
+						<h3><?=$id->USEDNAME;?></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante, ac laoreet nulla vestibulum adipiscing.</p>
+					</li>
+				<?php endforeach ?>
+				</ul>
 			</div>
 		</div>
 	</div>
