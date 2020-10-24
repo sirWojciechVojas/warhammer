@@ -335,6 +335,23 @@ html {
 #Brass-line .brass:hover{background: url('../../img/mBronzePennies.hover.jpg') no-repeat;background-size:contain;}
 #Brass-line .brass.activated{background: url('../../img/mBronzePennies.active.jpg') no-repeat;background-size:contain;}
 
+@media(max-width:1366px){
+  #Brass-line div:nth-of-type(1) input[type="text"]{width: 6.1vw;font-size:2.5vh;text-align:right;height:3.5vh;padding-right: 6px;}
+  /* .crown + div,
+  .shilling + div,
+  .brass + div
+  {background-size:cover;} */
+  .imBottom div:nth-of-type(3) > div{
+    display: inline !important;vertical-align: top;
+  }
+  .btn-secondary.btn-sm{
+    height:20px;
+    font-size: small;
+    padding: 0 6px !important;
+    margin-top: 0 !important;
+
+  }
+}
 #characterStats .cCenter {
   background: url('../../img/frameUni.png'), url('../../img/inventory/parchment.png') center top no-repeat;
   background-size: 100% 100%, 95% 100%;
@@ -649,7 +666,7 @@ html {
 }
 
 #characterStats .skills-talents>div:hover {
-  font: bold .85vw Garamond, Verdana, sans-serif;
+  font-weight: bold;
   background-color: navajowhite;
   cursor: pointer;
 }
@@ -662,13 +679,14 @@ html {
 
 @media (max-width: 1366px) {
   #characterStats .skills-talents>div {
-    font: normal .85vw Garamond, Verdana, sans-serif;
+    font: normal 1vw Garamond, Verdana, sans-serif;
   }
 
   #characterStats .skills-talents>div>input {
     width: 16%;
     height: .9em;
-    border: none;
+    margin-right:5px;
+    /* border: none; */
   }
 }
 
@@ -1607,6 +1625,17 @@ button.BG:hover {
   color: white;
   width:inherit !important;
   height:inherit !important;
+}
+.tooltip-inner h4.umzd{
+  text-align:justify;
+  font: normal 1.85vh Garamond, Verdana, sans-serif;
+  padding: 2% 4%;
+  text-indent: 2.5em;
+}
+@media (max-width: 1366px) {
+  .tooltip-inner h4.umzd{
+    font: normal 2.5vh Garamond, Verdana, sans-serif;
+  }
 }
 .btn-group-xs > .btn, .btn-xs {
   padding: .25rem .4rem;

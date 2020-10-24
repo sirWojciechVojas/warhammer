@@ -458,18 +458,16 @@ function tooltipCss(){
 			});
 		}
 		else if($(this).hasClass('skill-talent')){
-			$('.tooltip-inner h4').css({
-				'text-align':'justify',
-				'font': 'normal 1.85vh Garamond, Verdana, sans-serif',
-				'padding':'2% 5%',
-
-			});
+			$('.tooltip-inner h4').addClass('umzd');
+			// .css({
+			// 	'text-align':'justify',
+			// 	'font': 'normal 1.85vh Garamond, Verdana, sans-serif',
+			// 	'padding':'2% 5%',
+			// 	'text-indent': '2.5em'
+			// });
 			$('.tooltip.show,.tooltip-inner,.tooltip-inner h3,.tooltip-inner h4').css({
 				'width':'360px',
 				'max-width': '100%'
-			});
-			$('.tooltip-inner h4').css({
-				'text-indent': '2.5em',
 			});
 		}
 		else if($(this).hasClass('inventory-item')){

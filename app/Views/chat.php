@@ -205,7 +205,7 @@
                                     <div><input type="text" readonly="true" value="<?= $mGold->mPenny ?> p"></div>
                                     <input type="hidden" id="hBrass" value="<?= $mGold->hBrass ?>" />
                                 </div>
-                                <div class="col-md-12 d-flex justify-content-around" style="padding:0;">
+                                <div class="col-md-12 d-flex justify-content-around align-items-top">
                                     <div><input type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
                                             data-symbol="+" value="Pozyskaj"></div>
                                     <div><input type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
