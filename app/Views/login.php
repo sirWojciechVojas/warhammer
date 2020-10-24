@@ -31,7 +31,7 @@
 					<li class="col-sm-10 col-md-12">
 						<img class="profile-img" src="<?= base_url("../warhammer/assets/img/$id->USEDNAME.png") ?>" alt="Avatar">
 						<h3><?=$id->USEDNAME;?></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante, ac laoreet nulla vestibulum adipiscing.</p>
+						<h6><?= $id->HISTORY; ?>...</h6>
 					</li>
 				<?php endforeach ?>
 				</ul>

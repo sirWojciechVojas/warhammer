@@ -9,7 +9,7 @@
         			</button>
 				</div>
       		</div>
-      		<div class="modal-body cP" style="padding:0 15px;">
+      		<div class="modal-body<?=$addClass?>" style="padding:0 15px;">
                 <?php if ($prefix == 'HP'): ?>
 					<div class="col-md-12 predesc">Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, Twoja akcja zostanie wyświetlona na czacie i będzie mogła zostać odrzucoona przez Game Mastera!</div>
 					<div class="col-md-12 addictionBar">
@@ -28,7 +28,7 @@
 					<input type="hidden" id="idUm" value="<?=$idUm?>"/>
 					<input type="hidden" id="details" value="<?=$details?>"/>
 				<?php elseif($prefix == 'PD'): ?>
-					<div class="col-md-12 predesc">Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij,  <?=$titleBar?> zmianę Punktów Doświadczenia, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!</div>
+					<div class="col-md-12 predesc">Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, <?=$titleBar?> zmianę Punktów Doświadczenia, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!</div>
 					<div class="col-md-12 addictionBar">
 						<div class="btn-group d-flex justify-content-around" data-wounds="<?=$HP->WOUNDS?>" data-hp="<?=$HP->HP?>">
 							<?php foreach($HP->buttons as $k => $number):?>
@@ -77,6 +77,37 @@
 					<input type="hidden" id="traitAdv" value="<?=$traitAdv?>"/>
 					<input type="hidden" id="wTrait" value="<?=$wTrait?>"/>
 					<input type="hidden" id="NazwaCechy" value="<?=$NazwaCechy?>"/>
+				<?php elseif($prefix == 'Inv'): ?>
+					<div class="col-md-2"><img src="<?= base_url('../warhammer/assets/img/inventory/Inventory_L[72x72]/' . $item['IMG_CLASS'] . '.png') ?>"/></div>
+					<div class="col-md-10 predesc">
+						<ul>
+							<?php if($item['ITEM_CLASS'] == 'WEAPON'): ?>
+							<li><?=$item['HANDED']?></li>
+							<?php else: ?>
+							<li><b>Obciążenie: </b><?=$item['CHARGE']?> jednostek</li>
+							<?php endif ?>
+							<li><b>Wartość: </b><?=$item['PRIZE']?> brass</li>
+						</ul>
+					</div>
+					<?php if($item['ITEM_CLASS'] == 'WEAPON'): ?>
+					<div class="col-md-12 predesc">
+						<ul>
+							<li>Typ broni: <?=$item['TYPE']?></li>
+							<li>Obrażenia: <?=$item['DAMAGE'].' ('.$item['DICE'].')'?></li>
+							<?php if($item['TYPE'] == 'miotająca'): ?>
+							<li>Obrażenia: <?=$item['RANGE'] ?></li>
+							<li>Obrażenia: <?=$item['RELOAD'] ?></li>
+							<?php endif ?>
+							<li>Cechy oręża: <?=$item['QUALITIES']?></li>
+							<li>Obciążenie: <?=$item['LOAD']?></li>
+						</ul>
+					</div>
+					<?php endif ?>
+					<div class="col-md-12 predesc">
+						<?=$item['DESCRIPTION']?>
+						<?=$item['DETAILS']?>
+						<?=$item['PERSONAL_DESC']?>
+					</div>
                 <?php endif; ?>
 			</div>
 			<div class="modal-footer">

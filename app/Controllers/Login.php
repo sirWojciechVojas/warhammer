@@ -6,13 +6,15 @@ class Login extends BaseController {
 	var $a;
 	var $session;
 	function __construct(){
-		//parent::__construct();
+		parent::__construct();
+		$this->router = \Config\Services::router();
 		$this->session = \Config\Services::session();
 		$this->request = \Config\Services::request();
 		$this->auth = model('AuthModel');
 		$this->chats = model('ChatsModel');
 		$this->regis = model('RegisModel');
 		$this->BG = model('BGModel');
+		helper(['form']);
 	}
 
 	function index(){
@@ -25,10 +27,13 @@ class Login extends BaseController {
 											</div>');
 			return redirect()->to(base_url('chat'));
 		} else {
-			$data['BG']=$this->BG->getBGinfo();
-			//$this->printr($data['BG']);
+			$data['BG']=$this->BG->getBGinfo2();
+			// $data['BG'][0]->HISTORY = 'lihuj';
+			// $this->printr($data['BG']);
 			$data['session']=$this->session;
 			$js['js']='login.inc.js';
+			$js['controllerName']=$this->router->controllerName();
+			$js['methodName']=$this->router->methodName();
 			echo view('header');
 			echo view('login',$data);
 			echo view('footer',$js);
@@ -105,7 +110,7 @@ class Login extends BaseController {
 								REGISTER
 	===============================================================*/
 	public function register() {
-		$data['BG']=$this->BG->getBGinfo();
+		$data['BG']=$this->BG->getBGinfo2();
 		$data['session'] = $this->session;
 		$js['js']='login.inc.js';
 		echo view('headerV');
@@ -114,23 +119,76 @@ class Login extends BaseController {
 	}
 
 	public function regis() {
-		return $this->regis->daftar();
-	}
+		$data = [];
 
-	public function aktif($user) {
-		$this->regis->aktif($user);
-		redirect(base_url('chat/pending'));
 
-	}
+		if ($this->request->getMethod() == 'post') {
+			//let's do the validation here
+			$rules = [
+				'nameBG' => [
+					'rules' => 'required',
+					'label' => 'Imię Bohatera Gracza',
+					'errors' => [
+						'required' => 'Musisz wybrać Bohatera!'
+					]
+				],
+				'user' => [
+					'rules' => 'required|min_length[5]|max_length[24]',
+					'errors' => [
+						'required' => 'Pole Nazwa użytkownika jest wymagane!',
+						'min_length' => 'Pole Nazwa użytkownika musi zawierać conajmniej 5 znaków!',
+						'max_length' => 'Pole Nazwa użytkownika musi zawierać conajwyżej 24 znaki!'
+					]
+				],
+				'passFirst' => [
+					'rules' => 'required|min_length[5]|max_length[32]',
+					'errors' => [
+						'required' => 'Hasło jest wymagane!',
+						'min_length' => 'Hasło musi zawierać conajmniej 5 znaków!',
+						'max_length' => 'Hasło musi zawierać conajwyżej 32 znaki!'
+					]
+				],
+				'passCheck' => [
+					'rules' => 'matches[passFirst]',
+					'errors' => [
+						'matches' => 'Hasła nie są identyczne!'
+					]
+				]
+			];
+			$errors = [
+				'passFirst' => [
+					'validateUser' => 'Imię BG, Login lub hasło są niepoprawne!'
+				]
+			];
+			// echo $this->validate($rules, $errors);
+			if (! $this->validate($rules, $errors)) {
+				$data['validation'] = $this->validator;
+				// $this->printr($this->validator->listErrors());
+				$this->session->setFlashdata('fail','<div class="alert alert-warning alert-dismissable" style="padding: 1em 0;">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>'. $this->validator->listErrors() .'</strong>
+				</div>');
+				$this->session->setFlashdata('last_post', $_POST);
+				return redirect()->to(base_url('login/register'));
+			}else{
+				$model = new UserModel();
 
-	public function nonaktif($user) {
-		$this->regis->nonaktif($user);
-		redirect(base_url('chat/pending'));
-	}
-
-	public function deleteUser($user) {
-		$this->regis->deleteUser($user);
-		redirect(base_url('chat/pending'));
+				$newData = [
+					'user' => $this->request->getVar('user'),
+					'role' => $this->request->getVar('nameBG'),
+					'pass' => $this->request->getVar('passFirst'),
+					'status' => FALSE,
+					'akses' => 'USER',
+				];
+				$model->save($newData);
+				$session = session();
+				$session->setFlashdata('scc', '<div class="alert alert-success alert-dismissable">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Udało się! Teraz musisz tylko poczekać na aktywację!</strong>
+				</div>');
+				return redirect()->to(base_url());
+			}
+		}
 	}
 
 }

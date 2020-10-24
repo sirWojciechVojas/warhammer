@@ -31,6 +31,7 @@ class Chat implements MessageComponentInterface {
         $conData = [
                 'c_user_id' => $user['USER_ID'],
                 'c_resource_id' => $conn->resourceId,
+                'c_role' => $user['role'],
                 'c_name' => $user['user']
         ];
 
@@ -56,8 +57,9 @@ class Chat implements MessageComponentInterface {
 
                 $data = [
                     'message' => $msg,
+                    'role' => $from->user['role'],
                     'author' => $from->user['user'],
-                    'time' => date('H:i')
+                    'time' => date('d.m.Y H:i:s')
                 ];
                 // The sender is not the receiver, send to each client connected
                 $client->send(json_encode($data));

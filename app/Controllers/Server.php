@@ -24,7 +24,6 @@ class Server extends BaseController
 
 		$server->run();
 
-
 	}
 
 	//--------------------------------------------------------------------

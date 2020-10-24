@@ -1,10 +1,22 @@
-$(document).ready(function()
+jQuery(function()
 {
+	// $( "#characterPanel" ).draggable({handle: ".avatar", cursor: "move", containment: "body", scroll: false });
 	modalBox();
 	$(window).on('resize', function (e) {
 		modalBox();
+		inventory('discard');
+		inventory('personal');
+		inventory('ground');
+		inventory('A');
+		inventory('B');
+		inventory('handy');
 	});
-	discardInv();
+	inventory('discard');
+	inventory('personal');
+	inventory('ground');
+	inventory('A');
+	inventory('B');
+	inventory('handy');
 	var minexp=$('#minexp').val();
 	var nowexp=$('#nowexp').val();
 	if(nowexp<minexp) $('#characterPanel .titleSpace .awans.btn-danger').addClass('disabled');
@@ -14,13 +26,80 @@ $(document).ready(function()
 		//var how = $('.coto').css('background');
 		//alert(how);
 
-	$('button[data-target="#exampleModalCenter"]').trigger('click');
+	//$('button[data-target="#exampleModalCenter"]').trigger('click');
 	//$('button[data-target="#ModalCenter"]').trigger('click');
+	// $('#characterStats .cCenter').on('click','.skill-talent[data-toggle="tooltip"]', function (e) {
+	// alert('wow');
+	// 	$(this).attr('title', 'NEW_TITLE').tooltip('enable');
+	// });
+	$('#characterStats .cLeft').on('contextmenu','.inventory-item', function (e) {
+		$this = $(this);
+		var invid = $this.data('invid');
+		var titleBar = 'Przedmiot'
+		// alert(invid);
+		$.ajax({
+			url: 'chat/dialogBox',
+			type: 'POST',
+			data: {prefix: 'Inv', invid: invid, titleBar: titleBar},
+			success: function(response){
+				//var response = JSON.parse(response);
+				// console.log(response);
 
+				$('body').append(response);
+				// $('body').html(response);
+
+			  // Add response in Modal body
+
+				executeInv();
+				$('.modal-footer').remove();
+				$('#InvModalCenter').modal('show', $this);
+
+			  // Display Modal
+			}
+		});
+		return false;
+	});
+	$('#characterStats .cRight .row:nth-of-type(4) .diary').on('click','.btn', function (e) {
+		$this = $(this);
+		$this.parent().find('.alert-sm').remove();
+		$element = $(this).parent().next().find('textarea');
+		var textArea = $element.val();
+		// alert(textArea);
+		$.ajax({
+			url: 'chat/update_diary',
+			type: 'POST',
+			data: {textArea: textArea},
+			success: function(data){
+				var data = JSON.parse(data);
+				// console.log(data['NOTES']);
+				$element.val(data['NOTES']);
+				// $element.val(data);
+				$this.before('<div class="alert alert-success alert-sm">Twoje notatki poprawnie zapisano.</div>');
+				setTimeout(function() { $this.prev().fadeOut(); }, 1000);
+			//	$('body').append(response);
+			  // Add response in Modal body
+			//   activateTooltip();
+			  //executeHP();
+			  //$('#HPModalCenter').modal('show', $this);
+			  // Display Modal
+			}
+		});
+	});
 	$('#characterChanger').on('click','.glyph-icon', function (e) {
 		slidePanel($(this));
 	});
-	$('#characterPanel .avatar').on('click','img', function (e) {
+	$( "#draggable-chat" ).draggable({handle: ".card-header.d-flex", cursor: "move", containment: "body", scroll: false });
+	$( "#draggable-chat" ).data({
+		'originalLeft': $("#draggable-chat").css('left'),
+		'origionalTop': $("#draggable-chat").css('top')
+	});
+	$('#draggable-chat').on('dblclick','.card-header.d-flex', function (e) {
+		$(this).parent().css({
+			'left': $(this).parent().data('originalLeft'),
+			'top': $(this).parent().data('origionalTop')
+		});
+	});
+	$('#characterPanel .avatar').on('dblclick','img', function (e) {
 		slidePanel($(this));
 	});
 	$('#characterPanel .titleBar').on('click','div[data-toggle="modal"]', function (e) {
@@ -97,7 +176,8 @@ $(document).ready(function()
 			type: 'POST',
 			data: {prefix: 'PD'},
 			success: function(response){
-				//alert(response);
+				// response = JSON.parse(response);
+				// alert(response['HP'].buttons);
 				$('body').append(response);
 			  // Add response in Modal body
 				//activateTooltip();
@@ -120,18 +200,19 @@ $(document).ready(function()
 			type: 'POST',
 			data: {prefix: 'UmZd', umzd: umzd, titleBar: titleBar, idUm: idUm, details: details },
 			success: function(response){
-				//alert(response);
+				console.log(response);
 				$('body').append(response);
-			  // Add response in Modal body
-			//   activateTooltip();
+				// Add response in Modal body
+				// activateTooltip();
 				executeUmZd(titleBar);
-			  // Display Modal
+			 	// Display Modal
 				$('#UmZdModalCenter').modal('show', $this);
 			}
 		});
 	});
-	$('#characterPanel .titleBar .tPlace').hover(function(){
+	$('#characterPanel .titleBar .tPlace').on('mouseenter mouseleave',function(e){
 		//alert($(this).prevAll().eq(1).css('width'));
+		// alert(e.type);
 		$(this).prevAll().eq(1).find('.HPBar').toggleClass('ShineClass');
 	});
 	activateTooltip();
@@ -154,31 +235,31 @@ $(document).ready(function()
 	});
 	setPanel($('#skillsPanel').find('.footerBar input'));
 	setPanel($('#talentsPanel').find('.footerBar input'));
-	$('#exampleModalCenter').on('shown.bs.modal', function (e) {
+	// $('#exampleModalCenter').on('shown.bs.modal', function (e) {
 		// alert($('.iCenter').width());
-		var w=$('.iCenter').width();
-		var bountify= $('#bountify').val();
-		$.ajax({
-			type: 'POST',
-			url: 'chat/inventory',
-			data: {
-				w: w, nrRow:2
-			},
-			// dataType:'json',
-			success: function(data) {
-				var data = JSON.parse(data);
-				console.log(data);
-				$('#personal-inventory').html(data.personal);
-				$('#ground-inventory').html(data.ground);
-				$.getScript(bountify);
-				//activateTooltip();
-				//return false;
-			},
-			error : function(err) {
-				console.log(JSON.stringify(err));
-			}
-		});
-	});
+		// var w=$('.iCenter').width();
+		// var bountify= $('#bountify').val();
+		// $.ajax({
+		// 	type: 'POST',
+		// 	url: 'chat/inventory',
+		// 	data: {
+		// 		w: w, nrRow:2
+		// 	},
+		// 	// dataType:'json',
+		// 	success: function(data) {
+		// 		// var data = JSON.parse(data);
+		// 		//alert(data.ground);
+		// 		// $('#personal-inventory').html(data.personal);
+		// 		// $('#ground-inventory').html(data.ground);
+		// 		$.getScript(bountify);
+		// 		//activateTooltip();
+		// 		//return false;
+		// 	},
+		// 	error : function(err) {
+		// 		console.log(JSON.stringify(err));
+		// 	}
+		// });
+	// });
 	$('#exampleModalCenter').on('hide.bs.modal', function (e) {
 		setPanel($('#skillsPanel').find('.footerBar input'));
 		setPanel($('#talentsPanel').find('.footerBar input'));
@@ -254,56 +335,102 @@ $(document).ready(function()
 	tooltipCss();
 	$('.chatbox').animate({scrollTop: $('.chatbox').prop('scrollHeight')}, 500);
 
-	$('.row').on('submit','form[name="sendMessage"]',function(){
-		var messageObj=$(this).find('input[name="message"]');
-		var message=messageObj.val();
-		//alert(message);
-		$.ajax({
-			type: 'POST',
-			url: 'chat/send',
-			data: {
-				message: message,
-			},
-			success: function(data) {
-				$('.chatbox').html(data).animate({scrollTop: $('.chatbox').prop('scrollHeight')}, 500);
-				messageObj.val(null);
-				$('form[name="sendMessage"] input[name="message"]').show();
-				activateTooltip();
-				//return false;
-			},
-			error : function(err) {
-				console.log(JSON.stringify(err));
-			}
-		});
+	// $('.row').on('submit','form[name="sendMessage"]',function(){
+	// 	var messageObj=$(this).find('input[name="message"]');
+	// 	var message=messageObj.val();
+	// 	//alert(message);
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		url: 'chat/send',
+	// 		data: {
+	// 			message: message,
+	// 		},
+	// 		success: function(data) {
+	// 			$('.chatbox').html(data).animate({scrollTop: $('.chatbox').prop('scrollHeight')}, 500);
+	// 			messageObj.val(null);
+	// 			$('form[name="sendMessage"] input[name="message"]').show();
+	// 			activateTooltip();
+	// 			//return false;
+	// 		},
+	// 		error : function(err) {
+	// 			console.log(JSON.stringify(err));
+	// 		}
+	// 	});
 
-		return false;
-	});
+	// 	return false;
+	// });
+
 	$('.btn-group').on('click','.btn:not(.btn-success)',function(){
 		// alert($(this).parent().attr('class'));
 		var dice=$(this).text();
 		// alert(dice);
 		var max=$(this).val();
 		var roll=(Math.floor(Math.random()*max)+1);
-		$('form[name="sendMessage"] input[name="message"]').hide();
-		$('form[name="sendMessage"] input[name="message"]').val('Wynik twojego rzutu <b>'+dice+'</b> to =><b>'+roll+'</b><=');
-		$('form[name="sendMessage"]').trigger('submit');
+		MsgText('Wynik twojego rzutu <b>'+dice+'</b> to =><b>'+roll+'</b><=');
 
 	});
 });
-function discardInv(){
-	var w=$('#characterPanel').width();
-	// alert(w);
+function inventory(type){
+	if(type=='discard'){ var w=$('#characterPanel').width(); var a = 1.8; var nrRow=1; }
+	else if(type=='personal'){ var w=$('#characterStats .cLeft .iBottom').width(); var a = 1.7; var nrRow=3;}
+	else if(type=='ground'){ var w=$('#characterStats .cLeft .iBottom').width(); var a = 12; var nrRow=4;}
+	else {var w=0; var a=1; var nrRow=0;}
+	// var w=$('#characterPanel').width();
+	//console.info(w);
 	var bountify= $('#bountify').val();
 	$.ajax({
 		type: 'POST',
 		url: 'chat/inventory',
 		data: {
-			w: w/1.8, nrRow:1
+			w: w/a, nrRow:nrRow, type:type
 		},
 		success: function(data) {
-			$('#discard-inventory').html(data);
+			$('#'+type+'-inventory').html(data);
+			var invBG = $('#invBG').val();
+			if(type=='personal')	{
+				// var patt = new RegExp( /[|]/ );
+				var element = $('#'+type+'-inventory .inventory-cell');
+				// element.first().html('<div class="inventory-item dagger" data-item-type="arms" data-toggle="tooltip" data-original-title="dasfadsfadsfasdxcvxc"></div>');
+				invBG=JSON.parse(invBG);
+				//console.log(invBG);
+
+				element.each(function(){
+					var x = parseInt($(this).data('slot-position-x'));
+					var y = parseInt($(this).data('slot-position-y'));
+					var slot=x+'|'+y;
+					// jQuery.each(invBG, function(key, obj) {
+					// 	// console.log(key);
+					// 	if(patt.test(key)) {
+					// 		var row=key.split('|')[0]; var col=key.split('|')[1];
+					// 		console.log(row+'___'+col);
+					// 	}
+					// });
+					if(invBG[slot] !== undefined){
+						// invBG[slot]['NAME']+='<div class="fixed-bottom">Szczegóły: PPM.</div>';
+						$(this).html('<div class="inventory-item '+invBG[slot]['IMG_CLASS']+'" data-item-type="'+invBG[slot]['ITEM_CATEGORY']+'" data-invid="'+invBG[slot]['ID']+'"  data-toggle="tooltip" data-original-title="'+invBG[slot]['NAME']+'"></div>');
+					}
+					// console.log(y);
+				});
+			} else if(type=='A' || type=='B' || type=='handy'){
+				var element = $('#'+type+'-inventory .inventory-cell');
+				//alert('FUCK');
+				// var invBG = $('#invBG').val();
+				invBG=JSON.parse(invBG);
+				// console.log(invBG);
+				element.each(function(){
+					var sClass = $(this).attr('class').split(' ')[1];
+					// console.log(invBG[sClass]);
+					if(invBG[sClass] !== undefined){
+						$(this).html('<div class="inventory-item '+invBG[sClass]['IMG_CLASS']+'" data-item-type="'+invBG[sClass]['ITEM_CATEGORY']+'" data-invid="'+invBG[sClass]['ID']+'" data-toggle="tooltip" data-original-title="'+invBG[sClass]['NAME']+'"></div>');
+					}
+					//  alert($(this).attr('class').split(' ')[1]);
+				});
+			}
 			$.getScript(bountify);
-			//activateTooltip();
+			activateTooltip();
+
+			//$('.tooltip.show .tooltip-inner').addClass('gFrame');
+			tooltipCss();
 			//return false;
 		},
 		error : function(err) {
@@ -312,6 +439,9 @@ function discardInv(){
 	});
 }
 function tooltipCss(){
+	$('[data-toggle="tooltip"]').on('hide.bs.tooltip', function (e) {
+		//alert('supcio');
+	});
 	$('[data-toggle="tooltip"]').on('inserted.bs.tooltip', function (e) {
 		//alert($(this).hasClass('abbList'));
 		//alert($(this).attr('class'));
@@ -342,7 +472,17 @@ function tooltipCss(){
 				'text-indent': '2.5em',
 			});
 		}
+		else if($(this).hasClass('inventory-item')){
+			$('.tooltip-inner').parent().addClass('hFrame');
+			$('.tooltip-inner').addClass('gFrame').prev().remove();
+			$('.tooltip-inner').append('<div class="fixed-bottom">Szczegóły: PPM.</div>');
+			// $('.tooltip.show,.tooltip-inner,.tooltip-inner h3,.tooltip-inner h4').css({
+			// 	'width':'300px',
+			// 	'max-width': '100%'
+			// });
+		}
 	});
+
 }
 function activateTooltip(){
 	$('[data-toggle="tooltip"]').tooltip({
@@ -352,11 +492,17 @@ function activateTooltip(){
 		boundary: 'viewport'
 	});
 }
+function executeInv(){
+	$('#InvModalCenter').on('hide.bs.modal', function(event) {
+		$(this).remove();
+	});
+}
 function executeUmZd(titleBar){
 	$('#UmZdModalCenter').on('hide.bs.modal', function(event) {
 		$(this).remove();
 	});
 	$('#UmZdModalCenter').on('show.bs.modal', function(event) {
+		var closeBtn = $("#UmZdModalLongTitle").html();
 		//var title = ['Zmniejsz Punkty Żywotności','Zwiększ Punkty Żywotności'];
 		// alert($(event.relatedTarget).closest('.abbRow').data('button'));
 		$(this).find('.modal-footer .btn-danger').text($(event.relatedTarget).closest('.abbRow').data('button'));
@@ -369,9 +515,10 @@ function executeUmZd(titleBar){
 
 		//alert(titleBar);
 		// alert($(event.relatedTarget).attr('title'));
-		$("#UmZdModalLongTitle").text('Wykup '+titleBar);
+		$("#UmZdModalLongTitle").html('Wykup '+titleBar+closeBtn);
 	});
 	$('#UmZdModalCenter .modal-footer').on('click','.btn-danger', function (event) {
+		$this = $(this);
 		var titleBar = $(this).parent().prev().prev().find('.titleBar').text();
 		var idUm=parseInt($('#idUm').val());
 		var details=parseInt($('#details').val());
@@ -391,10 +538,13 @@ function executeUmZd(titleBar){
 			success: function(data) {
 				// alert(JSON.stringify(data));
 				//console.log(data);
-				$('form[name="sendMessage"] input[name="message"]').hide();
-				$('form[name="sendMessage"] input[name="message"]').val('BG wykupił '+what+': <b>'+SOrTName+'</b>');
-				$('form[name="sendMessage"]').trigger('submit');
-				location.reload();
+				// $('form[name="sendMessage"] input[name="message"]').hide();
+				// $('form[name="sendMessage"] input[name="message"]').val('BG wykupił '+what+': <b>'+SOrTName+'</b>');
+				// $('form[name="sendMessage"]').trigger('submit');
+				// location.reload();
+				MsgText('BG wykupił '+what+': <b>'+SOrTName+'</b>');
+				$this.closest('.modal-content').find('.close').trigger('click');
+				$('#exampleModalCenter').modal('hide');
 			},
 			error: function(err) {
 				console.log(JSON.stringify(err));
@@ -485,12 +635,15 @@ function executeTrait(){
 				// alert(JSON.stringify(data));
 				// alert(data);
 				//console.log(data);
-				$('form[name="sendMessage"] input[name="message"]').hide();
-				$('form[name="sendMessage"] input[name="message"]').val('BG powiększył cechę <u>'+NazwaCechy+'</u> o <b>'+traitInc+'</b> punktów.');
-				$('form[name="sendMessage"]').trigger('submit');
+				// $('form[name="sendMessage"] input[name="message"]').hide();
+				// $('form[name="sendMessage"] input[name="message"]').val('BG powiększył cechę <u>'+NazwaCechy+'</u> o <b>'+traitInc+'</b> punktów.');
+				// $('form[name="sendMessage"]').trigger('submit');
 
-				location.reload();
-				$('button[data-target="#exampleModalCenter"]').trigger('click');
+				// location.reload();
+				// $('button[data-target="#exampleModalCenter"]').trigger('click');
+				MsgText('BG wykupił '+what+': <b>'+SOrTName+'</b>');
+				$this.closest('.modal-content').find('.close').trigger('click');
+				$('#exampleModalCenter').modal('hide');
 			},
 			error: function(err) {
 				console.log(JSON.stringify(err));
@@ -507,7 +660,8 @@ function executeBrass(){
 
 		//$(this).find('input[type="number"]').val(0);
 		var symbol=$(event.relatedTarget).data('symbol');
-		var addiction =$(this).find('.modal-body.cP button.addiction');
+		// alert(symbol);
+		var addiction =$(this).find('.modal-body button.addiction');
 		addiction.each(function(index){
 			$(this).removeClass('disabled');
 			if(index<5) {
@@ -523,12 +677,11 @@ function executeBrass(){
 		$(this).addClass('activated');
 	});
 	$('#BrassModalCenter .modal-footer').on('click','.btn-danger', function (event) {
+		$this=$(this);
 		var brass = $(this).parent().prev().find('.addictionBar .btn-group input:last-of-type').val();
-		//alert(brass);
-
 		var titleBar = $(this).parent().prev().prev().find('.titleBar').text();
 
-		//alert($(event.relatedTarget).html());
+		// alert($(event.relatedTarget).html());
 		// alert(titleBar+'|'+idUm+'|'+co);
 		$.ajax({
 			type: 'POST',
@@ -540,12 +693,15 @@ function executeBrass(){
 			success: function(data) {
 				// alert(JSON.stringify(data));
 				//console.log(data);
-				$('form[name="sendMessage"] input[name="message"]').hide();
-				$('form[name="sendMessage"] input[name="message"]').val('BG  '+titleBar+': <b>'+brass+'</b> pensów');
-				$('form[name="sendMessage"]').trigger('submit');
+				// $('form[name="sendMessage"] input[name="message"]').hide();
+				// $('form[name="sendMessage"] input[name="message"]').val('BG  '+titleBar+': <b>'+brass+'</b> pensów');
+				// $('form[name="sendMessage"]').trigger('submit');
+				// $('button[data-target="#exampleModalCenter"]').trigger('click');
 
-				location.reload();
-				$('button[data-target="#exampleModalCenter"]').trigger('click');
+				MsgText('BG  '+titleBar+': <b>'+brass+'</b> pensów');
+				$this.closest('.modal-content').find('.close').trigger('click');
+				$('#exampleModalCenter').modal('hide');
+				// location.reload();
 			},
 			error: function(err) {
 				console.log(JSON.stringify(err));
@@ -579,7 +735,8 @@ function executeBrass(){
 			$(this).closest('.addictionBar').find('.crown + div input').val(e['crown'][upNum]+e['crown'][2]);
 			$(this).closest('.addictionBar').find('.shilling + div input').val(e['shilling'][upNum]+e['shilling'][2]);
 			$(this).closest('.addictionBar').find('.brass + div input').val(e['brass'][upNum]+e['brass'][2]);
-			//alert($(this).closest('.addictionBar').html());
+			// alert(Math.abs(upNum));
+			// alert($(this).closest('.addictionBar').html());
 			return false;
 		}
 	});
@@ -589,12 +746,13 @@ function executePD(){
 		$(this).remove();
 	});
 	$('#PDModalCenter').on('show.bs.modal', function(event) {
+		var closeBtn = $("#PDModalLongTitle").html();
 		$(this).find('input[type="number"]').val(0);
 		var symbol=$(event.relatedTarget).text();
 		var a=$(event.relatedTarget).data('symbol');
 		// alert(a);
 		var title = ['Zmniejsz','Zwiększ'];
-		$("#PDModalLongTitle").text(title[a]+' Punkty Doświadczenia');
+		$("#PDModalLongTitle").html(title[a]+' Punkty Doświadczenia'+closeBtn);
 		// var symbol = ['-','+'];
 		var addiction =$(this).find('.modal-body.cP button.addiction');
 		// var wounds = parseInt($(this).find('.btn-group').data('wounds'));
@@ -634,6 +792,7 @@ function executePD(){
 		}
 	});
 	$('#HPMenu .modal-footer').on('click','.btn-danger', function (e) {
+		$this=$(this);
 		var a = $(this).parent().prev().find('input[type=number]').val();
 		// alert(a);
 		//$this = $(this);
@@ -663,15 +822,13 @@ function executePD(){
 				$('#HPModalCenter').modal("hide");
 				//$('.tPlace').data('original-title',5);
 
-				$('form[name="sendMessage"] input[name="message"]').hide();
-				$('form[name="sendMessage"] input[name="message"]').val('BG '+co+' swoje Punkty Doświadczenia =>z <b>'+(b-a)+'</b> na <b>'+b+'</b><=');
-				$('form[name="sendMessage"]').trigger('submit');
-				location.reload();
-				/*
-				$this.parent().html(data).animate({scrollTop: 0}, 0);
-				activateTooltip();
-				tooltipCss();
-				*/
+				// $('form[name="sendMessage"] input[name="message"]').hide();
+				// $('form[name="sendMessage"] input[name="message"]').val('BG '+co+' swoje Punkty Doświadczenia =>z <b>'+(b-a)+'</b> na <b>'+b+'</b><=');
+				// $('form[name="sendMessage"]').trigger('submit');
+				// location.reload();
+				MsgText('BG '+co+' swoje Punkty Doświadczenia =>z <b>'+(b-a)+'</b> na <b>'+b+'</b><=');
+				$this.closest('.modal-content').find('.close').trigger('click');
+				// $('#exampleModalCenter').modal('hide');
 			},
 			error: function(err) {
 				console.log(JSON.stringify(err));
@@ -684,16 +841,17 @@ function executeHP(){
 		$(this).remove();
 	});
 	$('#HPModalCenter').on('show.bs.modal', function(event) {
+		var closeBtn = $("#HPModalLongTitle").html();
 		$(this).find('input[type="number"]').val(0);
 		var a=$(event.relatedTarget).data('symbol');
 		// alert(a);
 		var title = ['Zmniejsz','Zwiększ'];
-		$("#HPModalLongTitle").text(title[a]+' Punkty Żywotności');
+		$("#HPModalLongTitle").html(title[a]+' Punkty Żywotności'+closeBtn);
 		var symbol = ['-','+'];
-		var addiction =$(this).find('.modal-body.cP button.addiction');
+		var addiction =$(this).find('.modal-body button.addiction');
 		var wounds = parseInt($(this).find('.btn-group').data('wounds'));
 		var HP = parseInt($(this).find('.btn-group').data('hp'));
-		// alert(HP);
+		// alert(addiction);
 		addiction.each(function(index){
 			$(this).removeClass('disabled');
 			if(index<3) {
@@ -764,16 +922,9 @@ function executeHP(){
 			//alert($(this).closest('.addictionBar').html());
 			return false;
 		}
-		var dice=$(this).text();
-		//alert(dice);
-		var max=$(this).val();
-		var roll=(Math.floor(Math.random()*max)+1);
-		$('form[name="sendMessage"] input[name="message"]').hide();
-		$('form[name="sendMessage"] input[name="message"]').val('Wynik twojego rzutu <b>'+dice+'</b> to =><b>'+roll+'</b><=');
-		$('form[name="sendMessage"]').trigger('submit');
-
 	});
 	$('#HPMenu .modal-footer').on('click','.btn-danger', function (e) {
+		$this=$(this);
 		var a = $(this).parent().prev().find('input[type=number]').val();
 		//alert(a);
 		//$this = $(this);
@@ -804,15 +955,13 @@ function executeHP(){
 				$('#HPModalCenter').modal("hide");
 				//$('.tPlace').data('original-title',5);
 
-				$('form[name="sendMessage"] input[name="message"]').hide();
-				$('form[name="sendMessage"] input[name="message"]').val('BG '+co+' swoje Punkty Żywotności =>z <b>'+(b-a)+'</b> na <b>'+b+'</b><=');
-				$('form[name="sendMessage"]').trigger('submit');
+				// $('form[name="sendMessage"] input[name="message"]').hide();
+				// $('form[name="sendMessage"] input[name="message"]').val('BG '+co+' swoje Punkty Żywotności =>z <b>'+(b-a)+'</b> na <b>'+b+'</b><=');
+				// $('form[name="sendMessage"]').trigger('submit');
 
-				/*
-				$this.parent().html(data).animate({scrollTop: 0}, 0);
-				activateTooltip();
-				tooltipCss();
-				*/
+				MsgText('BG '+co+' swoje Punkty Żywotności =>z <b>'+(b-a)+'</b> na <b>'+b+'</b><=');
+				$this.closest('.modal-content').find('.close').trigger('click');
+				$('#exampleModalCenter').modal('hide');
 			},
 			error: function(err) {
 				console.log(JSON.stringify(err));
@@ -836,12 +985,19 @@ function slidePanel(element){
 	var panel=element.parents().eq(2);
 	var width=parseFloat(element.parent().css('width'))*(-1);
 	var width = (element.hasClass('flipX')) ? 0 : width;
+	var wLeft = (element.hasClass('docked')) ? '50%' : 0;
 	var height=parseFloat(panel.css('height'))*(-1);//dla #characterPanel
 	//alert('id:'+panel.attr('id')+'|height:'+height);
 	if(panel.attr('id')=='skillsPanel') panel.animate({left:width},1000);
 	else if(panel.attr('id')=='talentsPanel') panel.animate({right:width},1000);
 	else if(panel.attr('id')=='characterChanger'){ panel.animate({left:width},1000); element.toggleClass('flipX');}
-	else if(panel.attr('id')=='characterPanel') panel.animate({bottom:height},1000);
+	else if(panel.attr('id')=='characterPanel'){
+		// panel.animate({bottom:height},1000);
+		panel.animate({
+			left:wLeft,
+		},2000,'easeOutElastic');
+		element.toggleClass('docked');
+	}
 	panel.css({visibility: hidden});
 }
 function setPanel(element){

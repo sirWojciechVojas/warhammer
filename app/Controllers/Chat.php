@@ -11,6 +11,7 @@ Class Chat extends BaseController {
 		$this->regis = model('RegisModel');
 		$this->chats = model('ChatsModel');
 		$this->BG = model('BGModel');
+		$this->router = \Config\Services::router();
 		$this->session = \Config\Services::session();
 		$this->request = \Config\Services::request();
 		$this->bgId = $this->session->get('ID');
@@ -18,12 +19,10 @@ Class Chat extends BaseController {
 
 	public function index() {
 		//echo session('user').'<br>';
-		$session = \Config\Services::session();
-		$request = \Config\Services::request();
-		$ses=$session->get('user');
+		$ses=$this->session->get('user');
 		//echo 'zalogowano użytkownika: <b>'.$ses.'</b><br>';
-		if ($session->get('isLoggedIn') == FALSE) {
-			$session->setFlashdata('login', '<div class="alert alert-warning alert-dismissable">
+		if ($this->session->get('isLoggedIn') == FALSE) {
+			$this->session->setFlashdata('login', '<div class="alert alert-warning alert-dismissable">
 												<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 												<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Musisz się zalogować!</strong>
 											</div>');
@@ -63,9 +62,10 @@ Class Chat extends BaseController {
 			$data['aSkills'] = $this->chats->getAvaibleSorT($data['curCareer']['AVAIBLESKILLS'],'umiejetnosci');
 			$data['aTalents'] = $this->chats->getAvaibleSorT($data['curCareer']['AVAIBLETALENTS'],'zdolnosci');
 			$data['mGold'] = $this->chats->getGold();
-			$data['diaryLi'] = $this->chats->getdiaryLi();
+			$data['diary'] = $this->chats->getDiary();
+			$data['ip'] = $this->request->getIPAddress();
 			//$this->printr($this->chats->dupa());
-			// $this->printr($data['diaryLi']);
+			// $this->printr($this->chats->getDiary());
 /*
 			foreach($this->chats->getSkillsCurrentId() as $IdNum){
 				$data['allMySkills'][]=$data['skills'][$IdNum['NAME']-1];
@@ -87,18 +87,34 @@ Class Chat extends BaseController {
 			//$this->printr( $this->generujKod(128));
 			//$this->printr($data['aSkills']);
 			//$this->printr($data['aTalents']);
-			//$this->printr($data['curCareer']);
 			$data['status'] = $this->chats->getStatus();
 			$data['chat']   = $this->chats->chatContent()->getResult();
+			// $this->printr($data['chat']);
+
 			$data['dices']  = array(2,4,6,8,10,12,20,100);
-			$data['session']=$session;
+			$data['session']=$this->session;
 			//$this->printr($_SESSION);
 
 			$js['js']='chat.inc.js';
+			$js['wsAddress']= preg_replace('#http#','ws',substr(base_url('../..'),0,-1));
+			// $this->printr($js['address']);
+			$js['controller']=$this;
+			$js['controllerName']=$this->router->controllerName();
+			$js['methodName']=$this->router->methodName();
 			echo view('header');
 			echo view('chat', $data);
 			echo view('footer',$js);
 		}
+	}
+	public function update_diary() {
+		$textArea = $this->request->getPost('textArea');
+		$this->chats->updateDiary($textArea);
+		return json_encode($this->chats->getDiary());
+
+		// return time();
+	}
+	public function data_images() {
+		return json_encode($this->chats->dataImg());
 	}
 	public function update_hp() {
 		$ile=$_POST['ile'];
@@ -139,29 +155,50 @@ Class Chat extends BaseController {
 		$data['umzd'] = $this->request->getPost('umzd');
 		$data['titleBar'] = mb_strtolower($this->request->getPost('titleBar'));
 		$data['idUm'] = $this->request->getPost('idUm');
-		$data['details'] = $this->request->getPost('details');
+		if($this->request->getPost('details')){
+			$data['details'] = $this->request->getPost('details');
+			$data['addClass']= null;
+		}
+		else {
+			$data['details'] = null;
+			$invid = $this->request->getPost('invid');
+			// return $invid;
+			$data['item'] = $this->chats->getInvId($invid);
+			$data['addClass']=' row';
+			if($data['item']['ITEM_CLASS']=='WEAPON') $data['item']=$this->chats->getInvWeapon($data['item']['INV_ID']);
+			$data['titleBar2']=ucfirst($data['item']['NAME']);
+			// foreach($data['item'] as $key => $val){
+			// 	if($val['ITEM_CLASS']=='WEAPON') $val['Vojasik']='Kasiunia';
+			// }
+			//return json_encode($data['item']);
+		}
+		// return $this->printr($data);
 
 		return view('dialogBox',$data);
+		// return json_encode($data);
 	}
+
 	public function send() {
 		date_default_timezone_set('Europe/Warsaw');
+		// $date = $this->request->getPost('time');
 		$date = date('Y-m-d H:i:s');
 		$message = array(
-			'user' => session('user'),
-			'role' => session('role'),
+			'user' => $this->request->getPost('user'),
+			'role' => $this->request->getPost('role'),
 			'waktu' => $date,
-			'teks' => $this->request->getPost('message')
+			'teks' => $this->request->getPost('teks')
 		);
 		//$this->printr($message);
 		$this->chats->messageInsert($message);
-		$data['orang'] = $this->regis->orang();
-		$data['chat']=$this->chats->chatContent()->getResult();
-		$data['status'] = $this->chats->getStatus();
-		$data['ajax']=true;
-		$data['session']=$this->session;
-		//return 'VOJAS';
-		return view('chat', $data);
+		// $data['orang'] = $this->regis->orang();
+		// $data['chat']=$this->chats->chatContent()->getResult();
+		// $data['status'] = $this->chats->getStatus();
+		// $data['ajax']=true;
+		// $data['session']=$this->session;
+		// return 'VOJAS';
+		// return view('chat', $data);
 		//return redirect()->to(base_url('chat'));
+		// return 'coooooooo';
 	}
 
 	public function awans() {
@@ -289,29 +326,34 @@ Class Chat extends BaseController {
 		return $wynik;
 	}
 
+	public function slot() {
+		$data['slot'] = $this->request->getPost('slot');
+		$data['invid'] = $this->request->getPost('invid');
+		return $this->chats->updateSlot($data);
+	}
 	public function inventory() {
-		// $wspV=25.744;
+		$data['invBG']=htmlspecialchars(json_encode($this->chats->getInvBG()));
+		// $this->printr($this->chats->getInvBG());
+		$data['slots']=array(
+				 'A'=>['head','amulet','arm_R','belt','ring_R','leg_R','feet'],
+				 'B'=>['cape','armor','arm_L','hands','ring_L','leg_L','pupil'],
+				 'handy'=>['quiver1','quiver2','handy1','handy2','handy3']
+				);
+		$wspV=25.744;
 		// $this->request->isAJAX()
-		$wspV=40;
+		//$wspV=40;
+		$data['type']=$this->request->getPost('type');
+		// $this->printr($data['type']);
 		$data['w']=floor($this->request->getPost('w')/$wspV);
 		$data['imax']=$this->request->getPost('nrRow');
 		$data['jmax']=round($this->request->getPost('w')/$wspV);
 		// header( "Content-Type: application/json" );
 
-		$d['imax']=1;
-		$d['jmax']=13;
-		$output=array(
-			'ground'   => view('inventory',$d),
-			// 'ground'   => 'elegancko',
-			// 'personal' => view('inventory', $data),
-			'personal' => 'super',
-		);
-		// echo view('inventory', $data);
-		//$this->printr($respond);
+		// $a = json_encode(view('inventory',$data));
+		// return $data['type'];
+		// $output = view('inventory', $data);
 		// echo json_encode($output);
-		return json_encode($output);
-
-		// return json_encode($respond);
+		return view('inventory',$data);
 	}
 	public function change() {
 		$this->session->set($this->request->getPost('sesi'));
@@ -325,21 +367,43 @@ Class Chat extends BaseController {
 	}
 
 	public function pending() {
-		if (session('sesi') == FALSE) {
-			session()->setFlashdata('login', '<div class="alert alert-warning alert-dismissable">
+		if ($this->session->get('isLoggedIn') == FALSE) {
+			$this->session->setFlashdata('login', '<div class="alert alert-warning alert-dismissable">
 												<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 												<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Musisz się zalogować!</strong>
 											</div>');
-			return redirect()->to(base_url());
+
+			return redirect()->to(base_url('login'));
 		} else {
 			$data['orang'] = $this->regis->orang();
 			$data['status'] = $this->chats->getStatus();
-			$data['session'] = \Config\Services::session();
+			$data['session'] = $this->session;
 			$js['js']='chat.inc.js';
+			$js['controllerName']=$this->router->controllerName();
+			$js['methodName']=$this->router->methodName();
 			echo view('header');
 			echo view('pending', $data);
 			echo view('footer',$js);
 		}
+	}
+
+	public function aktif() {
+		$uri = $this->request->uri;
+		$user = $uri->getSegment(3);
+		$this->regis->aktif($user);
+		return redirect()->to(base_url('chat/pending'));
+	}
+	public function nonaktif($user) {
+		$uri = $this->request->uri;
+		$user = $uri->getSegment(3);
+		$this->regis->nonaktif($user);
+		return redirect()->to(base_url('chat/pending'));
+	}
+	public function delete_user($user) {
+		$uri = $this->request->uri;
+		$user = $uri->getSegment(3);
+		$this->regis->deleteUser($user);
+		return redirect()->to(base_url('chat/pending'));
 	}
 }
 

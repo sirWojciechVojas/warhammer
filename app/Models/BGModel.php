@@ -3,12 +3,16 @@
 use CodeIgniter\Model;
 
 class BGModel extends Model {
-
+	public function __construct() {
+		$this->db = \Config\Database::connect();
+	}
 
 	public function getBGinfo(){
-		$db = \Config\Database::connect();
-		//return $db->table('chat')->orderBy('waktu','ASC')->get();
-		return $db->table('w_bg_start')->orderBy('ID','ASC')->get()->getResult();
+		// return $this->db->table('chat')->orderBy('waktu','ASC')->get();
+		return $this->db->table('w_bg_start')->orderBy('ID','ASC')->get()->getResult();
+	}
+	public function getBGinfo2(){
+		return $this->db->table('w_bg_start')->select(['USEDNAME','SUBSTRING(HISTORY, 1, 170) as HISTORY'], FALSE)->orderBy('ID','ASC')->get()->getResult();
 	}
 	public function imgInTheDir($fName){
 		//$dir = base_url('../warhammer/assets/img/inventory/unit/').$fName;

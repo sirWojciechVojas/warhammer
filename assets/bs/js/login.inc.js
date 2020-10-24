@@ -1,4 +1,4 @@
-$(document).ready(function()
+jQuery(function()
 {
 	$('.LOG').on('click','#loginChanger',function(){
 		//var title=$(this).attr('title');

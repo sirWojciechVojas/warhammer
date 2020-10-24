@@ -5,8 +5,8 @@ jQuery.fn.extend({
         return this.each(function() {
             var $children = $(this).children();
             var rowCountDifference = targetCount - $children.length;
-            //console.log('row count diff: ' + rowCountDifference);
-
+            // console.log('row count diff: ' + rowCountDifference);
+            // console.log(targetCount);
             if(rowCountDifference > 0)
             {
                 // Add items
@@ -29,7 +29,7 @@ jQuery.fn.extend({
         duration = duration || 'slow';
 
         var $element = $(this);
-        //console.log($element);
+        // console.log($element);
         if($element.length > 0)
         {
 
@@ -38,6 +38,21 @@ jQuery.fn.extend({
             $(this).appendTo(newParent);
             var newOffset = $element.offset();
 
+            var slot = newParent.data('slot-position-x')+'|'+newParent.data('slot-position-y');
+            var invid = $element.data('invid');
+            $.ajax({
+                type: 'POST',
+                url: 'chat/slot',
+                data: {
+                    slot: slot, invid: invid
+                },
+                success: function(data) {
+                    // alert(data);
+                },
+                error: function(err) {
+                    console.log(JSON.stringify(err));
+                }
+            });
 
             var temp = $element.clone().appendTo('body');
 
@@ -57,7 +72,7 @@ jQuery.fn.extend({
                 $element.show();
                 temp.remove();
             });
-
+            // console.log(newOffset.top);
             //console.log("parentTo Animate done");
         }
     }
@@ -65,7 +80,7 @@ jQuery.fn.extend({
 
 $('#row-count').on('input propertychange change', function() {
     var targetRowCount = $(this).val();
-    console.log('target count: ' + targetRowCount);
+    // console.log('target count: ' + targetRowCount);
     $('label[for="'+$(this).attr('id')+'"]').html(targetRowCount);
 
     $('#personal-inventory.inventory-table').addRemoveItems(targetRowCount);
@@ -107,7 +122,7 @@ function refreshSortableInventoryList()
 
             var attrTypeList = $(ui.item).attr('data-item-type');
             var itemTypeListArray = attrTypeList ? attrTypeList.split(/\s+/) : [];
-            //console.log(itemTypeListArray);
+            // console.log(itemTypeListArray);
 
             var canMoveIntoSlot = verifyWithWhiteBlackLists(itemTypeListArray, itemFilterWhitelistArray, itemFilterBlacklistArray)
 
@@ -133,7 +148,28 @@ function refreshSortableInventoryList()
                 // $(this).attr('data-slot-position-y');
                 // $(ui.sender).attr('data-slot-position-x');
                 // $(ui.sender).attr('data-slot-position-y');
-                //console.log("Moving to: (" + $(this).attr('data-slot-position-x') + ", " + $(this).attr('data-slot-position-y') + ") - From: (" + $(ui.sender).attr('data-slot-position-x') + ", " + $(ui.sender).attr('data-slot-position-y') + ")");
+                // console.log("Moving to: (" + $(this).attr('data-slot-position-x') + ", " + $(this).attr('data-slot-position-y') + ") - From: (" + $(ui.sender).attr('data-slot-position-x') + ", " + $(ui.sender).attr('data-slot-position-y') + ")");
+                var invPanelId=$(this).closest('.inventory-table').attr('id').split('-')[0];
+                if(invPanelId=='A' || invPanelId=='B' || invPanelId=='handy') var slot=$(this).attr('class').split(' ')[1];
+                else var slot=$(this).attr('data-slot-position-x')+'|'+$(this).attr('data-slot-position-y');
+                var invid=$(this).children().data('invid');
+
+                // console.log(invPanelId);
+                // var invid=$(this).html();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'chat/slot',
+                    data: {
+                        slot: slot, invid: invid
+                    },
+                    success: function(data) {
+                        // alert(data);
+                    },
+                    error: function(err) {
+                        console.log(JSON.stringify(err));
+                    }
+                });
             }
         }
     }).each(function() {
@@ -141,6 +177,7 @@ function refreshSortableInventoryList()
         // Makes it easier to update the backend
         $(this).attr('data-slot-position-x', $(this).prevAll('.inventory-cell').length);
         $(this).attr('data-slot-position-y', $(this).closest('.inventory-row').prevAll('.inventory-row').length);
+
     }).disableSelection();
 }
 

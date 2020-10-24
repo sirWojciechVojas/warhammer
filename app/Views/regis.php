@@ -10,7 +10,7 @@
 						<input name="nameBG" type="text" readonly="true" class="form-control" placeholder="Imię Bohatera Gracza" required>
 					</div>
 					<div class="form-group">
-						<input name="user" type="text" class="form-control" placeholder="Nazwa użytkownika" required autofocus>
+						<input name="user" value="<?= $session->getFlashdata('last_post')['user'] ?>" type="text" class="form-control" placeholder="Nazwa użytkownika" required autofocus>
 					</div>
 					<div class="form-group">
 						<input name="passFirst" type="password" class="form-control" placeholder="Hasło" required>
@@ -26,12 +26,12 @@
 		<div class="col-sm-12 col-md-6 BG0">
 			<div class="account-wall BG"><br>
 				<h4 class="text-center" style="margin-top: -10px">Wybierz Bohatera</h4><br>
-				<ul style="list-style: none;">
+				<ul class="row">
 				<?php foreach($BG as $id): ?>
-					<li>
+					<li class="col-sm-10 col-md-12">
 						<img class="profile-img" src="<?= base_url("../warhammer/assets/img/$id->USEDNAME.png") ?>" alt="Avatar">
 						<h3><?=$id->USEDNAME;?></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante, ac laoreet nulla vestibulum adipiscing.</p>
+						<h6><?= $id->HISTORY; ?>...</h6>
 					</li>
 				<?php endforeach ?>
 				</ul>

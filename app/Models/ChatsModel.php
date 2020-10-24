@@ -280,6 +280,16 @@ class ChatsModel extends Model {
 		return $a;
 	}
 
+	public function dataImg() {
+		$table = $this->db->table('users')->select('user, role')->get()->getResultArray();
+		foreach($table as $val){
+			$x=$val['user'];
+			// unset($val['SLOT']);
+			// $val['NAME'].='<div class="fixed-bottom">Szczegóły: PPM.</div>';
+			$outputTbl[$x] = $val['role'].'.png';
+		}
+		return $outputTbl;
+	}
 	public function getPD() {
 		$callback = function($val){return $val['total'];};	//ciekawy trick => cdn.
 		for($i=1;$i<=5;$i++){
@@ -345,12 +355,36 @@ class ChatsModel extends Model {
 		//return $b;//*100 PD :)
 		return $PD;//*100 PD :)
 	}
+	public function updateSlot($data) {
+		return $this->db->table('w_ekwipunek_bg')->set('SLOT',$data['slot'],true)->where(['ID'=>$data['invid']])->update();
+		// return $data['slot'];
+	}
+	public function getInvWeapon($invid) {
+		return $this->db->table('w_ekwipunek')->join('w_ekwipunek_bg','w_ekwipunek_bg.INV_ID = w_ekwipunek.ID','left')->join('w_bron','w_bron.ID = w_ekwipunek.ITEM_ID','left')->where('w_ekwipunek.ID',$invid)->get()->getRowArray();
+	}
+	public function getInvId($invid) {
+		return $this->db->table('w_ekwipunek')->join('w_ekwipunek_bg','w_ekwipunek_bg.INV_ID = w_ekwipunek.ID','left')->where('w_ekwipunek_bg.ID',$invid)->get()->getRowArray();
+	}
+	public function getInvBG() {
+		$inventoryTbl = $this->db->table('w_ekwipunek')->join('w_ekwipunek_bg','w_ekwipunek_bg.INV_ID = w_ekwipunek.ID','left')->where('w_ekwipunek_bg.OWNER',$this->ID)->get()->getResultArray();
+		foreach($inventoryTbl as $val){
+			$x=$val['SLOT'];
+			unset($val['SLOT']);
+			// $val['NAME'].='<div class="fixed-bottom">Szczegóły: PPM.</div>';
+			$outputTbl[$x] = $val;
+		}
+		return $outputTbl;
+	}
 
 	public function getStatus() {
 		return $this->db->table('status')->get()->getResult();
 	}
-	public function getdiaryLi() {
-		return $this->db->table('w_dziennik')->select('MESSAGE, created_at, updated_at')->getWhere(['USEDNAME_ID'=>$this->ID])->getResult();
+	public function updateDiary($msg) {
+		// return $this->db->table('w_dziennik')->set('NOTES',$msg,true)->where(['USEDNAME_ID'=>$this->ID])->update();
+		$this->db->table('w_dziennik')->set('NOTES',$msg,true)->set('updated_at','NOW()',false)->where(['USEDNAME_ID'=>$this->ID])->update();
+	}
+	public function getDiary() {
+		return $this->db->table('w_dziennik')->select('NOTES, created_at, updated_at')->where(['USEDNAME_ID'=>$this->ID])->get()->getRow();
 	}
 	public function ransomTrait($data) {
 

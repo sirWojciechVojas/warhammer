@@ -1,10 +1,9 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<br><br><br>
-			<div class="panel panel-default">
+		<div class="col-md-6 offset-md-3 d-flex justify-content-center align-self-center">
+			<div class="card card-height" style="margin-top:4%;">
 				<?php foreach($status as $s): ?>
-				<div class="panel-heading">
+				<div class="card-header d-flex justify-content-between">
 					<strong><?=$session->get['user'];?></strong>
 					<a href="<?= base_url('login/logout') ?>" class="btn btn-danger btn-xs pull-right">WYLOGUJ</a>
 					<?php
@@ -19,37 +18,35 @@
 					?>
 				</div>
 				<?php endforeach ?>
-				<div class="panel-body" style="height: 300px; overflow-y: scroll">
+				<div class="card-body chatbox-bg" style="height: 300px; overflow-y: scroll">
 					<table class="table table-condensed">
 						<thead>
 							<th>No</th>
-							<th>Nama</th>
-							<th>Username</th>
-							<th>Password</th>
-							<th>Aksi</th>
+							<th>Login</th>
+							<th>BG</th>
+							<th>Akcje</th>
 						</thead>
 						<?php $i=1; foreach($orang->getResult() as $o): ?>
 						<tbody>
 							<td><?= $i++ ?></td>
-							<td><?= $o->nama ?></td>
 							<td><?= $o->user ?></td>
-							<td><?= $o->pass ?></td>
+							<td><?= $o->role ?></td>
 							<td>
 								<?php
 									if ($o->status == TRUE) {
-										echo "<a href=".base_url("chat/pending/nonaktif/$o->user")." class=\"btn btn-xs btn-warning\" title=\"Nonaktifkan\"><i class=\"glyphicon glyphicon-warning-sign\"></i></a>";
+										echo "<a href=".base_url("chat/nonaktif/$o->user")." class=\"btn btn-xs btn-warning\" title=\"Dezaktywuj\"><i class=\"glyphicon glyphicon-warning-sign\"></i></a>";
 									} else {
-										echo "<a href=".base_url("chat/pending/aktif/$o->user")." class=\"btn btn-xs btn-success\" title=\"Aktifkan\"><i class=\"glyphicon glyphicon-check\"></i></a>";
+										echo "<a href=".base_url("chat/aktif/$o->user")." class=\"btn btn-xs btn-success\" title=\"Aktywuj\"><i class=\"glyphicon glyphicon-check\"></i></a>";
 									}
 								?>
-								<a href="<?= base_url("chat/pending/hapus/$o->user") ?>" class="btn btn-xs btn-danger" title="Hapus"><i class="glyphicon glyphicon-trash"></i></a>
+								<a href="<?= base_url("chat/delete_user/$o->user") ?>" class="btn btn-xs btn-danger" title="Usuń"><i class="glyphicon glyphicon-trash"></i></a>
 							</td>
 						</tbody>
 						<?php endforeach ?>
 					</table>
 				</div>
-				<div class="panel-footer">
-					<strong>Jumlah User : <?= $orang->resultID->num_rows ?></strong>
+				<div class="card-footer">
+					<div class="col-md-12">Liczba użytkowników: <?= $orang->resultID->num_rows ?></div>
 				</div>
 			</div>
 		</div>
