@@ -15,42 +15,12 @@
 					<div class="col-md-12 addictionBar">
 						<div class="btn-group d-flex justify-content-around" data-wounds="<?=$HP->WOUNDS?>" data-hp="<?=$HP->HP?>">
 							<?php foreach($HP->buttons as $k => $number):?>
-							<div style="width:61px;"><button type="button" style="width:61px;" class="btn btn-primary addiction" value="<?=$number?>"><?=$number?></button></div>
+							<div><button type="button" class="btn btn-primary addiction" value="<?=$number?>"><?=$number?></button></div>
 							<?php endforeach ?>
-							<div style="width:61px;"><button type="button" style="width:61px;" class="btn btn-primary addiction" value="<?=($HP->WOUNDS-$HP->HP)?>">max</button></div>
+							<div><button type="button" class="btn btn-primary addiction" value="<?=($HP->WOUNDS-$HP->HP)?>">max</button></div>
 							<div class="col-md-4"><input type="number" style="width:80px;" readonly="true" min="0"/></div>
 						</div>
 					</div>
-
-                <?php elseif($prefix == 'UmZd'): ?>
-                    <div class="col-md-12 predesc">Wykup każdej <?=$titleBar?> kosztuje 100 PD. Po naciśnięciu przycisku "Wykup" niewykorzystane doświadczenie zostanie odjęte z puli BG, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!</div>
-					<div class="col-md-12 desc" style="color: #fff; text-align:justify;"></div>
-					<input type="hidden" id="idUm" value="<?=$idUm?>"/>
-					<input type="hidden" id="details" value="<?=$details?>"/>
-				<?php elseif($prefix == 'PD'): ?>
-					<div class="col-md-12 predesc">Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, <?=$titleBar?> zmianę Punktów Doświadczenia, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!</div>
-					<div class="col-md-12 addictionBar">
-						<div class="btn-group d-flex justify-content-around" data-wounds="<?=$HP->WOUNDS?>" data-hp="<?=$HP->HP?>">
-							<?php foreach($HP->buttons as $k => $number):?>
-							<div style="width:61px;"><button type="button" style="width:61px;" class="btn btn-success addiction" value="<?=$number?>"><?=$number?></button></div>
-							<?php endforeach ?>
-							<div class="col-md-4"><input type="number" style="width:80px;" readonly="true"/></div>
-						</div>
-					</div>
-					<input type="hidden" id="idUm" value="<?=$idUm?>"/>
-					<input type="hidden" id="details" value="<?=$details?>"/>
-				<?php elseif($prefix == 'Brass'): ?>
-					<div class="col-md-12 predesc">Zmień swój stan posiadania! Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij,  <?=$titleBar?>, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!</div>
-					<div class="col-md-12 addictionBar">
-						<div class="col-md-10 offset-md-2" id="<?=$prefix?>-line"></div>
-						<div class="btn-group d-flex justify-content-around" data-wounds="<?=$HP->WOUNDS?>" data-hp="<?=$HP->HP?>">
-							<?php foreach($HP->buttons as $k => $number):?>
-							<div style="width:61px;"><button type="button" style="width:61px;" class="btn btn-warning addiction" value="<?=$number?>"><?=$number?></button></div>
-							<?php endforeach ?>
-							<div class="col-md-4"><input type="hidden" readonly="true" value="0"/></div>
-						</div>
-					</div>
-					<input type="hidden" id="hBrass" value="<?=$hBrass?>"/>
 				<?php elseif($prefix == 'Trait'): ?>
 					<div class="col-md-12 predesc">Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, zwiększysz <b><?=$NazwaCechy?></b> swojego Bohatera, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!
 						<br>Koszt wykupu +5 punktów Cechy Głównej wynosi 100 PD (opłacalny).
@@ -59,9 +29,10 @@
 					<div class="col-md-12 addictionBar">
 						<div class="btn-group d-flex justify-content-between" data-wounds="<?=$HP->WOUNDS?>" data-hp="<?=$HP->HP?>">
 							<?php foreach($HP->buttons as $k => $number):?>
-							<div class="col-md-1"><button type="button" style="width:61px;" class="btn btn-info addiction" value="<?=$number?>"><?=$number?></button></div>
+							<div class="col-md-1"><button type="button" class="btn btn-info addiction" value="<?=$number?>"><?=$number?></button></div>
 							<?php endforeach ?>
-							<div class="col-md-5"><input type="number" readonly="true" value="0" max="<?=$traitAdv?>"/></div>
+							<div class="col-md-1"><button type="button" class="btn btn-info addiction" value="<?=($traitInit+$traitAdv-$traitAct)?>">max</button></div>
+							<div class="col-md-4"><input type="number" readonly="true" value="0" max="<?=$traitAdv?>"/></div>
 						</div>
 						<div class="d-flex justify-content-around badge badge-warning">
 							<div class="col-md-6" style="text-align:right;line-height:20px">Całkowity Koszt PD:</div>
@@ -71,12 +42,45 @@
 							<div class="col-md-6" style="text-align:right;line-height:20px">Obecne PD:</div>
 							<div class="col-md-6"><input type="number" readonly="true" value="0"/></div>
 						</div>
+						<div class="d-flex justify-content-around badge badge-success">
+							<div class="col-md-6" style="text-align:right;line-height:20px">Aktualny schemat rozwoju cechy:</div>
+							<div class="col-md-6"><input type="number" readonly="true" value="<?=($traitInit+$traitAdv-$traitAct)?>"/></div>
+						</div>
 					</div>
 					<input type="hidden" id="traitName" value="<?=$traitName?>"/>
 					<input type="hidden" id="traitAct" value="<?=$traitAct?>"/>
-					<input type="hidden" id="traitAdv" value="<?=$traitAdv?>"/>
+					<input type="hidden" id="traitAdv" value="<?=($traitInit+$traitAdv-$traitAct)?>"/>
 					<input type="hidden" id="wTrait" value="<?=$wTrait?>"/>
 					<input type="hidden" id="NazwaCechy" value="<?=$NazwaCechy?>"/>
+                <?php elseif($prefix == 'UmZd'): ?>
+                    <div class="col-md-12 predesc">Wykup każdej <?=$titleBar?> kosztuje 100 PD. Po naciśnięciu przycisku "Wykup" niewykorzystane doświadczenie zostanie odjęte z puli BG, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!</div>
+					<div class="col-md-12 desc" style="color: #fff; text-align:justify;"></div>
+					<input type="hidden" id="idUm" value="<?=$idUm?>"/>
+					<input type="hidden" id="details" value="<?=$details?>"/>
+				<?php elseif($prefix == 'PD'): ?>
+					<div class="col-md-12 predesc">Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, <?=$titleBar?> zmianę Punktów Doświadczenia, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!</div>
+					<div class="col-md-12 addictionBar">
+						<div class="btn-group d-flex justify-content-around">
+							<?php foreach($HP->buttons as $k => $number):?>
+							<div><button type="button" class="btn btn-success addiction" value="<?=$number?>"><?=$number?></button></div>
+							<?php endforeach ?>
+							<div class="col-md-3"><input type="number" style="width:80px;" readonly="true"/></div>
+						</div>
+					</div>
+					<input type="hidden" id="idUm" value="<?=$idUm?>"/>
+					<input type="hidden" id="details" value="<?=$details?>"/>
+				<?php elseif($prefix == 'Brass'): ?>
+					<div class="col-md-12 predesc">Zmień swój stan posiadania! Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij,  <?=$titleBar?>, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!</div>
+					<div class="col-md-12 addictionBar">
+						<div class="col-md-12" id="<?=$prefix?>-line"></div>
+						<div class="btn-group d-flex justify-content-around">
+							<?php foreach($HP->buttons as $k => $number):?>
+							<div><button type="button" class="btn btn-warning addiction" value="<?=$number?>"><?=$number?></button></div>
+							<?php endforeach ?>
+							<div class="col-md-4"><input type="hidden" readonly="true" value="0"/></div>
+						</div>
+					</div>
+					<input type="hidden" id="hBrass" value="<?=$hBrass?>"/>
 				<?php elseif($prefix == 'Inv'): ?>
 					<div class="col-md-2"><img src="<?= base_url('../warhammer/assets/img/inventory/Inventory_L[72x72]/' . $item['IMG_CLASS'] . '.png') ?>"/></div>
 					<div class="col-md-10 predesc">

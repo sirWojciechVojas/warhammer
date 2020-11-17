@@ -276,7 +276,7 @@ class ChatsModel extends Model {
 	}
 	public function getHP() {
 		$a = $this->db->table('w_bg_current')->select('HP, WOUNDS, (HP / WOUNDS * 100)  as HPpercent')->getWhere(['USEDNAME_ID'=>$this->ID])->getRow();
-		$a->buttons = array(1,2,5,'reset');
+		$a->buttons = array(1,2,3,5,'reset');
 		return $a;
 	}
 

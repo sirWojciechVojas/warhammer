@@ -1,0 +1,30 @@
+#droppable{
+    width:500px !important;
+    height:500px;
+    border: 2px solid salmon !important;
+
+}
+.ui-draggable,
+.ui-droppable {
+    background-position: top;
+}
+.ui-wrapper{
+    margin:0 !important;padding: 0 !important;
+}
+.ui-wrapper:hover,
+.ui-wrapper:active {
+    outline: 2px solid steelblue !important;
+
+}
+
+.resizable {
+  padding: 0.5em;
+}
+
+#resizable h3 {
+  text-align: center;
+  margin: 0;
+}
+.zat{
+outline: 2px solid blue;
+}

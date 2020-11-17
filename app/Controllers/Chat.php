@@ -146,8 +146,9 @@ Class Chat extends BaseController {
 			$data['traitName'] = $this->request->getPost('key');
 			$data['traitAct'] = $this->request->getPost('traitAct');
 			$data['traitAdv'] = $this->request->getPost('traitAdv');
+			$data['traitInit'] = $this->request->getPost('traitInit');
 			$data['wTrait'] = $this->request->getPost('wTrait');
-			$data['NazwaCechy'] = $this->chats->getNazwyCech()[$this->request->getPost('key')];
+			$data['NazwaCechy'] = $this->chats->getNazwyCech()[$data['traitName']];
 			$data['titleBar2'] = $this->request->getPost('titleBar').$data['NazwaCechy'];
 		}
 		else $data['titleBar2'] = $this->request->getPost('titleBar');
@@ -155,11 +156,9 @@ Class Chat extends BaseController {
 		$data['umzd'] = $this->request->getPost('umzd');
 		$data['titleBar'] = mb_strtolower($this->request->getPost('titleBar'));
 		$data['idUm'] = $this->request->getPost('idUm');
-		if($this->request->getPost('details')){
-			$data['details'] = $this->request->getPost('details');
-			$data['addClass']= null;
-		}
-		else {
+
+
+		if($data['prefix']=='Inv') {
 			$data['details'] = null;
 			$invid = $this->request->getPost('invid');
 			// return $invid;
@@ -171,6 +170,14 @@ Class Chat extends BaseController {
 			// 	if($val['ITEM_CLASS']=='WEAPON') $val['Vojasik']='Kasiunia';
 			// }
 			//return json_encode($data['item']);
+		}
+		else if($data['prefix']=='UmZd') {
+			$data['details'] = $this->request->getPost('details');
+			$data['addClass']= null;
+		}
+		else {
+			$data['details'] = null;
+			$data['addClass']=' row';
 		}
 		// return $this->printr($data);
 

@@ -196,7 +196,7 @@
                             <div class="col-md-10 offset-md-1 imBottom">
                                 <div class="col-md-12 d-flex justify-content-around" style="padding:0;">Stan Twojej
                                     sakiewki:</div>
-                                <div class="col-md-12 d-flex justify-content-start" style="padding:0;">
+                                <div class="col-md-12 d-flex justify-content-center" style="padding:0;">
                                     <div class="crown"></div>
                                     <div><input type="text" readonly="true" value="<?= $mGold->mCrown ?> zk"></div>
                                     <div class="shilling"></div>
@@ -270,11 +270,15 @@
                                         <input type="text" readonly="true" value="<?= $Drugo2[1]['FATEPOINTS'] ?>" />
                                         <input type="text" readonly="true"
                                             value="<?= $Drugo2[1]['INSANITYPOINTS'] ?>" />
+                                        <input type="button" data-key="<?= $k ?>" data-toggle="modal"
+                                        class="btn btn-danger<?= $klasa ?>" value="&" />
                                     </div>
                                     <div>
                                         <input type="text" readonly="true" value="<?= $Drugo2[1]['LUCKPOINTS'] ?>" />
                                         <input type="text" readonly="true"
                                             value="<?= $Drugo2[1]['MOTIVATEPOINTS'] ?>" />
+                                        <input type="button" data-key="<?= $k ?>" data-toggle="modal"
+                                        class="btn btn-danger<?= $klasa ?>" value="&" />
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +306,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 cPanel cRight">
-                        <div class="row">
+                        <div class="row<?=($BG['NAME'] !== $BG['USEDNAME']) ? ' usedName': null; ?>">
                             <div class="col-md-12 title">Informacje o postaci</div>
                             <div class="col-md-12 name"><?= $BG['NAME'] ?></div>
                             <?php if ($BG['NAME'] !== $BG['USEDNAME']) : ?>
@@ -351,7 +355,7 @@
                             <div class="col-md-6"><span><?= $BG['SPECIALSIGNS'] ?></span></div>
                             <div class="col-md-6"><span><?= $BG['WOUNDS&SCARS'] ?></span></div>
                         </div>
-                        <div class="row">
+                        <div class="row<?=($BG['NAME'] !== $BG['USEDNAME']) ? ' usedName': null; ?>">
                             <div class="history">
                                 <div class="col-md-12"><b>Historia: </b><?= $BG_h[0] ?></div>
                                 <div class="col-md-12"><b>Uzupełnienie: </b><?= $BG_h[1] ?></div>
@@ -528,7 +532,10 @@
 				$sec = (preg_match('#dowolność#', $talent['NAME'])) ? ' secList' : null;
 				$sec .= ($talent['STATUS'] == '1') ? ' triList disabled' : null;
 			?>
-            <div class="abbList<?= $sec ?>" data-toggle="tooltip" data-placement="left" data-original-title="<?= htmlspecialchars('<h3><b>' . $talent['NAME'] . '</b></h3><h4>' . $talent['DESCRIPTION'] . '</h4>') ?>"><?= $talent['NAME'] ?></div>
+            <div class="abbList<?= $sec ?>" data-toggle="tooltip" data-placement="left"
+                data-details="<?= $talent['DETAILS'] ?>" data-id="<?= $talent['ID'] ?>"
+                data-original-title="<?= htmlspecialchars('<h3><b>' . $talent['NAME'] . '</b></h3><h4>' . $talent['DESCRIPTION'] . '</h4>') ?>">
+                <?= $talent['NAME'] ?></div>
             <?php endforeach ?>
         </div>
     </div>
@@ -550,7 +557,7 @@
                 <div class="col-md-12 HPBar" style="width:<?= $HP->HPpercent ?>%;"></div>
             </div>
             <div style="width:6.75%;" data-toggle="modal" data-target="#HPModalCenter" data-symbol="0">-</div>
-            <div style="width:86%;" class="tPlace" data-toggle="tooltip" data-placement="top" data-original-title="<?= htmlspecialchars('<h5><b>Punkty Żywotności</b></h5><h6>' . $HP->HP . '/' . $HP->WOUNDS . '</h6>') ?>">
+            <div style="width:86%;" class="tPlace myPointer" data-toggle="tooltip" data-placement="top" data-original-title="<?= htmlspecialchars('<h5><b>Punkty Żywotności</b></h5><h6>' . $HP->HP . '/' . $HP->WOUNDS . '</h6>') ?>">
                 <?= $session->get('USEDNAME') ?></div>
             <div style="width:6.75%;" data-toggle="modal" data-target="#HPModalCenter" data-symbol="1">+</div>
         </div>
@@ -562,24 +569,22 @@
             </div>
             <!-- <div class="col-md-12 offset-md-1 textBar">Pasek Punktów Doświadczenia</div> -->
         </div>
-        <div class="col-md-1 titleSpace" align="left"><button class="btn btn-success btn-sm disabled"
-                data-toggle="modal" data-symbol="0" data-target="#PDModalCenter">-</button></div>
-        <div class="col-md-10" style="padding:0;margin:0;">
+        <div class="col-md-1 titleSpace footerSpace" align="left"><button class="btn btn-success btn-sm disabled" data-toggle="modal" data-symbol="0" data-target="#PDModalCenter">-</button></div>
+        <div class="col-md-10 footerSpace" style="padding:0;margin:0;">
             <div class="col-md-12 PDBar d-flex" data-toggle="tooltip" data-placement="top"
                 title="<?= htmlspecialchars('<h6><b>Punkty Doświadczenia</b></h6><h6><u>Pasek kompleksowy</u></h6><h6>' . $PD[1] . '/' . $PD[3] . ' PD<br>(niewykorzytane: ' . $PD[5] . ' PD)</h6>') ?>">
-                <div class="PD-1" style="width:<?= $PD[6] ?>%;"></div>
-                <div class="PD-5" style="width:<?= $PD[9] ?>%;"></div>
+                <div class="PD-1 myPointer" style="width:<?= $PD[6] ?>%;"></div>
+                <div class="PD-5 myPointer" style="width:<?= $PD[9] ?>%;"></div>
                 <input type="hidden" id="curexp" value="<?= $PD[5] ?>" />
                 <input type="hidden" id="minexp" value="<?= $PD[2] ?>" />
                 <input type="hidden" id="nowexp" value="<?= $PD[4] ?>" />
             </div>
             <div class="col-md-12 PDBar d-flex" data-toggle="tooltip" data-placement="top" data-original-title="<?= htmlspecialchars('<h6><b>Punkty Doświadczenia</b></h6><h6><u>Pasek minimalny</u></h6><h6>' . $PD[4] . '/' . $PD[2] . ' PD<br>(niewykorzytane: ' . $PD[5] . ' PD)</h6>'); ?>">
-                <div class="PD-4" style="width:<?= $PD[8] ?>%;"></div>
-                <div class="PD-5" style="width:<?= $PD[9] ?>%;"></div>
+                <div class="PD-4 myPointer" style="width:<?= $PD[8] ?>%;"></div>
+                <div class="PD-5 myPointer" style="width:<?= $PD[9] ?>%;"></div>
             </div>
         </div>
-        <div class="col-md-1 titleSpace" align="right"><button class="btn btn-success btn-sm" data-toggle="modal"
-                data-symbol="1" data-target="#PDModalCenter">+</button></div>
+        <div class="col-md-1 titleSpace footerSpace" align="right"><button class="btn btn-success btn-sm" data-toggle="modal" data-symbol="1" data-target="#PDModalCenter">+</button></div>
     </div>
 </div>
 <?php if ($session->get('akses') == 'ADMIN') : ?>
@@ -596,8 +601,8 @@
         <div class="col-md-12">
             <ul class="d-flex justify-content-around">
                 <?php foreach ($BGs as $id) :
-						$activ = ($session->get('ID') == $id->ID) ? 'activ' : null; ?>
-                <li class="<?= $activ ?>" data-id="<?= $id->ID; ?>" data-usedname="<?= $id->USEDNAME; ?>">
+						$activ = ($session->get('ID') == $id->ID) ? ' activ' : null; ?>
+                <li class="myPointer<?= $activ ?>" data-id="<?= $id->ID; ?>" data-usedname="<?= $id->USEDNAME; ?>">
                     <img data-toggle="tooltip" data-placement="bottom" data-original-title="<?=htmlspecialchars('ID: <span>'.$id->ID.'</span><br>'.$id->USEDNAME.'<br>('.$id->GAMER_NAME.')');?>" class="profile-img-mid" src="<?= base_url("../warhammer/assets/img/$id->USEDNAME.png") ?>" alt="Avatar">
                 </li>
                 <?php endforeach ?>

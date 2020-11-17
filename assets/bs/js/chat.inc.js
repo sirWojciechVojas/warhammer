@@ -35,7 +35,7 @@ jQuery(function()
 	$('#characterStats .cLeft').on('contextmenu','.inventory-item', function (e) {
 		$this = $(this);
 		var invid = $this.data('invid');
-		var titleBar = 'Przedmiot'
+		var titleBar = 'Przedmiot';
 		// alert(invid);
 		$.ajax({
 			url: 'chat/dialogBox',
@@ -126,11 +126,12 @@ jQuery(function()
 		var titleBar = 'Wykup Cechy ';
 		var traitAct = $(this).prev().val();
 		var traitAdv = $(this).prev().prev().prev().val();
-		// alert(traitAct+'|'+traitAdv);
+		var traitInit = $(this).prev().prev().prev().prev().val();
+		// alert(traitAct+'|'+traitAdv+'|'+traitInit);
 		$.ajax({
 			url: 'chat/dialogBox',
 			type: 'POST',
-			data: {prefix: 'Trait', key: key, titleBar: titleBar, traitAct: traitAct, traitAdv: traitAdv, wTrait: wTrait},
+			data: {prefix: 'Trait', key: key, titleBar: titleBar, traitAct: traitAct, traitAdv: traitAdv, traitInit:traitInit, wTrait: wTrait},
 			success: function(response){
 				//alert(response);
 				$('body').append(response);
@@ -145,7 +146,7 @@ jQuery(function()
 	$('#characterStats .cLeft').on('click','.btn-sm[data-toggle="modal"]', function (e) {
 		$this = $(this);
 		var titleBar = $(this).val()+' Monety';
-		//alert(titleBar);
+		// alert(titleBar);
 		var hBrass=$('#hBrass').val();
 		$brass = $this.parent().parent().prev()[0].outerHTML;
 		$.ajax({
@@ -153,7 +154,7 @@ jQuery(function()
 			type: 'POST',
 			data: {prefix: 'Brass', titleBar: titleBar, hBrass: hBrass},
 			success: function(response){
-				//alert(response);
+				// console.log(JSON.parse(response));
 				$('body').append(response);
 			  // Add response in Modal body
 				//activateTooltip();
@@ -194,7 +195,7 @@ jQuery(function()
 		var idUm=parseInt($(this).data('id'));
 		var details=parseInt($(this).data('details'));
 		// alert(umzd+'|'+idUm+'|'+titleBar);
-		//alert(titleBar);
+		// alert(titleBar);
 		$.ajax({
 			url: 'chat/dialogBox',
 			type: 'POST',
@@ -204,7 +205,7 @@ jQuery(function()
 				$('body').append(response);
 				// Add response in Modal body
 				// activateTooltip();
-				executeUmZd(titleBar);
+				executeUmZd();
 			 	// Display Modal
 				$('#UmZdModalCenter').modal('show', $this);
 			}
@@ -387,12 +388,12 @@ function inventory(type){
 		success: function(data) {
 			$('#'+type+'-inventory').html(data);
 			var invBG = $('#invBG').val();
-			if(type=='personal')	{
+			if(type=='personal'){
 				// var patt = new RegExp( /[|]/ );
 				var element = $('#'+type+'-inventory .inventory-cell');
 				// element.first().html('<div class="inventory-item dagger" data-item-type="arms" data-toggle="tooltip" data-original-title="dasfadsfadsfasdxcvxc"></div>');
 				invBG=JSON.parse(invBG);
-				//console.log(invBG);
+				// console.log(invBG);
 
 				element.each(function(){
 					var x = parseInt($(this).data('slot-position-x'));
@@ -407,7 +408,7 @@ function inventory(type){
 					// });
 					if(invBG[slot] !== undefined){
 						// invBG[slot]['NAME']+='<div class="fixed-bottom">Szczegóły: PPM.</div>';
-						$(this).html('<div class="inventory-item '+invBG[slot]['IMG_CLASS']+'" data-item-type="'+invBG[slot]['ITEM_CATEGORY']+'" data-invid="'+invBG[slot]['ID']+'"  data-toggle="tooltip" data-original-title="'+invBG[slot]['NAME']+'"></div>');
+						$(this).html('<div class="inventory-item '+invBG[slot]['IMG_CLASS']+' myPointer" data-item-type="'+invBG[slot]['ITEM_CATEGORY']+'" data-invid="'+invBG[slot]['ID']+'"  data-toggle="tooltip" data-original-title="'+invBG[slot]['NAME']+'"></div>');
 					}
 					// console.log(y);
 				});
@@ -421,7 +422,7 @@ function inventory(type){
 					var sClass = $(this).attr('class').split(' ')[1];
 					// console.log(invBG[sClass]);
 					if(invBG[sClass] !== undefined){
-						$(this).html('<div class="inventory-item '+invBG[sClass]['IMG_CLASS']+'" data-item-type="'+invBG[sClass]['ITEM_CATEGORY']+'" data-invid="'+invBG[sClass]['ID']+'" data-toggle="tooltip" data-original-title="'+invBG[sClass]['NAME']+'"></div>');
+						$(this).html('<div class="inventory-item '+invBG[sClass]['IMG_CLASS']+' myPointer" data-item-type="'+invBG[sClass]['ITEM_CATEGORY']+'" data-invid="'+invBG[sClass]['ID']+'" data-toggle="tooltip" data-original-title="'+invBG[sClass]['NAME']+'"></div>');
 					}
 					//  alert($(this).attr('class').split(' ')[1]);
 				});
@@ -495,7 +496,7 @@ function executeInv(){
 		$(this).remove();
 	});
 }
-function executeUmZd(titleBar){
+function executeUmZd(){
 	$('#UmZdModalCenter').on('hide.bs.modal', function(event) {
 		$(this).remove();
 	});
@@ -511,9 +512,9 @@ function executeUmZd(titleBar){
 		// $(this).find('.modal-footer')
 		$(this).find('.desc').html($(event.relatedTarget).data('original-title'));
 
-		//alert(titleBar);
+		// alert(titleBar);
 		// alert($(event.relatedTarget).attr('title'));
-		$("#UmZdModalLongTitle").html('Wykup '+titleBar+closeBtn);
+		$("#UmZdModalLongTitle").html('Wykup '+closeBtn);
 	});
 	$('#UmZdModalCenter .modal-footer').on('click','.btn-danger', function (event) {
 		$this = $(this);
@@ -563,21 +564,46 @@ function executeTrait(){
 		var symbol='+';
 		$(this).find('.modal-footer .btn-danger').text($(event.relatedTarget).closest('.cechy').data('button'));
 		var curexp =  $('#curexp').val();
-		if(curexp<expMax) $(this).find('.modal-footer .btn-danger').addClass('disabled').before('<div class="alert alert-danger p-1 disabled" style="margin-top: 15px">Nie posiadasz minimum wymaganej ilości '+expMax+' PD!</div>');
+		if(curexp<expMax) $(this).find('.modal-footer .btn-danger').addClass('disabled').before('<div class="alert alert-danger p-1 btn-sm disabled">Nie posiadasz minimum wymaganej ilości '+expMax+' PD!</div>');
 		$(this).find('.addictionBar .badge-primary input').val(curexp);
-		var addiction =$(this).find('.modal-body.cP button.addiction');
+		var addiction =$(this).find('.modal-dialog.cP button.addiction');
 		addiction.each(function(index){
 			$(this).removeClass('disabled');
-			if(index<3) {
+			if(index<4) {
 				$(this).text(symbol+$(this).val());
 			}
-			else if(index==3) {
+			else if(index==4) {
 				$(this).val(0);
 			}
 		});
+		// var addiction =$(this).find('.modal-body button.addiction');
+		// addiction.each(function(index){
+		// 	$(this).removeClass('disabled');
+		// 	if(index<4) {
+		// 		if(a==0){
+		// 			if($(this).val()>HP) $(this).addClass('disabled');
+		// 			else $(this).removeClass('disabled');
+		// 		}
+		// 		else if(a==1){
+		// 			if($(this).val()>(wounds-HP)) $(this).addClass('disabled');
+		// 			else $(this).removeClass('disabled');
+		// 		}
+		// 		//$(this).val(symbol[a]+$(this).val());
+		// 		$(this).text(symbol[a]+$(this).val());
+		// 	}
+		// 	else if(index==4) {
+		// 		$(this).val(0);
+		// 	}
+		// 	else {
+		// 		if(a==0) $(this).val(-HP);
+		// 		else if(a==1) $(this).val(wounds-HP);
+		// 		//alert(HP);
+		// 	}
+		// });
 	});
 	$('.btn-group').on('click','.btn-info',function(event){
 		var wTrait=$('#wTrait').val();
+		var NazwaCechy=$('#NazwaCechy').val();
 		//alert(wTrait);
 		var wykupBtn=$(this).closest('.modal-content').find('.modal-footer .btn-danger');
 		var curexp=parseInt($(this).closest('.addictionBar').find('.badge-primary input').val());
@@ -586,15 +612,18 @@ function executeTrait(){
 			if($(this).text()=='max' || $(this).text()=='reset'){
 				var a = 0;
 				var b = parseInt($(this).val());
+
 			}
 			else {
 				var a = parseInt($(this).closest('.addictionBar').find('.btn-group input:last-of-type').val());
 				var b = parseInt($(this).text());
 			}
+			c=parseInt(a+b);
 			// alert('a='+a+'|b='+b);
 			// if(a==null) a=0;
 			// else a=parseInt(a);
-			c=parseInt(a+b);
+
+			// alert(c+'|'+traitAdv);
 			if(c<=traitAdv){
 				if(wTrait.match('cechyGlowne'))	var d = (c%5==0) ? 100*(c/5) : 100*Math.floor(c/5)+23*(c%5);
 				else if(wTrait.match('cechyDrugorzedne-1'))	var d = c*100;
@@ -604,12 +633,26 @@ function executeTrait(){
 				if(wykupBtn.prev().hasClass('alert')){
 					wykupBtn.removeClass('disabled');
 					wykupBtn.prev().remove();
-					if(curexp<23 && d<curexp) wykupBtn.addClass('disabled').before('<div class="alert alert-danger p-1 disabled" style="margin-top: 15px">Nie posiadasz minimum wymaganej ilości 23 PD!</div>');
-					else if(d>curexp) wykupBtn.addClass('disabled').before('<div class="alert alert-danger p-1 disabled" style="margin-top: 15px">Nie posiadasz wystarczającej ilości '+d+' PD!</div>');
+					if(curexp<23 && d<curexp) wykupBtn.addClass('disabled').before('<button class="alert alert-danger btn-sm p-1 disabled">Nie posiadasz minimum wymaganej ilości 23 PD!</button>');
+					else if(d>curexp) wykupBtn.addClass('disabled').before('<button class="alert alert-danger btn-sm p-1 disabled">Nie posiadasz wystarczającej ilości '+d+' PD!</button>');
 				}
-				else if(!wykupBtn.prev().hasClass('alert') && d>curexp) wykupBtn.addClass('disabled').before('<div class="alert alert-danger p-1 disabled" style="margin-top: 15px">Nie posiadasz wystarczającej ilości '+d+' PD!</div>');
+				else if(!wykupBtn.prev().hasClass('alert') && d>curexp) wykupBtn.addClass('disabled').before('<button class="alert alert-danger btn-sm p-1 disabled">Nie posiadasz wystarczającej ilości '+d+' PD!</button>');
 				$(this).closest('.addictionBar').find('.badge-warning input').val(d);
 				$(this).closest('.addictionBar').find('.btn-group input:last-of-type').val(c);
+			}
+			else{
+				//alert('bravo');
+				if(wTrait.match('cechyGlowne'))	var d = 100*(traitAdv/5);
+				else if(wTrait.match('cechyDrugorzedne-1'))	var d = traitAdv*100;
+				else var d = 0;
+				// if(wykupBtn.prev().hasClass('alert')){
+				// 	wykupBtn.addClass('disabled').before('<div class="alert alert-danger p-1 disabled">Nie posiadasz wystarczającej ilości '+d+' PD!</div>');
+				// }
+				wykupBtn.removeClass('disabled');
+				wykupBtn.prev().remove();
+				wykupBtn.addClass('disabled').before('<button class="alert alert-success btn-sm p-1 disabled">Cecha '+NazwaCechy+' maksymalnie może zostać podniesiona o '+traitAdv+'!</button>');
+				$(this).closest('.addictionBar').find('.badge-warning input').val(d);
+				$(this).closest('.addictionBar').find('.btn-group input:last-of-type').val(traitAdv);
 			}
 
 
@@ -617,7 +660,7 @@ function executeTrait(){
 	});
 	$('#TraitModalCenter .modal-footer').on('click','.btn-danger', function (event) {
 		var traitName = $('#traitName').val();
-		var NazwaCechy = $('#NazwaCechy').val();
+		// var NazwaCechy = $('#NazwaCechy').val();
 		var traitAct = parseInt($('#traitAct').val());
 		var traitInc = $(this).parent().prev().find('.addictionBar .btn-group input:last-of-type').val();
 		var expCost = $(this).parent().prev().find('.addictionBar .badge-warning input').val();
@@ -748,14 +791,13 @@ function executePD(){
 		$(this).find('input[type="number"]').val(0);
 		var symbol=$(event.relatedTarget).text();
 		var a=$(event.relatedTarget).data('symbol');
-		// alert(a);
+		//alert(symbol);
 		var title = ['Zmniejsz','Zwiększ'];
 		$("#PDModalLongTitle").html(title[a]+' Punkty Doświadczenia'+closeBtn);
 		// var symbol = ['-','+'];
-		var addiction =$(this).find('.modal-body.cP button.addiction');
-		// var wounds = parseInt($(this).find('.btn-group').data('wounds'));
-		// var HP = parseInt($(this).find('.btn-group').data('hp'));
-		// alert(HP);
+		var addiction =$(this).find('.modal-body .addictionBar .btn-group .addiction');
+0
+		console.log(addiction);
 		addiction.each(function(index){
 			$(this).removeClass('disabled');
 			if(index<6) {
@@ -864,7 +906,7 @@ function executeHP(){
 				//$(this).val(symbol[a]+$(this).val());
 				$(this).text(symbol[a]+$(this).val());
 			}
-			else if(index==3) {
+			else if(index==4) {
 				$(this).val(0);
 			}
 			else {

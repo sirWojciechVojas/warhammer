@@ -14,6 +14,11 @@
 		"mikey179/vfsstream": "1.6.*",
 		"phpunit/phpunit": "8.5.*"
 	},
+	"autoload": {
+        "psr-4": {
+            "Roller\\": "dice-roller/roller/src"
+        }
+    },
 	"autoload-dev": {
 		"psr-4": {
 			"Tests\\Support\\": "tests/_support"
