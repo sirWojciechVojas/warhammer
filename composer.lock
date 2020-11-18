@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d3cbfcd097a6bbcd17be77ee3ca5836",
+    "content-hash": "e37f63a5468f401b08e3b00976da721c",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1444,6 +1444,43 @@
                 }
             ],
             "time": "2020-08-06T16:22:43+00:00"
+        },
+        {
+            "name": "wojciech.pastuszko/dice_roller",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sirWojciechVojas/dice_roller.git",
+                "reference": "3726d70820109e16bb5a702cee18f65169d127a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sirWojciechVojas/dice_roller/zipball/3726d70820109e16bb5a702cee18f65169d127a4",
+                "reference": "3726d70820109e16bb5a702cee18f65169d127a4",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "diceRoller\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wojciech Vojas",
+                    "email": "wojciech.vojas@gmail.com"
+                }
+            ],
+            "description": "Symulator 3D rzutu koscia.",
+            "support": {
+                "issues": "https://github.com/sirWojciechVojas/dice_roller/issues",
+                "source": "https://github.com/sirWojciechVojas/dice_roller/tree/1.0"
+            },
+            "time": "2020-11-18T08:51:37+00:00"
         }
     ],
     "packages-dev": [
@@ -3070,5 +3107,5 @@
         "php": ">=7.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

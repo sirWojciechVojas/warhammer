@@ -3213,6 +3213,46 @@
                 "validate"
             ],
             "install-path": "../webmozart/assert"
+        },
+        {
+            "name": "wojciech.pastuszko/dice_roller",
+            "version": "1.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sirWojciechVojas/dice_roller.git",
+                "reference": "3726d70820109e16bb5a702cee18f65169d127a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sirWojciechVojas/dice_roller/zipball/3726d70820109e16bb5a702cee18f65169d127a4",
+                "reference": "3726d70820109e16bb5a702cee18f65169d127a4",
+                "shasum": ""
+            },
+            "time": "2020-11-18T08:51:37+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "diceRoller\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wojciech Vojas",
+                    "email": "wojciech.vojas@gmail.com"
+                }
+            ],
+            "description": "Symulator 3D rzutu koscia.",
+            "support": {
+                "issues": "https://github.com/sirWojciechVojas/dice_roller/issues",
+                "source": "https://github.com/sirWojciechVojas/dice_roller/tree/1.0"
+            },
+            "install-path": "../wojciech.pastuszko/dice_roller"
         }
     ],
     "dev": true,

@@ -1,15 +1,20 @@
 <?php namespace App\Controllers;
 
+use diceRoller\DiceRoll;
+
 class Home extends BaseController
 {
 	public function index()
 	{
-		//return redirect()->to(base_url('login'));
+		$roll = new DiceRoll();
+		echo $roll->showRoll('EXTRA');
+		// $roll->showRoll('EXTRA');
 
+		//return redirect()->to(base_url('login'));
 		// $data['js']='handout';
-		echo view('headerRoll');
-		echo view('home');
-		echo view('footerRoll');
+		// echo view('headerRoll');
+		// echo view('home');
+		// echo view('footerRoll');
 		// return $this->audio();
 
 	}

@@ -1,0 +1,20 @@
+{
+    "name": "wojciech.pastuszko/dice_roller",
+    "description": "Symulator 3D rzutu koscia.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wojciech Vojas",
+            "email": "wojciech.vojas@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "diceRoller\\": "src/"
+        }
+    },
+    "require": {}
+}

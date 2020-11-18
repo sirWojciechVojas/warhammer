@@ -14,12 +14,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'dev-master',
-    'version' => 'dev-master',
+    'pretty_version' => 'dev-warhammer',
+    'version' => 'dev-warhammer',
     'aliases' => 
     array (
     ),
-    'reference' => '1aeff3413a95cee853ab9e1c3d225730d29fdc0a',
+    'reference' => '576ca0787ccd4c43407ab0517ca80eed5e66a187',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -35,12 +35,12 @@ private static $installed = array (
     ),
     'codeigniter4/appstarter' => 
     array (
-      'pretty_version' => 'dev-master',
-      'version' => 'dev-master',
+      'pretty_version' => 'dev-warhammer',
+      'version' => 'dev-warhammer',
       'aliases' => 
       array (
       ),
-      'reference' => '1aeff3413a95cee853ab9e1c3d225730d29fdc0a',
+      'reference' => '576ca0787ccd4c43407ab0517ca80eed5e66a187',
     ),
     'codeigniter4/framework' => 
     array (
@@ -536,6 +536,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'bafc69caeb4d49c39fd0779086c03a3738cbb389',
+    ),
+    'wojciech.pastuszko/dice_roller' => 
+    array (
+      'pretty_version' => '1.0',
+      'version' => '1.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3726d70820109e16bb5a702cee18f65169d127a4',
     ),
     'zendframework/zend-escaper' => 
     array (
