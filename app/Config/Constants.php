@@ -13,6 +13,13 @@
 //
 defined('APP_NAMESPACE') || define('APP_NAMESPACE', 'App');
 
+// defined('BASE') || define('BASE','http://localhost');
+defined('BASE') || define('BASE','http://fc20ab81d223.ngrok.io');
+// defined('BASE_WS') || define('BASE_WS','ws://localhost');
+defined('BASE_WS') || define('BASE_WS','ws://fa157b5eb879.ngrok.io');
+defined('PORT_WS') || define('PORT_WS',9001);
+
+// defined('SERVER_NAME', $_SERVER['SERVER_NAME']);
 /*
 |--------------------------------------------------------------------------
 | Composer Path

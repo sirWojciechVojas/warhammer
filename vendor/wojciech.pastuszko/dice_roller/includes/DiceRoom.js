@@ -348,7 +348,8 @@ export class DiceRoom {
 		else this.TealChat.add_unconfirmed_message(res.user, this.make_notation_for_log(res.notation),
 				res.time, this.TealChat.roll_uuid = Teal.uuid(), true);
 
-		this.label.innerHTML = res.user+' is Rolling...';
+		// this.label.innerHTML = res.user+' is Rolling...';
+		this.label.innerHTML = 'Twoje kostki się turlają...';
 		this.info_div.style.display = this.DiceBox.tally ? 'block' : 'none';
 		this.deskrolling = true;
 
@@ -367,8 +368,9 @@ export class DiceRoom {
 
 			let results = this.DiceBox.getDiceTotals(notationVectors, resultDice);
 			results.values = (results.values==0) ? 100 : results.values;
-			console.log(results.values);
-			MsgText('Wynik rzutu <b>'+results.rolls+'</b> to =><b>'+results.values+'</b><=');
+			// console.log(results.values);
+			// alert(res.notation);
+			window.parent.MsgText('Wynik rzutu <b>'+res.notation+'</b> to =><b>'+results.values+'</b><=');
 
 			this.label.innerHTML = (results.rolls+'<h2>'+results.labels+' '+results.values+'</h2>');
 

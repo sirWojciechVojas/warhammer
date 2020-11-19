@@ -21,11 +21,9 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	// public $baseURL = 'http://2.tcp.ngrok.io:17793/warhammer/public';
-	// public $baseURL = 'https://192.168.0.8/warhammer/public';
-	public $baseURL = 'http://localhost/warhammer/public';
-	// public $baseURL = 'http://warhammer.test/warhammer/public';
-	// public $baseURL = 'http://192.168.0.8:8080/warhammer/public';
+
+	public $baseURL = BASE.'/warhammer/public';
+	// public $baseURL = 'http://localhost/warhammer/public';
 
 	/*
 	|--------------------------------------------------------------------------

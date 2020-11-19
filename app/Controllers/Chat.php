@@ -97,12 +97,14 @@ Class Chat extends BaseController {
 
 			$js['js']='chat.inc.js';
 			// $js['wsAddress']= preg_replace('#http#','ws',substr(base_url('../..'),0,-1));// zamiana 8080 na 8082
-			$js['wsAddress']= preg_replace('#http#','ws', base_url('../..')).'?access_token=';
+
+			$js['wsAddress']= (preg_match('#ngrok#',BASE_WS)) ? BASE_WS : BASE_WS.':'.PORT_WS;
+			$js['wsAddress'].= '?access_token=';
 			// $this->printr($js['wsAddress']);
 			$js['controller']=$this;
 			$js['controllerName']=$this->router->controllerName();
 			$js['methodName']=$this->router->methodName();
-			echo view('header');
+			echo view('header',$js);
 			echo view('chat', $data);
 			echo view('footer',$js);
 		}

@@ -75,7 +75,7 @@ jQuery(function()
 				$element.val(data['NOTES']);
 				// $element.val(data);
 				$this.before('<div class="alert alert-success alert-sm">Twoje notatki poprawnie zapisano.</div>');
-				setTimeout(function() { $this.prev().fadeOut(); }, 1000);
+				setTimeout(function() { $this.prev().fadeOut(); }, 2000);
 			//	$('body').append(response);
 			  // Add response in Modal body
 			//   activateTooltip();

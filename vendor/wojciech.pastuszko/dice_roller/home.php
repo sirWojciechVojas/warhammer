@@ -53,10 +53,12 @@
 					<button id="throw" title="Throw Dice">🎲</button>
 				</div>
 				<div id="sethelp">
-					Click to Add, Drag to Throw
+					Kliknij na kostce, aby ją dodać! | Kliknij i przeciągnij kursor, aby rzucić!
+					<!-- Click to Add, Drag to Throw -->
 				</div>
 				<div id="labelhelp">
-					Click to continue, Drag to throw again
+					Kliknij, aby kontynuować! | Kliknij i przeciągnij kursor, aby rzucić ponownie!
+					<!-- Click to continue, Drag to throw again -->
 				</div>
 			</div>
 		</div>

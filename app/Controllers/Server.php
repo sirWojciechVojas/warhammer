@@ -16,7 +16,7 @@ class Server extends BaseController
 					new Chat()
 				)
 			),
-			9001
+			PORT_WS
 		);
 		$db = db_connect();
 		$builder = $db->table('connections');

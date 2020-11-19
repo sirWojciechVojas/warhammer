@@ -532,10 +532,12 @@ export class DiceRoller {
 		}
 		DiceRoller.Teal.offline = true;
 
-		DiceRoller.DiceRoom = new DiceRoom('Yourself', -1);
+		// DiceRoller.DiceRoom = new DiceRoom('Yourself', -1);
+		DiceRoller.DiceRoom = new DiceRoom('Ty', -1);
 		DiceRoller.show_waitform(false);
 		requestAnimationFrame(function() {});
-		DiceRoller.DiceRoom.actions['login'].call(DiceRoller.DiceRoom, ({user: 'Yourself'}));
+		// DiceRoller.DiceRoom.actions['login'].call(DiceRoller.DiceRoom, ({user: 'Yourself'}));
+		DiceRoller.DiceRoom.actions['login'].call(DiceRoller.DiceRoom, ({user: 'Ty'}));
 	}
 
 	show_waitform(show) {
