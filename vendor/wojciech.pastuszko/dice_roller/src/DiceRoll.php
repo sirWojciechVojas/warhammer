@@ -23,7 +23,7 @@ class DiceRoll{
   *
   * @return string
   */
-   public function showRoll($param1){
+   public function showRoll(){
          // return ' Hello my '.$param1.' World!';
          // return __DIR__;
          define("ROLL_PATH", "../vendor/wojciech.pastuszko/dice_roller");

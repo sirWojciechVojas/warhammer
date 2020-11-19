@@ -1,20 +1,19 @@
 <?php namespace App\Controllers;
 
-use Roller\Roll;
+use diceRoller\DiceRoll;
 
 class Roller extends BaseController
 {
 	public function index()
 	{
-		$roll = new Roll();
-		$roll->showRoll();
-		//return redirect()->to(base_url('login'));
+		$roll = new DiceRoll();
+		echo $roll->showRoll();
+		$js['js']='chat.inc.js';
+		$js['wsAddress']= preg_replace('#http#','ws',substr(base_url('../..'),0,-1));
+		$js['controller']=$this;
+		$js['controllerName']=$this->router->controllerName();
+		$js['methodName']=$this->router->methodName();
 
-		// $data['js']='handout';
-		// echo view('headerRoll');
-		// echo view('home');
-		// echo view('footerRoll');
-		// return $this->audio();
-
+		// echo view('footerRoll',$js);
 	}
 }

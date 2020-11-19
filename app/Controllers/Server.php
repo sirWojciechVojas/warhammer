@@ -16,7 +16,7 @@ class Server extends BaseController
 					new Chat()
 				)
 			),
-			8082
+			9001
 		);
 		$db = db_connect();
 		$builder = $db->table('connections');

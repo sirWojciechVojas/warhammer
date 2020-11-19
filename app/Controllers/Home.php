@@ -6,15 +6,11 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		$roll = new DiceRoll();
-		echo $roll->showRoll('EXTRA');
-		// $roll->showRoll('EXTRA');
-
 		//return redirect()->to(base_url('login'));
 		// $data['js']='handout';
-		// echo view('headerRoll');
-		// echo view('home');
-		// echo view('footerRoll');
+		echo view('header');
+		echo view('home');
+		echo view('footer');
 		// return $this->audio();
 
 	}

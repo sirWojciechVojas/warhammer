@@ -368,6 +368,7 @@ export class DiceRoom {
 			let results = this.DiceBox.getDiceTotals(notationVectors, resultDice);
 			results.values = (results.values==0) ? 100 : results.values;
 			console.log(results.values);
+			MsgText('Wynik rzutu <b>'+results.rolls+'</b> to =><b>'+results.values+'</b><=');
 
 			this.label.innerHTML = (results.rolls+'<h2>'+results.labels+' '+results.values+'</h2>');
 

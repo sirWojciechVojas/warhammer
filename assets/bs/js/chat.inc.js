@@ -89,6 +89,7 @@ jQuery(function()
 		slidePanel($(this));
 	});
 	$( "#draggable-chat" ).draggable({handle: ".card-header.d-flex", cursor: "move", containment: "body", scroll: false });
+	$( "#dicer" ).draggable({handle: ".card-header", cursor: "move", containment: "body", scroll: false });
 	$( "#draggable-chat" ).data({
 		'originalLeft': $("#draggable-chat").css('left'),
 		'origionalTop': $("#draggable-chat").css('top')
@@ -361,13 +362,35 @@ jQuery(function()
 	// 	return false;
 	// });
 
-	$('.btn-group').on('click','.btn:not(.btn-success)',function(){
+	$('#dicer').on('click', '.close', function(){
+		$(this).parent().parent().hide();
+	});
+	$('.btn-group').on('click','.btn.btn-danger',function(){
+		$('#dicer').show();
+		// $.ajax({
+		// 	type: 'POST',
+		// 	url: 'roller',
+		// 	contentType: 'text/plain',
+		// 	data: {
+		// 		// w: w/a, nrRow:nrRow, type:type
+		// 	},
+		// 	success: function(data) {
+		// 		$('body').append('<object style="width:1000px; height:350px"><embed id="dicer" ></embed></object>');
+		// 		$('#dicer').html(data);
+		// 		// document.write(data);
+		// 	},
+		// 	error : function(err) {
+		// 		console.log(JSON.stringify(err));
+		// 	}
+		// });
+	});
+	$('.btn-group').on('click','.btn:not(.btn-success):not(.btn-danger)',function(){
 		// alert($(this).parent().attr('class'));
 		var dice=$(this).text();
 		// alert(dice);
 		var max=$(this).val();
 		var roll=(Math.floor(Math.random()*max)+1);
-		MsgText('Wynik twojego rzutu <b>'+dice+'</b> to =><b>'+roll+'</b><=');
+		MsgText('Wynik rzutu <b>'+dice+'</b> to =><b>'+roll+'</b><=');
 
 	});
 });

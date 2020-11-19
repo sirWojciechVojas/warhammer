@@ -18,7 +18,9 @@
         }
 
         $(function () {
-            var conn = new WebSocket('<?=$wsAddress?>2?access_token=<?= session()->get('USER_ID') ?>');
+            var conn = new WebSocket('<?=$wsAddress . session()->get('USER_ID') ?>');
+            console.log('<?=$wsAddress . session()->get('USER_ID') ?>');
+
             $conn=conn;
             conn.onopen = function(e) {
 			    	console.log("Connection established!");

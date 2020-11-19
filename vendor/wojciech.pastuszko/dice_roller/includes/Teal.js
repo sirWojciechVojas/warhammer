@@ -9,7 +9,7 @@ export class Teal {
 		this.offline = true;
 		this.socket = null;
 		// this.socketAddress = 'dnd.majorsplace.com:32400';
-		this.socketAddress = '192.168.0.8:8080';
+		this.socketAddress = '192.168.0.8:8082';
 		this.socketSecure = false;
         window.Teal = this;
     }

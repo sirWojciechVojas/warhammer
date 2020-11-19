@@ -1705,3 +1705,12 @@ button.BG:hover {
   height: 100% !important;
   margin: 0 !important;
 }
+#dicer{
+  position: absolute;
+  left:5%;
+  top: 5%;
+  /* transform: translate(-50%, 0); */
+}
+#dicer .card-body{
+  padding: 0;
+}

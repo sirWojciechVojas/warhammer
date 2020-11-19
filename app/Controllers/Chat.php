@@ -91,13 +91,14 @@ Class Chat extends BaseController {
 			$data['chat']   = $this->chats->chatContent()->getResult();
 			// $this->printr($data['chat']);
 
-			$data['dices']  = array(2,4,6,8,10,12,20,100);
+			$data['dices']  = array(2,4,6,8,10,12,20,100,'3D');
 			$data['session']=$this->session;
 			//$this->printr($_SESSION);
 
 			$js['js']='chat.inc.js';
-			$js['wsAddress']= preg_replace('#http#','ws',substr(base_url('../..'),0,-1));
-			// $this->printr($js['address']);
+			// $js['wsAddress']= preg_replace('#http#','ws',substr(base_url('../..'),0,-1));// zamiana 8080 na 8082
+			$js['wsAddress']= preg_replace('#http#','ws', base_url('../..')).'?access_token=';
+			// $this->printr($js['wsAddress']);
 			$js['controller']=$this;
 			$js['controllerName']=$this->router->controllerName();
 			$js['methodName']=$this->router->methodName();

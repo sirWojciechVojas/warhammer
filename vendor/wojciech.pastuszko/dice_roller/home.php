@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
 <base href="../vendor/wojciech.pastuszko/dice_roller/" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/plain; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords" content="DnD, dangeon and dragons, roleplay, dice, roller, 3D, RPG, wargame"/>
 <meta name="description" content="Online 3D dice roller"/>
@@ -149,4 +146,3 @@
 	</fieldset>
 	<script type="module" src="<?="includes/" ?>DiceRoller.js"></script>
 </body>
-</html>

@@ -97,9 +97,13 @@
                 </div>
                 <div class="btn-group d-flex justify-content-between">
                     <?php foreach ($dices as $num) : ?>
-                    <div style="width:61px;">
-                        <button type="button" style="width:61px;" class="btn btn-primary"
-                            value="<?= $num ?>">K<?= $num ?></button>
+                    <div style="width:55px;" class="d-flex justify-content-between">
+                        <?php
+                            $Knum = ($num=='3D') ? $num : 'K'.$num;
+                            $btnClass = ($num=='3D') ? ' btn-danger' : ' btn-primary';
+                        ?>
+                        <button type="button" style="width:55px;font-size:13px;" class="btn<?=$btnClass?>"
+                            value="<?= $num ?>"><?= $Knum ?></button>
                     </div>
                     <?php endforeach ?>
                     <input id="bountify" type="hidden"
@@ -614,4 +618,18 @@
 <div id="users">
     <div class="list-group-item"><b>Aktywność:</b></div>
     <ul id="user-list" class="list-group"></ul>
+</div>
+
+<div id="dicer" class="card" style="display: none;">
+    <div class="card-header d-flex justify-content-between ui-draggable-handle">
+        Symulator 3D rzutu kością
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            style="padding:3px 15px;margin-top:5px;background:#f00;color:#fff;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="card-body">
+        <object data="<?=base_url();?>/roller" style="width:1000px; height:600px"></object>
+    </div>
+    <!-- <div class="card-footer">Adjusting by sWV</div> -->
 </div>
