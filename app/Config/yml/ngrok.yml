@@ -1,0 +1,8 @@
+authtoken: 1iWY5jNbreukxdRbTSVtyipZkci_cMUNZRyv2FV5KzgrBgim
+tunnels:
+  first:
+    addr: 80
+    proto: http
+  second:
+    addr: 9001
+    proto: http
