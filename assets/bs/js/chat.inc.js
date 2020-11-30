@@ -26,7 +26,7 @@ jQuery(function()
 		//var how = $('.coto').css('background');
 		//alert(how);
 
-	//$('button[data-target="#exampleModalCenter"]').trigger('click');
+	// $('button[data-target="#exampleModalCenter"]').trigger('click');
 	//$('button[data-target="#ModalCenter"]').trigger('click');
 	// $('#characterStats .cCenter').on('click','.skill-talent[data-toggle="tooltip"]', function (e) {
 	// alert('wow');
@@ -579,6 +579,8 @@ function executeTrait(){
 		$(this).remove();
 	});
 	$('#TraitModalCenter').on('show.bs.modal', function(event) {
+		$Thisbtn = $(event.relatedTarget);
+
 		// $(this).find('input[type="number"]').val(0);
 		var wTrait=$('#wTrait').val();
 		if(wTrait.match('cechyGlowne'))	var expMax = 23;
@@ -682,12 +684,20 @@ function executeTrait(){
 		}
 	});
 	$('#TraitModalCenter .modal-footer').on('click','.btn-danger', function (event) {
+		$this = $(this);
 		var traitName = $('#traitName').val();
+		if(traitName=='FATEINS'){
+			traitName = ['FATEPOINTS','INSANITYPOINTS'];
+		}
+		else if(traitName=='LUCKMOTIVE'){
+			traitName = ['LUCKPOINTS','MOTIVATEPOINTS'];
+		}
 		// var NazwaCechy = $('#NazwaCechy').val();
 		var traitAct = parseInt($('#traitAct').val());
 		var traitInc = $(this).parent().prev().find('.addictionBar .btn-group input:last-of-type').val();
 		var expCost = $(this).parent().prev().find('.addictionBar .badge-warning input').val();
-		// alert(traitName+'|'+traitInc+'|'+expCost);
+
+		// alert(traitName+'|'+traitInc+'|'+traitAct+'|'+expCost+'|'+NazwaCechy);
 		$.ajax({
 			type: 'POST',
 			url: 'chat/ransom_trait',
@@ -696,17 +706,23 @@ function executeTrait(){
 			},
 			// dataType:"json",
 			success: function(data) {
-				// alert(JSON.stringify(data));
-				// alert(data);
-				//console.log(data);
+				data = JSON.parse(data);
+				//alert(data);
+				// console.log(data);
 				// $('form[name="sendMessage"] input[name="message"]').hide();
 				// $('form[name="sendMessage"] input[name="message"]').val('BG powiększył cechę <u>'+NazwaCechy+'</u> o <b>'+traitInc+'</b> punktów.');
 				// $('form[name="sendMessage"]').trigger('submit');
 
 				// location.reload();
 				// $('button[data-target="#exampleModalCenter"]').trigger('click');
-				MsgText('BG wykupił '+what+': <b>'+SOrTName+'</b>');
+				if(data['traitInc']==1) var incP=' punkt';
+				else if(data['traitInc']>1 && data['traitInc']<=4) var incP=' punkty';
+				else var incP=' punktów';
+
+				MsgText('BG za <b>'+data['expCost']+'PD</b> wykupił <b>'+data['traitInc']+incP+'</b> cechy <b>'+data['traitNamePL']+'</b>');
+
 				$this.closest('.modal-content').find('.close').trigger('click');
+				$Thisbtn.prev().val(traitAct+parseInt(traitInc));
 				$('#exampleModalCenter').modal('hide');
 			},
 			error: function(err) {

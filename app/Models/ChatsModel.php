@@ -397,8 +397,9 @@ class ChatsModel extends Model {
 		$traitNew=($data['traitAct']+$data['traitInc'])%10;
 		$traitIncBonus=floor(($data['traitAct']+$data['traitInc'])/10);
 
-		$gra= [$traitAct,$traitNew,$traitIncBonus];
-		//return json_encode($gra);
+		// $gra= [$traitAct,$traitNew,$traitIncBonus];
+		// return json_encode($gra);
+
 		if($data['traitName']=='STRENGTH' && $traitNew<$traitAct) $builder->set('STRENGTHBONUS',$traitIncBonus, false);
 		else if($data['traitName']=='TOUGHNESS' && $traitNew<$traitAct) $builder->set('TOUGHNESSBONUS',$traitIncBonus, false);
 
@@ -406,6 +407,7 @@ class ChatsModel extends Model {
 		$builder->where(['USEDNAME_ID'=>$this->ID]);
 		$builder->update();
 
+		return json_encode($data);
 		// $this->db->transComplete();
 	}
 }

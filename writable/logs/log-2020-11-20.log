@@ -1,0 +1,9 @@
+CRITICAL - 2020-11-20 20:29:58 --> Unable to connect to the database.
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->initialize()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(2853): CodeIgniter\Database\BaseConnection->query('DELETE FROM `co...', Array, false)
+#2 C:\xampp\htdocs\warhammer\app\Controllers\Server.php(23): CodeIgniter\Database\BaseBuilder->delete()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Server->index()
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Server))
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#7 {main}

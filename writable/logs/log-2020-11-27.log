@@ -1,0 +1,8 @@
+CRITICAL - 2020-11-27 22:00:35 --> Argument 2 passed to CodeIgniter\Database\BaseBuilder::getWhere() must be of the type int or null, string given, called in C:\xampp\htdocs\warhammer\app\Models\RegisModel.php on line 28
+#0 C:\xampp\htdocs\warhammer\app\Models\RegisModel.php(28): CodeIgniter\Database\BaseBuilder->getWhere('user', 'Totut')
+#1 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(415): App\Models\RegisModel->deleteUser('Totut')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->delete_user('Totut')
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}

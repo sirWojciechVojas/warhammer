@@ -21,19 +21,39 @@
 							<div class="col-md-4"><input type="number" style="width:80px;" readonly="true" min="0"/></div>
 						</div>
 					</div>
-				<?php elseif($prefix == 'Trait'): ?>
-					<div class="col-md-12 predesc">Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, zwiększysz <b><?=$NazwaCechy?></b> swojego Bohatera, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!
+				<?php elseif($prefix == 'Trait'):
+					if(in_array($traitName,array('FATEINS','LUCKMOTIVE'))):
+						$predesc = 'Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, zmienisz wartość cechy <b>'.preg_replace('#&#','i/lub',$NazwaCechy).'</b> swojego Bohatera.';
+						$btnStyle = array('info','success'); $inputsDivs='';
+						foreach($btnStyle as $style):
+							$inputsDiv='<div class="btn-group d-flex justify-content-between" data-wounds="'.$HP->WOUNDS.'" data-hp="'.$HP->HP.'"><div class="predesc">Szczęście</div>';
+							foreach($HP->buttons as $k => $number):
+								$inputsDiv .='<div class="col-md-1"><button type="button" class="btn btn-'.$style.' addiction" value="'.$number.'">'.$number.'</button></div>';
+							endforeach;
+							$inputsDiv .='<div class="col-md-2"><input type="number" style="length:20px" readonly="true" value="0" max="'.$traitAdv.'"/></div><div class="col-md-2"><select class="form-control form-control-sm">
+								<option>Podwyższ</option>
+								<option>Obniż</option>
+							</select></div>
+							</div>';
+							$inputsDivs.=$inputsDiv;
+						endforeach;
+						else :
+						$predesc = 'Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, zwiększysz cechę <br><?=$NazwaCechy?></br> swojego Bohatera, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!
 						<br>Koszt wykupu +5 punktów Cechy Głównej wynosi 100 PD (opłacalny).
-						<br>Koszt wykupu +1 punktu Cechy Głównej wynosi 23 PD (opcjonalny).
-					</div>
+						<br>Koszt wykupu +1 punktu Cechy Głównej wynosi 23 PD (opcjonalny).';
+						$inputsDivs='<div class="btn-group d-flex justify-content-between" data-wounds="'.$HP->WOUNDS.'" data-hp="'.$HP->HP.'">';
+						foreach($HP->buttons as $k => $number):
+							$inputsDivs .='<div class="col-md-1"><button type="button" class="btn btn-info addiction" value="'.$number.'">'.$number.'</button></div>';
+						endforeach;
+						$inputsDivs .='<div class="col-md-1"><button type="button" class="btn btn-info addiction" value="'.($traitInit+$traitAdv-$traitAct).'">max</button></div>
+						<div class="col-md-4"><input type="number" readonly="true" value="0" max="'.$traitAdv.'"/></div>
+						</div>';
+					?>
+					<?php endif;?>
+					<div class="col-md-12 predesc"><?=$predesc?></div>
 					<div class="col-md-12 addictionBar">
-						<div class="btn-group d-flex justify-content-between" data-wounds="<?=$HP->WOUNDS?>" data-hp="<?=$HP->HP?>">
-							<?php foreach($HP->buttons as $k => $number):?>
-							<div class="col-md-1"><button type="button" class="btn btn-info addiction" value="<?=$number?>"><?=$number?></button></div>
-							<?php endforeach ?>
-							<div class="col-md-1"><button type="button" class="btn btn-info addiction" value="<?=($traitInit+$traitAdv-$traitAct)?>">max</button></div>
-							<div class="col-md-4"><input type="number" readonly="true" value="0" max="<?=$traitAdv?>"/></div>
-						</div>
+						<?= $inputsDivs?>
+					<?php if(!in_array($traitName,array('FATEINS','LUCKMOTIVE'))): ?>
 						<div class="d-flex justify-content-around badge badge-warning">
 							<div class="col-md-6" style="text-align:right;line-height:20px">Całkowity Koszt PD:</div>
 							<div class="col-md-6"><input type="number" readonly="true" value="0"/></div>
@@ -46,6 +66,7 @@
 							<div class="col-md-6" style="text-align:right;line-height:20px">Aktualny schemat rozwoju cechy:</div>
 							<div class="col-md-6"><input type="number" readonly="true" value="<?=($traitInit+$traitAdv-$traitAct)?>"/></div>
 						</div>
+					<?php endif ?>
 					</div>
 					<input type="hidden" id="traitName" value="<?=$traitName?>"/>
 					<input type="hidden" id="traitAct" value="<?=$traitAct?>"/>

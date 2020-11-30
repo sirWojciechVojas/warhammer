@@ -1,0 +1,82 @@
+CRITICAL - 2020-11-29 00:39:25 --> Creating default object from empty value
+#0 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(279): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Creating defaul...', 'C:\\xampp\\htdocs...', 279, Array)
+#1 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(144): App\Models\ChatsModel->getHP()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->dialogBox()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-11-29 00:39:26 --> Creating default object from empty value
+#0 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(279): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Creating defaul...', 'C:\\xampp\\htdocs...', 279, Array)
+#1 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(144): App\Models\ChatsModel->getHP()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->dialogBox()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-11-29 00:39:27 --> Creating default object from empty value
+#0 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(279): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Creating defaul...', 'C:\\xampp\\htdocs...', 279, Array)
+#1 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(144): App\Models\ChatsModel->getHP()
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->dialogBox()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-11-29 13:57:10 --> Undefined variable: gra
+#0 C:\xampp\htdocs\warhammer\app\Models\ChatsModel.php(402): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 402, Array)
+#1 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(245): App\Models\ChatsModel->ransomTrait(Array)
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->ransom_trait()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2020-11-29 15:21:15 --> Undefined variable: inputsDivs
+#0 C:\xampp\htdocs\warhammer\app\Views\dialogBox.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 35, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('dialogBox', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(187): view('dialogBox', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->dialogBox()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-29 15:21:22 --> Undefined variable: inputsDivs
+#0 C:\xampp\htdocs\warhammer\app\Views\dialogBox.php(35): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 35, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('dialogBox', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(187): view('dialogBox', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->dialogBox()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-29 15:23:10 --> Undefined variable: inputsDivs
+#0 C:\xampp\htdocs\warhammer\app\Views\dialogBox.php(44): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 44, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('dialogBox', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(187): view('dialogBox', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->dialogBox()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-29 15:23:16 --> Undefined variable: inputsDivs
+#0 C:\xampp\htdocs\warhammer\app\Views\dialogBox.php(44): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 44, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('dialogBox', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(187): view('dialogBox', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->dialogBox()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2020-11-29 15:24:31 --> Undefined variable: inputsDivs
+#0 C:\xampp\htdocs\warhammer\app\Views\dialogBox.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\xampp\\htdocs...', 28, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(246): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1119): CodeIgniter\View\View->render('dialogBox', Array, true)
+#3 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(187): view('dialogBox', Array)
+#4 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(918): App\Controllers\Chat->dialogBox()
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 {main}

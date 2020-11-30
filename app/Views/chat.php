@@ -254,7 +254,7 @@
 										endif ?>
                                     <div class="d-flex justify-content-between">
                                         <input type="text" readonly="true" value="<?= $Drugo1[0][$k1] ?>" />
-                                        <?php if ($Drugo1[1][$k2] == 0) $Drugo1[1][$k2] = '-'; ?>
+                                        <?php if ($Drugo1[1][$k2] == 0) $Drugo1[1][$k2] = '-';?>
                                         <input type="text" readonly="true" value="<?= $Drugo1[1][$k2] ?>" />
                                         <input type="text" readonly="true" class="R-<?= $R ?>" />
                                         <input type="text" readonly="true" value="<?= $Drugo1[2][$k] ?>" />
@@ -267,22 +267,17 @@
                                     class="col-md-12 cechy cechyDrugorzedne-2 d-flex justify-content-between flex-column">
                                     <div>
                                         <input type="text" readonly="true" value="<?= $Drugo2[1]['STRENGTHBONUS'] ?>" />
-                                        <input type="text" readonly="true"
-                                            value="<?= $Drugo2[1]['TOUGHNESSBONUS'] ?>" />
+                                        <input type="text" readonly="true" value="<?= $Drugo2[1]['TOUGHNESSBONUS'] ?>" />
                                     </div>
                                     <div>
                                         <input type="text" readonly="true" value="<?= $Drugo2[1]['FATEPOINTS'] ?>" />
-                                        <input type="text" readonly="true"
-                                            value="<?= $Drugo2[1]['INSANITYPOINTS'] ?>" />
-                                        <input type="button" data-key="<?= $k ?>" data-toggle="modal"
-                                        class="btn btn-danger<?= $klasa ?>" value="&" />
+                                        <input type="text" readonly="true" value="<?= $Drugo2[1]['INSANITYPOINTS'] ?>" />
+                                        <input type="button" data-key="FATEINS" data-toggle="modal" class="btn btn-danger disabled" value="&" />
                                     </div>
                                     <div>
                                         <input type="text" readonly="true" value="<?= $Drugo2[1]['LUCKPOINTS'] ?>" />
-                                        <input type="text" readonly="true"
-                                            value="<?= $Drugo2[1]['MOTIVATEPOINTS'] ?>" />
-                                        <input type="button" data-key="<?= $k ?>" data-toggle="modal"
-                                        class="btn btn-danger<?= $klasa ?>" value="&" />
+                                        <input type="text" readonly="true" value="<?= $Drugo2[1]['MOTIVATEPOINTS'] ?>" />
+                                        <input type="button" data-key="LUCKMOTIVE" data-toggle="modal" class="btn btn-danger disabled" value="&" />
                                     </div>
                                 </div>
                             </div>

@@ -152,7 +152,7 @@ Class Chat extends BaseController {
 			$data['traitInit'] = $this->request->getPost('traitInit');
 			$data['wTrait'] = $this->request->getPost('wTrait');
 			$data['NazwaCechy'] = $this->chats->getNazwyCech()[$data['traitName']];
-			$data['titleBar2'] = $this->request->getPost('titleBar').$data['NazwaCechy'];
+			$data['titleBar2'] = (in_array($data['traitName'],array('FATEINS','LUCKMOTIVE'))) ? $data['NazwaCechy'] : $this->request->getPost('titleBar').$data['NazwaCechy'];
 		}
 		else $data['titleBar2'] = $this->request->getPost('titleBar');
 
@@ -241,7 +241,10 @@ Class Chat extends BaseController {
 		$data['traitAct']=$this->request->getPost('traitAct');
 		$data['expCost']=$this->request->getPost('expCost');
 		$model = new ChatsModel();
-		$model->ransomTrait($data);
+		$data['traitNamePL']=$model->getNazwyCech()[$data['traitName']];
+
+		// return json_encode($data);
+		return $model->ransomTrait($data);
 	}
 	public function ransom_pd() {
 		//$getSOrT=$this->request->getPost('getSOrT');//to ktore chcemy dodac

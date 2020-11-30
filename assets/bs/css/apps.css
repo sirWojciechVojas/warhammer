@@ -567,6 +567,7 @@ html {
 }
 #characterStats .cechyDrugorzedne-1>div>input {
   height: 1.45em;
+  /* border:1px solid red; */
 }
 
 #characterStats .cechyDrugorzedne-2 {
@@ -580,8 +581,8 @@ html {
 }
 
 #characterStats .cechyDrugorzedne-2>div {
-  padding-left: 21%;
-  border:1px solid #fff;
+  padding-left: 20.75%;
+  /* border:1px solid #fff; */
   height: 1.8rem;
 }
 
@@ -590,25 +591,29 @@ html {
 }
 
 #characterStats .cechyDrugorzedne-2>div:last-of-type {
-  margin-bottom: 1vh;
+  margin-bottom: .95vh;
 }
 
 #characterStats .cechyDrugorzedne-2>div>input {
-  height: 1.45em;border:1px solid red;padding: 0;
+  height: 1.45em;
+  /* height: 1.6em; */
+  /* border:1px solid red; */
+  padding: 0;
 }
 
 #characterStats .cechyDrugorzedne-2>div>input:nth-of-type(2) {
   width: 23.5%;
   font: normal 1vw Garamond, Verdana, sans-serif;
-  margin-left: 26.25%;
+  margin-left: 31%;
 }
 #characterStats .cechyDrugorzedne-2>div:first-of-type>input:nth-of-type(2) {
-  margin-left: 30.25%;
-
+  margin-left: 31%;
+  /* border:1px solid red; */
 }
 #characterStats .cechyDrugorzedne-2>div>input:last-of-type {
-  margin-left: 10%;
-  /* margin-right: 2%; */
+  margin-left: 0%;
+  margin-right: 0;
+  margin-top: -3%;
 }
 
 @media (max-width: 1366px) {
@@ -619,8 +624,24 @@ html {
     /*margin-left:10%;*/
     padding: 0;
     margin: 0;
-    /*border:1px solid #fff;*/
+    /* border:1px solid #fff; */
   }
+
+
+  #characterStats .cechyDrugorzedne-1>div {
+    padding-left: 20%;
+  }
+
+  #characterStats .cechyDrugorzedne-1>div:first-of-type {
+    /* margin-top: 12.75vh; */
+    /* border:1px solid #f00; */
+    margin-top: 2.5vh !important;
+  }
+
+  #characterStats .cechyDrugorzedne-1>div:last-of-type {
+    margin-bottom: 1.2vh;
+  }
+
   #characterStats .cechyDrugorzedne-2 {
     background: url('../../img/gfx/CechyDrugorzedne-2a.png') no-repeat;
     background-size: 85%;
@@ -636,12 +657,23 @@ html {
     padding-top: 0 !important;
   }
 
+  #characterStats .cechyDrugorzedne-2>div:first-of-type>input:nth-of-type(2) {
+    margin-left: 28%;
+  }
+
   #characterStats .cechyDrugorzedne-2>div:last-of-type {
-    margin-bottom: 7px;
+    margin-bottom: 6px;
   }
 
   #characterStats .cechyDrugorzedne-2>div>input:nth-of-type(2) {
-    margin-left: 30%;
+    /* border:1px solid red; */
+    margin-left: 28%;
+    margin-bottom: 4px;
+  }
+  #characterStats .cechyDrugorzedne-2>div>input:last-of-type {
+    margin-left: 0%;
+    margin-right: 0;
+    margin-top: 0;
   }
 }
 
