@@ -10,9 +10,9 @@
 <script type="module" src="<?="includes/" ?>Teal.js"></script>
 <script type="text/javascript" src="<?="libs/" ?>three.min.js"></script>
 <script type="text/javascript" src="<?="libs/" ?>cannon.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<?="libs/" ?>>jquery.ui.touch-punch.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="<?="libs/" ?>jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript" src="<?="libs/" ?>spectrum.js"></script>
 <link rel="stylesheet" type="text/css" href="<?="includes/themes/blue-felt/" ?>style.css">
 </head>
@@ -46,11 +46,11 @@
 		<div id="selector_div" style="display: none">
 			<div class="center_field">
 				<div>
-					<button id="clear" title="Reset Dice">❌</button>
-					<button id="save" title="Save Favorite">❤️</button>
+					<button id="clear" title="Wymaż wybrane kości">❌</button>
+					<button id="save" title="Dodaj do ulubionych">❤️</button>
 					<input type="text" id="set" name="set" value="1d100+1d10"></input>
-					<button id="rage" title="Add Rage">💢</button>
-					<button id="throw" title="Throw Dice">🎲</button>
+					<button id="rage" title="Dodaj Szał">💢</button>
+					<button id="throw" title="Rzuć Kością">🎲</button>
 				</div>
 				<div id="sethelp">
 					Kliknij na kostce, aby ją dodać! | Kliknij i przeciągnij kursor, aby rzucić!

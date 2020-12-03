@@ -624,7 +624,7 @@
         </button>
     </div>
     <div class="card-body">
-        <object data="<?=base_url();?>/roller" style="width:1000px; height:600px"></object>
+        <object name="dicerObject" data="<?=base_url();?>/roller" style="width:1000px; height:600px"></object>
     </div>
     <!-- <div class="card-footer">Adjusting by sWV</div> -->
 </div>

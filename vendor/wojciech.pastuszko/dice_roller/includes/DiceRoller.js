@@ -270,7 +270,7 @@ export class DiceRoller {
 			min: 0,
 			max: 100,
 			value: this.DiceFavorites.settings.volume.value,
-			create: function() {
+			create: function(event, ui) {
 				let DiceRoller = window.DiceRoller;
 				volume_handle.text($(this).slider("value"));
 				if(DiceRoller.DiceRoom) DiceRoller.DiceRoom.DiceBox.volume = parseInt(ui.value);

@@ -131,14 +131,17 @@
       }
       function updateUsers(users){
           var html = '';
-          var myId = <?= session()->get('ID') ?>;
+          var myId = <?= session()->get('USER_ID') ?>;
 
           for (let index = 0; index < users.length; index++) {
-            if(myId != users[index].c_user_id) html += '<li class="list-group-item">'+ users[index].c_name +'</li>';
+            // if(myId !== parseInt(users[index].c_user_id)) html += '<li class="list-group-item">['+ users[index].c_user_id+'/'+myId+']'+users[index].c_name +'</li>';
+            html += '<li class="list-group-item">'+users[index].c_name +'</li>';
+            // console.log( JSON.stringify(myId) );
+            // console.log( JSON.stringify(users[index].c_user_id) );
           }
 
           if(html == ''){
-            html = '<p>Oprócz Ciebie nie ma tu nikogo!</p>';
+            html = '<li class="list-group-item">Oprócz Ciebie nie ma tu nikogo!</li>';
           }
           $('#user-list').html(html);
         }
