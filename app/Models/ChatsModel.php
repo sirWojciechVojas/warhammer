@@ -53,7 +53,7 @@ class ChatsModel extends Model {
 		//return $this->db->table('w_bg_init')->where('ID', 4)->get()->getResultArray();
 		$bg[] = $this->db->table('w_bg_start')->where('ID',$this->ID)->get()->getRowArray();
 		$bg[] = $this->db->table('w_bg_current')->where('USEDNAME_ID',$this->ID)->get()->getRowArray();
-		//return $this->db->table('w_bg_current')->where('USEDNAME',$this->ID)->get()->getRowArray();;
+		//return $this->db->table('w_bg_current')->where('USEDNAME',$this->ID)->get()->getRowArray();
 		return $bg;
 	}
 	public function dupa() {
@@ -347,6 +347,7 @@ class ChatsModel extends Model {
 			}
 			$PD[$i]=($a+$b+$c+$d)*100;
 		}
+		$PD[3]= ($PD[3]==0) ? 1:$PD[3];
 		$PD[]=$PD[1]/$PD[3]*100;
 		$PD[]=$PD[2]/$PD[3]*100;
 		$PD[]=$PD[4]/$PD[3]*100;
@@ -392,20 +393,35 @@ class ChatsModel extends Model {
 		// $this->db->setDatabase('test');
 		// $this->db->setDatabase('test');
 		// $this->db->table('w_bg_current')->set(['CUREXP'=>98,'WEAPONSKILL'=>48])->where(['USEDNAME_ID'=>$this->ID])->update();
+
 		$builder=$this->db->table('w_bg_current');
-		$traitAct=$data['traitAct']%10;
-		$traitNew=($data['traitAct']+$data['traitInc'])%10;
-		$traitIncBonus=floor(($data['traitAct']+$data['traitInc'])/10);
 
 		// $gra= [$traitAct,$traitNew,$traitIncBonus];
 		// return json_encode($gra);
+		if(is_array($data['traitName'])){
+			$data['traitSum'] = array_map(function (...$arrays) {
+				return array_sum($arrays);
+			}, $data['traitAct'], $data['traitInc']);
+			$first=$data['traitName'][0];
+			$second=$data['traitName'][1];
+			$builder->set("$first",$data['traitSum'][0], false)->set("$second",$data['traitSum'][1], false);
+			$builder->where(['USEDNAME_ID'=>$this->ID]);
+			$builder->update();
+			$data['many']=count($data['traitName']);
+		}
+		else{
+			$traitAct=$data['traitAct']%10;
+			$traitNew=($data['traitAct']+$data['traitInc'])%10;
+			$traitIncBonus=floor(($data['traitAct']+$data['traitInc'])/10);
+			if($data['traitName']=='STRENGTH' && $traitNew<$traitAct) $builder->set('STRENGTHBONUS',$traitIncBonus, false);
+			else if($data['traitName']=='TOUGHNESS' && $traitNew<$traitAct) $builder->set('TOUGHNESSBONUS',$traitIncBonus, false);
 
-		if($data['traitName']=='STRENGTH' && $traitNew<$traitAct) $builder->set('STRENGTHBONUS',$traitIncBonus, false);
-		else if($data['traitName']=='TOUGHNESS' && $traitNew<$traitAct) $builder->set('TOUGHNESSBONUS',$traitIncBonus, false);
+			$builder->set("$data[traitName]","$data[traitName]+$data[traitInc]", false)->set('CUREXP',"CUREXP-$data[expCost]", false);
+			$builder->where(['USEDNAME_ID'=>$this->ID]);
+			$builder->update();
+			$data['many']=1;
+		}
 
-		$builder->set("$data[traitName]","$data[traitName]+$data[traitInc]", false)->set('CUREXP',"CUREXP-$data[expCost]", false);
-		$builder->where(['USEDNAME_ID'=>$this->ID]);
-		$builder->update();
 
 		return json_encode($data);
 		// $this->db->transComplete();

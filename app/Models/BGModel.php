@@ -12,7 +12,7 @@ class BGModel extends Model {
 		return $this->db->table('w_bg_start')->orderBy('ID','ASC')->get()->getResult();
 	}
 	public function getBGinfo2(){
-		return $this->db->table('w_bg_start')->select(['USEDNAME','SUBSTRING(HISTORY, 1, 170) as HISTORY'], FALSE)->orderBy('ID','ASC')->get()->getResult();
+		return $this->db->table('w_bg_start')->select(['USEDNAME','SUBSTRING(HISTORY, 1, 170) as HISTORY','CAMPAIGN_NAME'], FALSE)->orderBy('ID','ASC')->get()->getResult();
 	}
 	public function imgInTheDir($fName){
 		//$dir = base_url('../warhammer/assets/img/inventory/unit/').$fName;

@@ -148,11 +148,17 @@ Class Chat extends BaseController {
 		if($this->request->getPost('key')){
 			$data['traitName'] = $this->request->getPost('key');
 			$data['traitAct'] = $this->request->getPost('traitAct');
+			// $data['traitAct'] = (is_array($data['traitAct'])) ? json_encode($data['traitAct']) : $data['traitAct'];
+			$data['traitAct'] = (is_array($data['traitAct'])) ? htmlspecialchars(json_encode($data['traitAct'])) : $data['traitAct'];
+
 			$data['traitAdv'] = $this->request->getPost('traitAdv');
 			$data['traitInit'] = $this->request->getPost('traitInit');
 			$data['wTrait'] = $this->request->getPost('wTrait');
 			$data['NazwaCechy'] = $this->chats->getNazwyCech()[$data['traitName']];
 			$data['titleBar2'] = (in_array($data['traitName'],array('FATEINS','LUCKMOTIVE'))) ? $data['NazwaCechy'] : $this->request->getPost('titleBar').$data['NazwaCechy'];
+			$data['titleBar3'] = (preg_match("#&#",$data['NazwaCechy'])) ? explode("&",$data['NazwaCechy']) : $data['NazwaCechy'];
+			// $data['titleBar3'] = $data['NazwaCechy'];
+
 		}
 		else $data['titleBar2'] = $this->request->getPost('titleBar');
 
@@ -240,8 +246,13 @@ Class Chat extends BaseController {
 		$data['traitInc']=$this->request->getPost('traitInc');
 		$data['traitAct']=$this->request->getPost('traitAct');
 		$data['expCost']=$this->request->getPost('expCost');
+
 		$model = new ChatsModel();
-		$data['traitNamePL']=$model->getNazwyCech()[$data['traitName']];
+		if(is_array($data['traitName'])){
+			$data['traitNamePL'][0]=$model->getNazwyCech()[$data['traitName'][0]];
+			$data['traitNamePL'][1]=$model->getNazwyCech()[$data['traitName'][1]];
+		}
+		else $data['traitNamePL']=$model->getNazwyCech()[$data['traitName']];
 
 		// return json_encode($data);
 		return $model->ransomTrait($data);

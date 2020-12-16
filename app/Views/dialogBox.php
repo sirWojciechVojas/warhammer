@@ -24,23 +24,23 @@
 				<?php elseif($prefix == 'Trait'):
 					if(in_array($traitName,array('FATEINS','LUCKMOTIVE'))):
 						$predesc = 'Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, zmienisz wartość cechy <b>'.preg_replace('#&#','i/lub',$NazwaCechy).'</b> swojego Bohatera.';
-						$btnStyle = array('info','success'); $inputsDivs='';
-						foreach($btnStyle as $style):
-							$inputsDiv='<div class="btn-group d-flex justify-content-between" data-wounds="'.$HP->WOUNDS.'" data-hp="'.$HP->HP.'"><div class="predesc">Szczęście</div>';
+						$btnStyle = array('success','dark'); $inputsDivs='';
+						foreach($btnStyle as $v => $style):
+							$inputsDiv='<div class="btn-group d-flex justify-content-between"><div class="predesc2">'.$titleBar3[$v].'</div>';
 							foreach($HP->buttons as $k => $number):
 								$inputsDiv .='<div class="col-md-1"><button type="button" class="btn btn-'.$style.' addiction" value="'.$number.'">'.$number.'</button></div>';
 							endforeach;
-							$inputsDiv .='<div class="col-md-2"><input type="number" style="length:20px" readonly="true" value="0" max="'.$traitAdv.'"/></div><div class="col-md-2"><select class="form-control form-control-sm">
-								<option>Podwyższ</option>
-								<option>Obniż</option>
+							$inputsDiv .='<div class="col-md-2"><input type="number" readonly="true" value="0"/></div><div class="col-md-2"><select class="form-control form-control-sm">
+								<option value="+">Podwyższ</option>
+								<option value="-">Obniż</option>
 							</select></div>
 							</div>';
 							$inputsDivs.=$inputsDiv;
 						endforeach;
 						else :
-						$predesc = 'Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, zwiększysz cechę <br><?=$NazwaCechy?></br> swojego Bohatera, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!
-						<br>Koszt wykupu +5 punktów Cechy Głównej wynosi 100 PD (opłacalny).
-						<br>Koszt wykupu +1 punktu Cechy Głównej wynosi 23 PD (opcjonalny).';
+						$predesc = 'Po ustawieniu odpowiedniej wartości i naciśnięciu przycisku Wyślij, zwiększysz cechę <b>'.$NazwaCechy.'</b> swojego Bohatera, a cała operacja zostanie wyświetlona na czacie i będzie mogła zostać odrzucona przez Game Mastera!
+						<div class="predesc3">Koszt wykupu +5 punktów Cechy Głównej wynosi 100 PD (opłacalny).</div>
+						<div class="predesc3">Koszt wykupu +1 punktu Cechy Głównej wynosi 23 PD (opcjonalny).</div>';
 						$inputsDivs='<div class="btn-group d-flex justify-content-between" data-wounds="'.$HP->WOUNDS.'" data-hp="'.$HP->HP.'">';
 						foreach($HP->buttons as $k => $number):
 							$inputsDivs .='<div class="col-md-1"><button type="button" class="btn btn-info addiction" value="'.$number.'">'.$number.'</button></div>';
@@ -53,7 +53,7 @@
 					<div class="col-md-12 predesc"><?=$predesc?></div>
 					<div class="col-md-12 addictionBar">
 						<?= $inputsDivs?>
-					<?php if(!in_array($traitName,array('FATEINS','LUCKMOTIVE'))): ?>
+					<?php if(!in_array($traitName,array('FATEINS','LUCKMOTIVE'))): $traitAdv=$traitInit+$traitAdv-$traitAct;?>
 						<div class="d-flex justify-content-around badge badge-warning">
 							<div class="col-md-6" style="text-align:right;line-height:20px">Całkowity Koszt PD:</div>
 							<div class="col-md-6"><input type="number" readonly="true" value="0"/></div>
@@ -64,13 +64,13 @@
 						</div>
 						<div class="d-flex justify-content-around badge badge-success">
 							<div class="col-md-6" style="text-align:right;line-height:20px">Aktualny schemat rozwoju cechy:</div>
-							<div class="col-md-6"><input type="number" readonly="true" value="<?=($traitInit+$traitAdv-$traitAct)?>"/></div>
+							<div class="col-md-6"><input type="number" readonly="true" value="<?=$traitAdv?>"/></div>
 						</div>
 					<?php endif ?>
 					</div>
 					<input type="hidden" id="traitName" value="<?=$traitName?>"/>
 					<input type="hidden" id="traitAct" value="<?=$traitAct?>"/>
-					<input type="hidden" id="traitAdv" value="<?=($traitInit+$traitAdv-$traitAct)?>"/>
+					<input type="hidden" id="traitAdv" value="<?=$traitAdv?>"/>
 					<input type="hidden" id="wTrait" value="<?=$wTrait?>"/>
 					<input type="hidden" id="NazwaCechy" value="<?=$NazwaCechy?>"/>
                 <?php elseif($prefix == 'UmZd'): ?>

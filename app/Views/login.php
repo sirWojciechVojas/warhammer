@@ -28,11 +28,13 @@
 				<h4 class="text-center" style="margin-top: -10px">Wybierz Bohatera</h4><br>
 				<ul class="row">
 				<?php foreach($BG as $id): ?>
+					<?php if($id->CAMPAIGN_NAME==2): ?>
 					<li class="col-sm-10 col-md-12">
 						<img class="profile-img" src="<?= base_url("../warhammer/assets/img/$id->USEDNAME.png") ?>" alt="Avatar">
 						<h3><?=$id->USEDNAME;?></h3>
-						<h6><?= $id->HISTORY; ?>...</h6>
+						<h6><?=$id->HISTORY; ?>...</h6>
 					</li>
+					<?php endif ?>
 				<?php endforeach ?>
 				</ul>
 			</div>

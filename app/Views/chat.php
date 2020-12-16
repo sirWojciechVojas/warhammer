@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-6 offset-md-3 d-flex justify-content-center align-self-center" style="margin-top:2.5%;">
             <div id="draggable-chat" class="card card-height">
-                <?php foreach ($status as $s) : ?>
+                <?php foreach ($status as $s) : if($s->Id==1) continue; ?>
                 <div class="card-header d-flex justify-content-between">
                     <strong><?= $session->get('role'); ?> (<?= $session->get('user') ?>)</strong>
                     <a href="<?= base_url('login/logout') ?>"
@@ -272,12 +272,12 @@
                                     <div>
                                         <input type="text" readonly="true" value="<?= $Drugo2[1]['FATEPOINTS'] ?>" />
                                         <input type="text" readonly="true" value="<?= $Drugo2[1]['INSANITYPOINTS'] ?>" />
-                                        <input type="button" data-key="FATEINS" data-toggle="modal" class="btn btn-danger disabled" value="&" />
+                                        <input type="button" data-key="FATEINS" data-toggle="modal" class="btn btn-danger" value="&" />
                                     </div>
                                     <div>
                                         <input type="text" readonly="true" value="<?= $Drugo2[1]['LUCKPOINTS'] ?>" />
                                         <input type="text" readonly="true" value="<?= $Drugo2[1]['MOTIVATEPOINTS'] ?>" />
-                                        <input type="button" data-key="LUCKMOTIVE" data-toggle="modal" class="btn btn-danger disabled" value="&" />
+                                        <input type="button" data-key="LUCKMOTIVE" data-toggle="modal" class="btn btn-danger" value="&" />
                                     </div>
                                 </div>
                             </div>

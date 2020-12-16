@@ -20,7 +20,7 @@
   transform: scaleX(-1);
 }
 body {
-  background-image: url('../../img/bg1.png');
+  background-image: url('../../img/bg1.jpg');
   background-size: cover;
   overflow-x: hidden;
   height: 100%;
@@ -1063,8 +1063,10 @@ html {
   background: rgba(80, 100, 110, .3);
 }
 
+.predesc3{font-size:1.5vh !important;text-indent:0;}
+.predesc2{font-size:1.5vh !important;color: #fff;line-height: 4vh !important;padding-left: 1vh !important;width:16% !important;background-color: rgba(0, 0, 0, 0.75);margin:1% 0;}
 .predesc{
-   font-size:2vh !important;color: #fff; padding: 1.7vh; text-align:justify;text-indent:10%;background-color: rgba(0, 0, 0, 0.75);margin:1% 0;
+   font-size:2vh !important;color: #fff; padding: 1.7vh; text-align:justify !important;text-indent:10%;background-color: rgba(0, 0, 0, 0.75);margin:1% 0;
 }
 #UmZdModalCenter .desc{
   padding: 0;

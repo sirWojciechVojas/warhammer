@@ -14,9 +14,9 @@
 defined('APP_NAMESPACE') || define('APP_NAMESPACE', 'App');
 
 defined('BASE') || define('BASE','http://localhost');
-// defined('BASE') || define('BASE','http://ca046e327b3b.ngrok.io');
+// defined('BASE') || define('BASE','http://f080b8f6e24e.ngrok.io');
 defined('BASE_WS') || define('BASE_WS','ws://localhost');
-// defined('BASE_WS') || define('BASE_WS','ws://b3fbb020e94b.ngrok.io');
+// defined('BASE_WS') || define('BASE_WS','ws://3bf01e51f0b9.ngrok.io');
 defined('PORT_WS') || define('PORT_WS',9001);
 
 // defined('SERVER_NAME', $_SERVER['SERVER_NAME']);

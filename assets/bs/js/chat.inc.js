@@ -19,7 +19,8 @@ jQuery(function()
 	inventory('handy');
 	var minexp=$('#minexp').val();
 	var nowexp=$('#nowexp').val();
-	if(nowexp<minexp) $('#characterPanel .titleSpace .awans.btn-danger').addClass('disabled');
+	// alert(nowexp);
+	if(nowexp<minexp || nowexp==0) $('#characterPanel .titleSpace .awans.btn-danger').addClass('disabled');
 	else $('#characterPanel .titleSpace .awans.btn-danger').removeClass('disabled');
 
 		var how = $('#characterStats .cechy').css('height');
@@ -125,9 +126,17 @@ jQuery(function()
 		var wTrait = $(this).closest('.cechy').attr('class');
 		var key = $(this).data('key');
 		var titleBar = 'Wykup Cechy ';
-		var traitAct = $(this).prev().val();
-		var traitAdv = $(this).prev().prev().prev().val();
-		var traitInit = $(this).prev().prev().prev().prev().val();
+		if(wTrait.match('cechyDrugorzedne-2')){
+			var traitAct = [$(this).prev().prev().val(), $(this).prev().val()];
+			// var traitAct = $(this).prev().prev().val();
+			var traitAdv = $(this).prev().prev().prev().val();
+			var traitInit = $(this).prev().prev().prev().prev().val();
+		}
+		else{
+			var traitAct = $(this).prev().val();
+			var traitAdv = $(this).prev().prev().prev().val();
+			var traitInit = $(this).prev().prev().prev().prev().val();
+		}
 		// alert(traitAct+'|'+traitAdv+'|'+traitInit);
 		$.ajax({
 			url: 'chat/dialogBox',
@@ -590,17 +599,34 @@ function executeTrait(){
 		$(this).find('.modal-footer .btn-danger').text($(event.relatedTarget).closest('.cechy').data('button'));
 		var curexp =  $('#curexp').val();
 		if(curexp<expMax) $(this).find('.modal-footer .btn-danger').addClass('disabled').before('<div class="alert alert-danger p-1 btn-sm disabled">Nie posiadasz minimum wymaganej ilości '+expMax+' PD!</div>');
+		else if(expMax==0) $(this).find('.modal-footer .btn-danger').addClass('disabled');
 		$(this).find('.addictionBar .badge-primary input').val(curexp);
-		var addiction =$(this).find('.modal-dialog.cP button.addiction');
-		addiction.each(function(index){
-			$(this).removeClass('disabled');
-			if(index<4) {
-				$(this).text(symbol+$(this).val());
-			}
-			else if(index==4) {
-				$(this).val(0);
-			}
-		});
+		if(wTrait.match('cechyDrugorzedne-2')){
+			// alert('KOSSS');
+			var addiction =$(this).find('.modal-dialog.cP button.addiction');
+			addiction.each(function(index){
+				// alert(index%5);
+				$(this).removeClass('disabled');
+				if(index%5<4) {
+					$(this).text(symbol+$(this).val());
+				}
+				else if(index%5==4) {
+					$(this).val(0);
+				}
+			});
+		}
+		else{
+			var addiction =$(this).find('.modal-dialog.cP button.addiction');
+			addiction.each(function(index){
+				$(this).removeClass('disabled');
+				if(index<4) {
+					$(this).text(symbol+$(this).val());
+				}
+				else if(index==4) {
+					$(this).val(0);
+				}
+			});
+		}
 		// var addiction =$(this).find('.modal-body button.addiction');
 		// addiction.each(function(index){
 		// 	$(this).removeClass('disabled');
@@ -625,6 +651,40 @@ function executeTrait(){
 		// 		//alert(HP);
 		// 	}
 		// });
+	});
+	$('.btn-group').on('click','.btn-dark, .btn-success',function(event){
+		if($(this).hasClass('addiction')) {
+			if($(this).text()=='max' || $(this).text()=='reset'){
+				var a = 0;
+				var b = parseInt($(this).val());
+				$(this).closest('.modal-content').find('.modal-footer .btn-danger').addClass('disabled');
+			}
+			else {
+				var a = parseInt($(this).closest('.btn-group').find('input[type="number"]').val());
+				var b = parseInt($(this).text());
+				$(this).closest('.modal-content').find('.modal-footer .btn-danger').removeClass('disabled');
+			}
+			c=parseInt(a+b);
+			$(this).closest('.btn-group').find('input[type="number"]').val(c);
+		}
+	});
+	$('.btn-group').on('change','select',function(event){
+		var symbol = $(this).val();
+		var addiction = $(this).parents('.btn-group').find('.btn.addiction');
+		// $(this).closest('.btn-group').find('input[type="number"]').val(0);
+		$(this).closest('.btn-group').find('button:last-of-type').trigger('click');
+
+		addiction.each(function(index){
+			var i = symbol+Math.abs(parseInt($(this).val()));
+			$(this).removeClass('disabled');
+			if(index<4) {
+				$(this).val(i);
+				$(this).text(i);
+			}
+			else if(index==4) {
+				$(this).val(0);
+			}
+		});
 	});
 	$('.btn-group').on('click','.btn-info',function(event){
 		var wTrait=$('#wTrait').val();
@@ -686,18 +746,35 @@ function executeTrait(){
 	$('#TraitModalCenter .modal-footer').on('click','.btn-danger', function (event) {
 		$this = $(this);
 		var traitName = $('#traitName').val();
-		if(traitName=='FATEINS'){
-			traitName = ['FATEPOINTS','INSANITYPOINTS'];
+		if(traitName=='FATEINS' || traitName=='LUCKMOTIVE'){
+			traitName = (traitName=='FATEINS') ? ['FATEPOINTS','INSANITYPOINTS'] : ['LUCKPOINTS','MOTIVATEPOINTS'];
+			var traitInc = [];
+			traitInc[0] = parseInt($(this).parent().prev().find('.addictionBar .btn-group:first-of-type input[type="number"]').val());
+			traitInc[1] = parseInt($(this).parent().prev().find('.addictionBar .btn-group:last-of-type input[type="number"]').val());
+			var traitAct = JSON.parse($('#traitAct').val());
+			if(traitInc[0]==0)
+			{
+				traitName=traitName[1];
+				traitAct =traitAct[1];
+				traitInc =traitInc[1];
+			}
+			else if(traitInc[1]==0){
+				traitName=traitName[0];
+				traitAct =traitAct[0];
+				traitInc =traitInc[0];
+			}
+			var expCost = 0;
+			// var traitAct = traitInc = expCost = 1;
 		}
-		else if(traitName=='LUCKMOTIVE'){
-			traitName = ['LUCKPOINTS','MOTIVATEPOINTS'];
+		else{
+			// var NazwaCechy = $('#NazwaCechy').val();
+			var traitAct = parseInt($('#traitAct').val());
+			var traitInc = $(this).parent().prev().find('.addictionBar .btn-group input:last-of-type').val();
+			var expCost = $(this).parent().prev().find('.addictionBar .badge-warning input').val();
 		}
-		// var NazwaCechy = $('#NazwaCechy').val();
-		var traitAct = parseInt($('#traitAct').val());
-		var traitInc = $(this).parent().prev().find('.addictionBar .btn-group input:last-of-type').val();
-		var expCost = $(this).parent().prev().find('.addictionBar .badge-warning input').val();
 
-		// alert(traitName+'|'+traitInc+'|'+traitAct+'|'+expCost+'|'+NazwaCechy);
+		// alert(traitName+'|'+traitAct+'|'+traitInc+'|'+expCost);
+
 		$.ajax({
 			type: 'POST',
 			url: 'chat/ransom_trait',
@@ -715,14 +792,48 @@ function executeTrait(){
 
 				// location.reload();
 				// $('button[data-target="#exampleModalCenter"]').trigger('click');
-				if(data['traitInc']==1) var incP=' punkt';
-				else if(data['traitInc']>1 && data['traitInc']<=4) var incP=' punkty';
-				else var incP=' punktów';
 
-				MsgText('BG za <b>'+data['expCost']+'PD</b> wykupił <b>'+data['traitInc']+incP+'</b> cechy <b>'+data['traitNamePL']+'</b>');
+
+
+				// MsgText('BG za <b>'+data['expCost']+'PD</b> wykupił <b>'+data['traitInc']+incP+'</b> cechy <b>'+data['traitNamePL']+'</b>');
+				if(data['expCost']==0){
+					var iniMax = 2;
+					// alert(iniMax);
+					if(data['many']==2){
+						$Thisbtn.prev().val(parseInt(data['traitAct'][1])+parseInt(data['traitInc'][1]));
+						$Thisbtn.prev().prev().val(parseInt(data['traitAct'][0])+parseInt(data['traitInc'][0]));
+						for(var ini=0;ini<2;ini++){
+							var co = (data['traitInc'][ini]>0) ? 'zwiększył' : 'zmniejszył';
+							data['traitInc'][ini]=Math.abs(data['traitInc'][ini]);
+							if(data['traitInc'][ini]==1) var incP=' punkt';
+							else if(data['traitInc'][ini]>1 && data['traitInc'][ini]<=4) var incP=' punkty';
+							else var incP=' punktów';
+							// MsgText(traitName.length+'. BG zmienił o <b>'+data['traitInc'][ini]+incP+'</b> cechy <b>'+data['traitNamePL'][ini]+'</b>');
+							MsgText('BG '+co+' o <b>'+data['traitInc'][ini]+incP+'</b> cechę <b>'+data['traitNamePL'][ini]+'</b>');
+						}
+
+					}
+					else {
+						var co = (data['traitInc']>0) ? 'zwiększył' : 'zmniejszył';
+						data['traitInc']=Math.abs(data['traitInc']);
+						if(data['traitInc']==1) var incP=' punkt';
+						else if(data['traitInc']>1 && data['traitInc']<=4) var incP=' punkty';
+						else var incP=' punktów';
+						MsgText('BG '+co+' o <b>'+data['traitInc']+incP+'</b> cechę <b>'+data['traitNamePL']+'</b>');
+						if(data['traitName']=='FATEPOINTS' || data['traitName']=='LUCKPOINTS') $Thisbtn.prev().prev().val(parseInt(data['traitAct'])+parseInt(traitInc));
+						else if(data['traitName']=='INSANITYPOINTS' || data['traitName']=='MOTIVATEPOINTS') $Thisbtn.prev().val(parseInt(data['traitAct'])+parseInt(traitInc));
+					}
+
+				}
+				else{
+					if(data['traitInc']==1) var incP=' punkt';
+					else if(data['traitInc']>1 && data['traitInc']<=4) var incP=' punkty';
+					else var incP=' punktów';
+					MsgText('BG za <b>'+data['expCost']+'PD</b> wykupił <b>'+data['traitInc']+incP+'</b> cechy <b>'+data['traitNamePL']+'</b>');
+					$Thisbtn.prev().val(traitAct+parseInt(traitInc));
+				}
 
 				$this.closest('.modal-content').find('.close').trigger('click');
-				$Thisbtn.prev().val(traitAct+parseInt(traitInc));
 				$('#exampleModalCenter').modal('hide');
 			},
 			error: function(err) {
