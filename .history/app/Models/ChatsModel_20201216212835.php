@@ -226,7 +226,7 @@ class ChatsModel extends Model {
 		return $this->db->table('w_bg_'.$tbl.'_current')->getWhere(['BGNAME'=>$this->ID])->getResultArray();
 	}
 	public function getSorTCurrent($tbl,$tblAll) {
-		$tabela = $this->db->table('w_bg_'.$tbl.'_current')->join('w_'.$tblAll,'w_bg_'.$tbl.'_current.NAME = w_'.$tblAll.'.ID','left')->orderBy('w_bg_'.$tbl.'_current.NAME','ASC')->getWhere(['BGNAME'=>$this->ID])->getResultArray();
+		$tabela = $this->db->table('w_bg_'.$tbl.'_current')->join('w_'.$tblAll,'w_bg_'.$tbl.'_current.NAME = w_'.$tblAll.'.ID','left')->orderBy('NAME','DESC')->getWhere(['BGNAME'=>$this->ID])->getResultArray();
 		foreach($tabela as $key => $skill){
 				setlocale(LC_ALL, "en_US.utf8");
 				$skillBaseName = preg_replace("/'/", "", iconv("utf-8", "ascii//TRANSLIT", preg_replace('/\s+/', '', mb_strtolower(preg_replace('#\(różne\)#',null,$skill['NAME'])))));
@@ -248,8 +248,6 @@ class ChatsModel extends Model {
 		else return $this->db->table('w_bg_'.$tbl.'_current')->insertBatch($allInsert);
 	}
 	public function updateSorT($allUpdate,$id,$tbl) {
-		// $this->db->table('w_bg_'.$tbl.'_current')->update($allUpdate[0],['ID' => $id]);
-		// // return $this->db->error();
 		if(count($allUpdate)==1) return $this->db->table('w_bg_'.$tbl.'_current')->update($allUpdate[0],['ID' => $id]);
 		else return $this->db->table('w_bg_'.$tbl.'_current')->updateBatch($allUpdate,'ID');
 	}

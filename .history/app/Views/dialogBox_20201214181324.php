@@ -4,7 +4,7 @@
     	<div class="modal-content" id="HPMenu">
       		<div class="modal-header mh-5">
 				<div id="<?=$prefix?>ModalLongTitle" class="modal-title col-md-12 titleBar"><?=$titleBar2?>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding:3px 15px;margin-top:5px;background:#f00;color:#fff;">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding:3px 15px;margin-top:5px;background:#f00;color:#fff;">
           				<span aria-hidden="true">&times;</span>
         			</button>
 				</div>

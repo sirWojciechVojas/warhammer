@@ -35,6 +35,7 @@ Class Chat extends BaseController {
 			$table = $this->chats->getCechy();
 
 			$data['skills']= $this->chats->getAllSkills();
+			sksort($data['skills'], "NAME");
 			$data['talents']= $this->chats->getAllTalents();
 			$data['i']=0;
 			$Glowne_ini=array_splice($table[0], 14, 8);
@@ -162,7 +163,7 @@ Class Chat extends BaseController {
 
 		}
 		else $data['titleBar2'] = $this->request->getPost('titleBar');
-		// return json_encode($data);
+
 		$data['umzd'] = $this->request->getPost('umzd');
 		$data['titleBar'] = mb_strtolower($this->request->getPost('titleBar'));
 		$data['idUm'] = $this->request->getPost('idUm');
@@ -268,14 +269,11 @@ Class Chat extends BaseController {
 		if($details!=="") $getSOrT[0][0] .= '|'.$details;
 		// return 	json_encode($getSOrT);
 		// return json_encode($getSOrT);
-
-		// $this->db->trans_begin();
 		$this->chats->updatePD();
 		//$this->printr($getSOrT);
 		$getCurrent = $this->chats->getSorTCurrentId($co);//get Skills Or Talents Current
 		//$this->printr($getSOrT);
 		$this->awansLoop($getSOrT,$getCurrent,$co,1);
-		// $this->db->trans_complete();
 	}
 	public function awansLoop($SorT,$gSorTC,$tbl,$status){
 
@@ -326,15 +324,13 @@ Class Chat extends BaseController {
 
 		//$this->printr($getSkillsCurrent);
 		if(isset($allUpdate)){
-			// $bty=[$allUpdate,$id,$tbl,gettype(count($allUpdate))];
-			// $this->printr($bty);
-			// $this->printr($allUpdate);
-			return $this->chats->updateSorT($allUpdate,$id,$tbl);
+			//$this->printr($allUpdate);
+			$this->chats->updateSorT($allUpdate,$id,$tbl);
 		}
 		if(isset($allInsert)){
 			// $this->printr($allInsert);
 			//$this->printr($tbl);
-			return $this->chats->insertSorT($allInsert,$tbl);
+			$this->chats->insertSorT($allInsert,$tbl);
 		}
 
 	}
@@ -436,3 +432,4 @@ Class Chat extends BaseController {
 		return redirect()->to(base_url('chat/pending'));
 	}
 }
+

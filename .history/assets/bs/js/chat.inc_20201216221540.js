@@ -566,12 +566,12 @@ function executeUmZd(){
 			type: 'POST',
 			url: 'chat/ransom_pd',
 			data: {
-				idUm: idUm, details: details, co: co
+				: idUm, details: details, co: co
 			},
 			// dataType:"json",
 			success: function(data) {
 				// alert(JSON.stringify(data));
-				console.log(data);
+				//console.log(data);
 				// $('form[name="sendMessage"] input[name="message"]').hide();
 				// $('form[name="sendMessage"] input[name="message"]').val('BG wykupił '+what+': <b>'+SOrTName+'</b>');
 				// $('form[name="sendMessage"]').trigger('submit');

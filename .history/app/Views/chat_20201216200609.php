@@ -505,7 +505,7 @@
         <div class="col-md-10 abbListLtr">
             <?php foreach ($allMySkills as $k => $skill) :
 				$sec = (preg_match('#dowolność#', $skill['NAME'])) ? ' secList' : null;
-				$sec .= ($skill['STATUS'] == $skill['LEVEL']) ? ' triList disabled' : null;
+				$sec .= ($skill['STATUS'] >= '1') ? ' triList disabled' : null;
 			?>
             <div class="abbList<?= $sec ?>" data-toggle="tooltip" data-placement="right"
                 data-details="<?= $skill['DETAILS'] ?>" data-id="<?= $skill['ID'] ?>"

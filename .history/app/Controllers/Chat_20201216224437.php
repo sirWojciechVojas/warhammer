@@ -334,7 +334,7 @@ Class Chat extends BaseController {
 		if(isset($allInsert)){
 			// $this->printr($allInsert);
 			//$this->printr($tbl);
-			return $this->chats->insertSorT($allInsert,$tbl);
+			$this->chats->insertSorT($allInsert,$tbl);
 		}
 
 	}

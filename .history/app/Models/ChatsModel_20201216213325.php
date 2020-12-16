@@ -248,8 +248,6 @@ class ChatsModel extends Model {
 		else return $this->db->table('w_bg_'.$tbl.'_current')->insertBatch($allInsert);
 	}
 	public function updateSorT($allUpdate,$id,$tbl) {
-		// $this->db->table('w_bg_'.$tbl.'_current')->update($allUpdate[0],['ID' => $id]);
-		// // return $this->db->error();
 		if(count($allUpdate)==1) return $this->db->table('w_bg_'.$tbl.'_current')->update($allUpdate[0],['ID' => $id]);
 		else return $this->db->table('w_bg_'.$tbl.'_current')->updateBatch($allUpdate,'ID');
 	}

@@ -211,9 +211,7 @@ jQuery(function()
 			type: 'POST',
 			data: {prefix: 'UmZd', umzd: umzd, titleBar: titleBar, idUm: idUm, details: details },
 			success: function(response){
-				// var data = JSON.parse(response);
-				// console.log(response);
-				// alert(data['titleBar2']);
+				console.log(response);
 				$('body').append(response);
 				// Add response in Modal body
 				// activateTooltip();
@@ -548,7 +546,6 @@ function executeUmZd(){
 
 		// alert(titleBar);
 		// alert($(event.relatedTarget).attr('title'));
-
 		$("#UmZdModalLongTitle").html('Wykup '+closeBtn);
 	});
 	$('#UmZdModalCenter .modal-footer').on('click','.btn-danger', function (event) {
@@ -558,32 +555,32 @@ function executeUmZd(){
 		var details=parseInt($('#details').val());
 		var SOrTName=$('#HPMenu h3').text();
 		if(isNaN(details)) details="";
-		if(titleBar.match('Wykup Umiejętności')){var co = 'um'; var what ='umiejętność';}
-		else if(titleBar.match('Wykup Zdolności')){var co = 'zd'; var what = 'zdolność';}
+		if(titleBar=='Wykup Umiejętności'){var co = 'um'; var what ='umiejętność';}
+		else if(titleBar=='Wykup Zdolności'){var co = 'zd'; var what = 'zdolność';}
 		// alert($(event.relatedTarget).val());
-		// console.log(titleBar+'|'+idUm+'|'+details+'|'+co);
-		$.ajax({
-			type: 'POST',
-			url: 'chat/ransom_pd',
-			data: {
-				idUm: idUm, details: details, co: co
-			},
-			// dataType:"json",
-			success: function(data) {
-				// alert(JSON.stringify(data));
-				console.log(data);
-				// $('form[name="sendMessage"] input[name="message"]').hide();
-				// $('form[name="sendMessage"] input[name="message"]').val('BG wykupił '+what+': <b>'+SOrTName+'</b>');
-				// $('form[name="sendMessage"]').trigger('submit');
-				// location.reload();
-				MsgText('BG wykupił '+what+': <b>'+SOrTName+'</b>');
-				$this.closest('.modal-content').find('.close').trigger('click');
-				$('#exampleModalCenter').modal('hide');
-			},
-			error: function(err) {
-				console.log(JSON.stringify(err));
-			}
-		});
+		console.log(titleBar+'|'+idUm+'|'+details+'|'+co);
+		// $.ajax({
+		// 	type: 'POST',
+		// 	url: 'chat/ransom_pd',
+		// 	data: {
+		// 		idUm: idUm, details: details, co: co
+		// 	},
+		// 	// dataType:"json",
+		// 	success: function(data) {
+		// 		// alert(JSON.stringify(data));
+		// 		//console.log(data);
+		// 		// $('form[name="sendMessage"] input[name="message"]').hide();
+		// 		// $('form[name="sendMessage"] input[name="message"]').val('BG wykupił '+what+': <b>'+SOrTName+'</b>');
+		// 		// $('form[name="sendMessage"]').trigger('submit');
+		// 		// location.reload();
+		// 		MsgText('BG wykupił '+what+': <b>'+SOrTName+'</b>');
+		// 		$this.closest('.modal-content').find('.close').trigger('click');
+		// 		$('#exampleModalCenter').modal('hide');
+		// 	},
+		// 	error: function(err) {
+		// 		console.log(JSON.stringify(err));
+		// 	}
+		// });
 	});
 }
 function executeTrait(){

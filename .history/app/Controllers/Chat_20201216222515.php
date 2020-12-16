@@ -326,15 +326,13 @@ Class Chat extends BaseController {
 
 		//$this->printr($getSkillsCurrent);
 		if(isset($allUpdate)){
-			// $bty=[$allUpdate,$id,$tbl,gettype(count($allUpdate))];
-			// $this->printr($bty);
 			// $this->printr($allUpdate);
-			return $this->chats->updateSorT($allUpdate,$id,$tbl);
+			$this->chats->updateSorT($allUpdate,$id,$tbl);
 		}
 		if(isset($allInsert)){
 			// $this->printr($allInsert);
 			//$this->printr($tbl);
-			return $this->chats->insertSorT($allInsert,$tbl);
+			$this->chats->insertSorT($allInsert,$tbl);
 		}
 
 	}

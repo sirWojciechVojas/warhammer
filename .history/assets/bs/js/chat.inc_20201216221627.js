@@ -571,7 +571,7 @@ function executeUmZd(){
 			// dataType:"json",
 			success: function(data) {
 				// alert(JSON.stringify(data));
-				console.log(data);
+				//console.log(data);
 				// $('form[name="sendMessage"] input[name="message"]').hide();
 				// $('form[name="sendMessage"] input[name="message"]').val('BG wykupił '+what+': <b>'+SOrTName+'</b>');
 				// $('form[name="sendMessage"]').trigger('submit');
