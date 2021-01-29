@@ -395,6 +395,12 @@ background-position: 0px -1072px */
 .inventory-item.grain{                              background-position: -68px -510px;  }
 .inventory-item.cloth_outfit_blouse{                background-position: -238px -340px;  }
 
+.inventory-item.sabre{                              background-position: -306px -1972px;  }
+
+.inventory-item.Poe2_dagger_exsilver{               background-position: -102px -1190px;  } /* srebrny sztylet */
+.inventory-item.zz10_tooth_necklace{                background-position: 0px -2346px;  } /* naszyjnik - ząb brata */
+.inventory-item.zz11_studded_armor_icon{            background-position: -34px -2346px;  } /* kurta ćwiekowana */
+
 .inventory-item.deck{                               background-position: -612px -374px;  }
 .inventory-item.penhelms_affidavit{                 background-position: -102px -884px; }
 .inventory-item.Poe2_clothing_principi_02_icon{     background-position: -136px -1156px;  }

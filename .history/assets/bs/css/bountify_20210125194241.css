@@ -1,0 +1,452 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+/*
+Item atlas: http://i.imgur.com/ngGK5MF.png
+Table atlas: http://i.imgur.com/nOqKSbE.png
+*/
+.inventory-table a,.inventory-table a:link,.inventory-table a:visited {
+    color: #c00;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+.inventory-table a:hover {
+  color: #ff5c19;
+  text-decoration: underline;
+}
+.inventory-table a:active {
+  color: #6aff19;
+}
+input[type="range"]
+{
+    width: 400px;
+}
+
+
+
+.inventory-row.handySlots{padding: 0 8%;}
+.inventory-row.handySlots .inventory-cell{margin: 2% 1%;}
+
+.inventory-row.ABSlots:first-of-type{margin-top: 40px !important;}
+.inventory-row.ABSlots{margin-top: 22px !important;display:flex;justify-content: center;}
+@media (max-width: 1366px) {
+    .inventory-row.handySlots{padding: 0 1%;}
+    .inventory-row.handySlots .inventory-cell{margin: 0;}
+    .inventory-row.ABSlots:first-of-type{margin-top: 24px !important;}
+    .inventory-row.ABSlots{margin-top: 7px !important;}
+}
+.inventory-row
+{
+    display: flex;
+	flex-direction: row;
+	justify-content: flex-start; /* align items in Main Axis */
+	align-items: flex-start; /* align items in Cross Axis */
+    align-content: flex-start; /* Extra space in Cross Axis */
+}
+.myHcell
+{
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* align items in Main Axis */
+    align-items: center; /* align items in Cross Axis */
+    align-content: center; /* Extra space in Cross Axis */
+}
+.my-cell
+{
+    width: 400px;
+    height: 100px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* align items in Main Axis */
+    align-items: center; /* align items in Cross Axis */
+    align-content: center; /* Extra space in Cross Axis */
+    border:1px solid;
+}
+.my-cell:first-of-type{ width:100px;}
+.my-cell:nth-of-type(2){
+    justify-content: left; /* align items in Main Axis */
+    align-items: left; /* align items in Cross Axis */
+    align-content: left; /* Extra space in Cross Axis */
+}
+.inventory-cell
+{
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* align items in Main Axis */
+    align-items: center; /* align items in Cross Axis */
+    align-content: center; /* Extra space in Cross Axis */
+
+    background-image: url('../../img/inventory/nOqKSbE.png');
+    background-position: -229px -331px;
+}
+/* left */
+.inventory-cell:first-child
+{
+    width: 38px;
+    padding-left: 2px;
+
+    background-position: -190px -331px;
+}
+/* right */
+.inventory-cell:last-child
+{
+    width: 38px;
+    padding-right: 2px;
+
+    background-position: -266px -331px;
+}
+
+/* top ROW */
+.inventory-row:first-child .inventory-cell
+{
+    height: 38px;
+    padding-top: 2px;
+
+    background-position: -229px -292px;
+}
+/* bottom ROW */
+.inventory-row:last-child .inventory-cell
+{
+    height: 38px;
+    padding-bottom: 2px;
+
+    background-position: -229px -368px;
+}
+/* top left */
+.inventory-row:first-child .inventory-cell:first-child
+{
+    width: 38px;
+    height: 38px;
+
+    background-position: -190px -292px;
+}
+/* top right */
+.inventory-row:first-child .inventory-cell:last-child
+{
+    width: 38px;
+    height: 38px;
+
+    background-position: -266px -292px;
+}
+/* bottom left */
+.inventory-row:last-child .inventory-cell:first-child
+{
+    width: 38px;
+    height: 38px;
+
+    background-position: -190px -368px;
+}
+/* bottom right */
+.inventory-row:last-child .inventory-cell:last-child
+{
+    width: 38px;
+    height: 38px;
+
+    background-position: -266px -368px;
+}
+/* single horizontal */
+.inventory-row:only-child .inventory-cell
+{
+    height: 40px;
+
+    background-position: -613px -286px;
+}
+/* single horizontal left */
+.inventory-row:only-child .inventory-cell:first-child
+{
+    width: 38px;
+    height: 40px;
+
+    background-position: -574px -286px;
+}
+/* single horizontal right */
+.inventory-row:only-child .inventory-cell:last-child
+{
+    width: 38px;
+    height: 40px;
+
+    background-position: -650px -286px;
+}
+/* single vertical */
+.inventory-row .inventory-cell:only-child
+{
+    width: 40px;
+
+    background-position: -563px -463px;
+}
+/* single vertical top */
+.inventory-row:first-child .inventory-cell:only-child
+{
+    width: 40px;
+    height: 38px;
+
+    background-position: -563px -424px;
+}
+/* single vertical bottom */
+.inventory-row:last-child .inventory-cell:only-child
+{
+    width: 40px;
+    height: 38px;
+
+    background-position: -563px -500px;
+}
+/* By sir Wojciech Vojas */
+.inventory-row.severalSlots .inventory-cell,
+.inventory-row.severalSlots .inventory-cell:first-child,
+.inventory-row.severalSlots .inventory-cell:last-child
+{
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* align items in Main Axis */
+    align-items: center; /* align items in Cross Axis */
+    align-content: center; /* Extra space in Cross Axis */
+
+    background-image: url('../../img/inventory/nOqKSbE.png');
+    background-position: -30px -288px;
+}
+
+.inventory-row.severalSlots .inventory-cell.head  { background:  url('../../img/inventory/invB/A1.head.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.amulet{ background:  url('../../img/inventory/invB/A2.amulet.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.armR1,
+.inventory-row.severalSlots .inventory-cell.armR2 { background:  url('../../img/inventory/invB/A3.armR.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.belt  { background:  url('../../img/inventory/invB/A4.belt.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.ringR { background:  url('../../img/inventory/invB/A5&B5.ring.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.legR  { background:  url('../../img/inventory/invB/A6.legR.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.feet  { background:  url('../../img/inventory/invB/A7.feet.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+
+.inventory-row.severalSlots .inventory-cell.cape  { background:  url('../../img/inventory/invB/B1.cape.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.armor { background:  url('../../img/inventory/invB/B2.armor.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.armL1,
+.inventory-row.severalSlots .inventory-cell.armL2 { background:  url('../../img/inventory/invB/B3.armL.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.hands { background:  url('../../img/inventory/invB/B4.hands.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.ringL { background:  url('../../img/inventory/invB/A5&B5.ring.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.legL  { background:  url('../../img/inventory/invB/B6.legL.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.pupil { background:  url('../../img/inventory/invB/B7.pupil.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+
+.inventory-row.severalSlots .inventory-cell.quiver { background:  url('../../img/inventory/invB/H.quiver.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+.inventory-row.severalSlots .inventory-cell.quick { background:  url('../../img/inventory/invB/H.quick.png') 0, url('../../img/inventory/nOqKSbE.png') -30px -288px;background-size: contain, auto;background-blend-mode: screen;}
+/* single by singel */
+.inventory-row:only-child .inventory-cell:only-child
+{
+    width: 40px;
+    height: 40px;
+
+    background-position: -30px -288px;
+}
+/* ITEMS */
+.inventory-item
+{
+    width: 34px;
+    height: 34px;
+    /* background-image: url('../../img/inventory/626e171c9.png'); */
+    background-image: url('../../img/inventory/inventoryIcons.png');
+    background-repeat: no-repeat;
+
+    cursor: hand;
+    cursor: pointer;
+
+    -webkit-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+.inventory-item:hover{
+   background-color:rgba(30,80,190,0.4);
+}
+.inventory-item-sortable-placeholder
+{
+    display: none;
+}
+.inventory-item.ui-sortable-helper, .inventory-item.ui-draggable-dragging
+{
+    opacity: .6;
+}
+.inventory-item.magic::before{
+    content:'';
+    display:block;
+    width: 34px;
+    height: 34px;
+    background-image: url('../../img/inventory/BorderMagicV11.png');
+}
+.inventory-item.rare::before{
+    content:'';
+    display:block;
+    width: 34px;
+    height: 34px;
+    background-image: url('../../img/inventory/BorderRareV11.png');
+}
+.inventory-item.unique::before{
+    content:'';
+    display:block;
+    width: 34px;
+    height: 34px;
+    background-image: url('../../img/inventory/BorderUniqueV11.png');
+}
+
+.inventory-item.armorMail{              background-position:  -442px -1088px;}
+/* 1 kolumna */
+.inventory-item.adraCurrency{           background-position: 0px 0px;}
+.inventory-item.Oil{                    background-position: 0px -34px;}
+.inventory-item.Poultry{                background-position: 0px -68px;}
+.inventory-item.sweetPie{               background-position: 0px -102px;}
+.inventory-item.goldenCelery{           background-position: 0px -136px;}
+.inventory-item.Ruby{                   background-position: 0px -170px;}
+.inventory-item.Velune{                 background-position: 0px -204px;}
+/* background-position: 0px -238px
+background-position: 0px -272px
+background-position: 0px -306px
+background-position: 0px -340px
+background-position: 0px -374px
+background-position: 0px -408px
+background-position: 0px -442px
+background-position: 0px -476px
+background-position: 0px -510px
+background-position: 0px -544px
+background-position: 0px -578px
+background-position: 0px -612px
+background-position: 0px -646px
+background-position: 0px -680px
+background-position: 0px -714px
+background-position: 0px -748px
+background-position: 0px -782px
+background-position: 0px -816px
+background-position: 0px -850px
+background-position: 0px -884px
+background-position: 0px -918px
+background-position: 0px -952px
+background-position: 0px -986px
+background-position: 0px -1020px
+background-position: 0px -1054px
+background-position: 0px -1088px
+background-position: 0px -1087px
+background-position: 0px -1086px
+background-position: 0px -1085px
+background-position: 0px -1084px
+background-position: 0px -1083px
+background-position: 0px -1082px
+background-position: 0px -1081px
+background-position: 0px -1080px
+background-position: 0px -1079px
+background-position: 0px -1078px
+background-position: 0px -1077px
+background-position: 0px -1076px
+background-position: 0px -1075px
+background-position: 0px -1074px
+background-position: 0px -1073px
+background-position: 0px -1072px */
+
+
+
+.inventory-item.springBerries{          background-position: -102px -136px; }
+.inventory-item.vegetables{             background-position: -272px -68px;  }
+.inventory-item.fruits{                 background-position: -306px -68px;  }
+.inventory-item.meat{                   background-position: -306px -34px;  }
+.inventory-item.meatDish{               background-position: -272px -34px;  }
+
+/* .inventory-item.sword{                  background-position: -170px -544px; } */
+/* .inventory-item.sword_fine{             background-position: -170px -544px; } */
+.inventory-item.swordLyssandrasBlade{   background-position: -374px -544px; }
+.inventory-item.swordSheathedInAtumn{   background-position: -408px -544px; }
+
+.inventory-item.potionOfPower{          background-position: -374px -1496px;}
+.inventory-item.potionOfMmm{            background-position: -340px -1496px;}
+
+.inventory-item.warBow{                 background-position: -408px -340px; }
+
+.inventory-item.battleAxe{              background-position: -34px -476px;  }
+.inventory-item.battleAxeEofR{          background-position: -68px -476px;  }
+
+/*-------------------------------------------------------------------------------*/
+.inventory-item.bolts_standard {                    background-position: -544px -170px; }
+.inventory-item.bolts_standard2{                    background-position: -578px -170px; }
+.inventory-item.hat_tricorne{                       background-position:  0px -578px; }
+.inventory-item.Hat_Company_Captains_Cap{           background-position: -272px -544px; }
+.inventory-item.Poe2_clothing_principi_03_icon{     background-position: -204px -1156px;  }
+.inventory-item.cloak_red_magnificent{              background-position: -34px -340px;  }
+.inventory-item.gunpowder{                          background-position: -578px -510px;  }
+.inventory-item.horse_harness{                      background-position: -578px -646px;  }
+.inventory-item.robe_armor_white{                   background-position: -34px -1972px;  }
+.inventory-item.amulet_owl{                         background-position: -272px -68px;  }
+.inventory-item.book_tome_dirty{                    background-position: -374px -204px;  }
+.inventory-item.journal-black{                      background-position: -510px -1564px;  }
+.inventory-item.book_box_black{                     background-position:    0px -204px;  }
+
+.inventory-item.Poe2_grimoire_arkmyr_icon{          background-position: -544px -1360px; }
+.inventory-item.quill{                              background-position: -408px -1870px;  }
+.inventory-item.quill2{                             background-position: -442px -1870px;  }
+.inventory-item.rolled_letter{                      background-position: -238px -1972px;  }
+.inventory-item.goldrot_chew{                       background-position: -34px -510px;  }
+.inventory-item.grain{                              background-position: -68px -510px;  }
+.inventory-item.cloth_outfit_blouse{                background-position: -238px -340px;  }
+
+.inventory-item.sabre{                              background-position: -306px -1972px;  }
+
+.inventory-item.Poe2_dagger_exsilver{               background-position: -102px -1190px;  } /* srebrny sztylet */
+.inventory-item.zz10_tooth_necklace{                background-position: 0px -2346px;  } /* naszyjnik - ząb brata */
+.inventory-item.zz11_studded_armor_icon{            background-position: -34px -2346px;  } /* kurta ćwiekowana */
+
+.inventory-item.deck{                               background-position: -612px -374px;  }
+.inventory-item.penhelms_affidavit{                 background-position: -102px -884px; }
+.inventory-item.Poe2_clothing_principi_02_icon{     background-position: -136px -1156px;  }
+.inventory-item.Poe2_scale_iridescent_icon{         background-position: -544px -1734px;  }
+.inventory-item.Poe2_scale_iridescent_icon{         background-position: -102px -1156px;  }
+.inventory-item.crossbow{                           background-position: -170px -374px;  }
+.inventory-item.sword{                              background-position: -476px -2176px;  }
+.inventory-item.pistol{                             background-position:    0px -918px;  }
+.inventory-item.sword_fine{                         background-position: -646px -2176px;  }
+.inventory-item.knife{                              background-position: -578px -714px;  }
+.inventory-item.dagger{                             background-position: -408px -374px;  }
+.inventory-item.mail_armor{                         background-position: -612px -782px;  }
+.inventory-item.brigandine_armor_fine{              background-position: -510px -238px;  }
+.inventory-item.leather_armor{                      background-position: -544px -748px;  }
+.inventory-item.leather_armor_fine{                 background-position: -578px -748px;  }
+.inventory-item.leather_armor_icon{                 background-position: -102px -782px;  }
+.inventory-item.leather_armor03{                    background-position: -646px -748px;  }
+.inventory-item.scale_armor_exceptional{            background-position: -204px -2006px;  }
+.inventory-item.Poe2_padded_armor_rauatai_icon{     background-position: -238px -1666px;  }
+.inventory-item.Poe2_mail_armor_principi_icon{      background-position: -578px -1598px;  }
+.inventory-item.shield_small_fine{                  background-position: -170px -2108px;  }
+.inventory-item.Boots_slippers_of_the_assassin_icon{background-position: -34px -238px;  }
+.inventory-item.Poe2_ammunition_icon{               background-position: -68px -952px;  }
+.inventory-item.Poe2_hide_boar_icon{                background-position: -476px -1530px;  }
+.inventory-item.hide_armor_fine{                background-position: -476px -1530px;  }
+.inventory-item.Poe2_spirits_icon{                background-position: -170px -1768px;  } /* butelka wina */
+
+
+.inventory-item.zz01_brave_stone{                   background-position: -374px -2312px;  }
+.inventory-item.zz02_cloth_outfit_blouse_dirt{        background-position: -408px -2312px;  }
+.inventory-item.zz03_trap_snare{                    background-position: -442px -2312px;  }
+.inventory-item.zz04_antidotum{                     background-position: -476px -2312px;  }
+.inventory-item.zz05_book_box_black{                background-position: -510px -2312px;  }
+.inventory-item.zz06_boat01{                        background-position: -544px -2312px;  }
+.inventory-item.zz07_bullet{                        background-position: -578px -2312px;  }
+.inventory-item.zz08_fafik{                         background-position: -612px -2312px;  }
+.inventory-item.zz09_wooden_buckler{                background-position: -646px -2312px;  }
+
+
+.inventory-item.cape_07{                            background-position: -646px -272px;  }
+.inventory-item.Poe2_armor_scale_eder_icon{         background-position: -238px -986px;  }
+.inventory-item.Poe2_rope_icon{                     background-position: -306px -1734px;  }
+.inventory-item.Poe2_peculiar_dice_icon{            background-position: -510px -1666px;  }
+
+.inventory-item.sakiewka{                           background-position: -374px -1054px;  }
+.inventory-item.cos{                                background-position: 0px -34px;  }
+
+
+
