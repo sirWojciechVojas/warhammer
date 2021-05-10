@@ -299,12 +299,12 @@
                         <div class="row<?=($BG['NAME'] !== $BG['USEDNAME']) ? ' usedName': null; ?>">
                             <div class="col-md-12 title">Informacje o postaci</div>
                             <div class="col-md-12 name"><?= $BG['NAME'] ?></div>
-                            <?php if ($BG['NAME'] !== $BG['USEDNAME'] && $BG['NAME']!=='Tugor Barriksson') : ?>
+                            <?php if ($BG['NAME'] !== $BG['USEDNAME'] && $BG['NAME']!=='Tugor Barriksson')) : ?>
                             <div class="col-md-12 usedname"><i><b>Twoja fałszywa tożsamość:</b></i>
                                 <span><?= $BG['USEDNAME'] ?></span>
                             </div>
                             <?php elseif ($BG['NAME'] !== $BG['USEDNAME'] && $BG['NAME']=='Tugor Barriksson') : ?>
-                            <div class="col-md-12 usedname"><i><b>Twoje wcielenie:</b></i>
+                            <div class="col-md-12 usedname"><i><b>Twoja fałszywa tożsamość:</b></i>
                                 <span><?= $BG['USEDNAME'] ?></span>
                             </div>
                             <?php endif;
