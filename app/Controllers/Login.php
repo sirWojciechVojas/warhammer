@@ -25,7 +25,7 @@ class Login extends BaseController {
 												<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 												<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>Nie musisz się logować!</strong>
 											</div>');
-			return redirect()->to(base_url('chat'));
+			return redirect()->to(base_url('public/chat'));
 		} else {
 			$data['BG']=$this->BG->getBGinfo2();
 			// $data['BG'][0]->HISTORY = 'lihuj';
@@ -67,7 +67,7 @@ class Login extends BaseController {
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<i class="fa fa-exclamation-circle">&nbsp;</i><strong>Imię BG, Nazwa użytkownika i/lub hasło są niepoprawne!</strong>
 				</div>');
-				return redirect()->to(base_url('login'));
+				return redirect()->to(base_url('public/login'));
 			}else{
 				$model = new UserModel();
 
@@ -76,7 +76,7 @@ class Login extends BaseController {
 
 				$this->setUserSession($user);
 				//$session->setFlashdata('success', 'Successful Registration');
-				return redirect()->to(base_url('chat'));
+				return redirect()->to(base_url('public/chat'));
 			}
 
 		}
@@ -103,7 +103,7 @@ class Login extends BaseController {
 
 	function logout(){
 		$this->session->destroy();
-		return redirect()->to(base_url());
+		return redirect()->to(base_url('public/'));
 	}
 
 	/*===============================================================
@@ -169,7 +169,7 @@ class Login extends BaseController {
 				<i class="fa fa-exclamation-circle">&nbsp;</i> <strong>'. $this->validator->listErrors() .'</strong>
 				</div>');
 				$this->session->setFlashdata('last_post', $_POST);
-				return redirect()->to(base_url('login/register'));
+				return redirect()->to(base_url('public/login/register'));
 			}else{
 				$model = new UserModel();
 

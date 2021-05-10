@@ -1208,7 +1208,7 @@ function slidePanel(element){
 		},2000,'easeOutElastic');
 		element.toggleClass('docked');
 	}
-	panel.css({visibility: hidden});
+	//panel.css(visibility, "hidden");
 }
 function setPanel(element){
 	var width=parseFloat(element.parent().width())*(-1);

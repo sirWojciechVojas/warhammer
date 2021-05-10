@@ -61,13 +61,14 @@ Class Chat extends BaseController {
 			$data['RestInfo'] = $table;
 			$data['curCareer'] = $this->chats->getProfesje($data['BG']['CURCAREER_ID']);
 			$data['prevCareer'] = $this->chats->getProfesje($data['BG']['PREVCAREER_IDs']);
+			$data['prevCareer']['NAME']=($data['prevCareer']==null) ? '-' : $data['prevCareer']['NAME'];
 			$data['aSkills'] = $this->chats->getAvaibleSorT($data['curCareer']['AVAIBLESKILLS'],'umiejetnosci');
 			$data['aTalents'] = $this->chats->getAvaibleSorT($data['curCareer']['AVAIBLETALENTS'],'zdolnosci');
 			$data['mGold'] = $this->chats->getGold();
 			$data['diary'] = $this->chats->getDiary();
 			$data['ip'] = $this->request->getIPAddress();
 			//$this->printr($this->chats->dupa());
-			// $this->printr($this->chats->getDiary());
+			// $this->printr($data['BG']);
 /*
 			foreach($this->chats->getSkillsCurrentId() as $IdNum){
 				$data['allMySkills'][]=$data['skills'][$IdNum['NAME']-1];

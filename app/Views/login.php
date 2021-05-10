@@ -5,7 +5,7 @@
 				<button id="loginChanger" type="button" class="btn btn-default btn-lg GM" title="Zaloguj się jako Game Master"></button>
 				<h4 class="text-center" style="margin-top: -10px">Zaloguj</h4><br>
 				<img class="profile-img" src="<?= base_url('../warhammer/assets/img/photo.png') ?>" alt="Avatar">
-				<form class="form-signin" action="<?= base_url('login/auth') ?>" method="post">
+				<form class="form-signin" action="<?= base_url('public/login/auth') ?>" method="post">
 				<?= $session->getFlashdata('gagal'); ?>
 				<?= $session->getFlashdata('login'); ?>
 				<?= $session->getFlashdata('scc'); ?>

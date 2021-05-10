@@ -10,21 +10,21 @@
                 <?php foreach ($status as $s) : if($s->status == FALSE) $a++; if($a>1) continue; ?>
                 <div class="card-header d-flex justify-content-between">
                     <strong><?= $session->get('role'); ?> (<?= $session->get('user') ?>)</strong>
-                    <a href="<?= base_url('login/logout') ?>"
+                    <a href="<?= base_url('public/login/logout') ?>"
                         class="btn btn-danger btn-sm pull-right order-3 d-flex align-items-center">WYLOGUJ</a>
                     <?php if ($session->get('akses') == 'ADMIN') : ?>
                     <a href="<?= base_url('chat/pending') ?>"
                         class="btn btn-primary btn-sm order-1 d-flex align-items-center glyph-icon"
                         title="Zarządzanie użytkownikami">
                         <svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-person">
-                            <use xlink:href="<?= base_url('../warhammer/assets/bs') ?>/sprite.svg#si-glyph-person" />
+                            <use xlink:href="<?= base_url('assets/bs') ?>/sprite.svg#si-glyph-person" />
                         </svg>
                     </a>
                         <?php if ($s->status == TRUE) : ?>
                     <a href="<?= base_url('chat/maintenance') ?>"
                         class="btn btn-warning btn-sm order-2 d-flex align-items-center glyph-icon" title="Wyłącz Chat">
                         <svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-lock">
-                            <use xlink:href="<?= base_url('../warhammer/assets/bs') ?>/sprite.svg#si-glyph-lock" />
+                            <use xlink:href="<?= base_url('assets/bs') ?>/sprite.svg#si-glyph-lock" />
                         </svg>
                     </a>
                         <?php else : ?>
@@ -32,7 +32,7 @@
                         class="btn btn-success btn-sm order-2 d-flex align-items-center glyph-icon" title="Włącz Chat">
                         <svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-lock-unlock">
                             <use
-                                xlink:href="<?= base_url('../warhammer/assets/bs') ?>/sprite.svg#si-glyph-lock-unlock" />
+                                xlink:href="<?= base_url('assets/bs') ?>/sprite.svg#si-glyph-lock-unlock" />
                         </svg>
                     </a>
                         <?php endif; ?>
@@ -48,7 +48,7 @@
                         <div class="row">
                             <div class="col-md-1 justify-content-center align-self-center">
                                 <img data-toggle="tooltip" data-placement="left" data-original-title="<?= $session->get('role') ?><br>(<?= $session->get('user') ?>)" class="profile-img-mini"
-                                src="<?= base_url('../warhammer/assets/img/' . $session->get('role') . '.png') ?>" alt="Avatar">
+                                src="<?= base_url('assets/img/' . $session->get('role') . '.png') ?>" alt="Avatar">
                             </div>
                             <div class="col-md-11">
                                 <div class="card card-comment">
@@ -63,7 +63,7 @@
                         <div class="row">
                             <div class="col-md-1 justify-content-center align-self-center">
                                 <img data-toggle="tooltip" data-placement="left" data-original-title="<?= $c->role ?><br>(<?= $c->user ?>)" class="profile-img-mini"
-                                src="<?= base_url('../warhammer/assets/img/' . $c->role . '.png') ?>" alt="Avatar">
+                                src="<?= base_url('assets/img/' . $c->role . '.png') ?>" alt="Avatar">
                             </div>
                             <div class="col-md-11">
                                 <div class="card card-comment">
@@ -107,7 +107,7 @@
                     </div>
                     <?php endforeach ?>
                     <input id="bountify" type="hidden"
-                        value="<?= base_url('../warhammer/assets/bs/js') ?>/bountify.inc.js">
+                        value="<?= base_url('assets/bs/js') ?>/bountify.inc.js">
                 </div>
                 <?php endif ?>
             </div>
@@ -310,7 +310,7 @@
                             <div class="col-md-6 opis">Aktualna profesja:</div>
                             <div class="col-md-6 opis">Poprzednie profesje:</span></div>
                             <div class="col-md-6"><span><?= $curCareer['NAME'] ?></span></div>
-                            <div class="col-md-6"><span><?= $prevCareer['NAME'] ?></span></div>
+                            <div class="col-md-6"><span><?= @$prevCareer['NAME'] ?></span></div>
 
                             <div class="col-md-3 opis">Rasa:</div>
                             <div class="col-md-3 opis">Płeć:</div>
@@ -419,7 +419,7 @@
 </div>
 <div id="characterPanel">
     <div class="row avatar">
-        <div class="col-md-12 d-flex align-items-center justify-content-md-center"><img src="<?= base_url('../warhammer/assets/img/' . $session->get('USEDNAME') . '.png') ?>"/></div>
+        <div class="col-md-12 d-flex align-items-center justify-content-md-center"><img src="<?= base_url('assets/img/' . $session->get('USEDNAME') . '.png') ?>"/></div>
     </div>
     <div class="row background d-flex align-items-start justify-content-between">
         <div class="col-md-3 titleSpace"><button type="button" class="btn btn-primary btn-sm awans" data-toggle="modal" data-target="#exampleModalCenter">Panel BG</button></div>
@@ -464,7 +464,7 @@
         <div class="col-md-12">
             <button class="btn btn-primary glyph-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" class="si-glyph-two-arrow-left">
-                    <use xlink:href="<?= base_url('../warhammer/assets/bs') ?>/sprite.svg#si-glyph-two-arrow-left" />
+                    <use xlink:href="<?= base_url('assets/bs') ?>/sprite.svg#si-glyph-two-arrow-left" />
                 </svg>
             </button>
             <h4 class="text-center">Wybierz Bohatera</h4>
@@ -496,7 +496,7 @@
         </button>
     </div>
     <div class="card-body">
-        <object name="dicerObject" data="<?=base_url();?>/roller" style="width:1000px; height:600px"></object>
+        <object name="dicerObject" data="<?=base_url();?>/public/roller" style="width:1000px; height:600px"></object>
     </div>
     <!-- <div class="card-footer">Adjusting by sWV</div> -->
 </div>

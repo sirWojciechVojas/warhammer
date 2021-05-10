@@ -22,7 +22,7 @@ class App extends BaseConfig
 	|
 	*/
 
-	public $baseURL = BASE.'/warhammer/public';
+	public $baseURL = BASE.'/warhammer';
 	// public $baseURL = 'http://localhost/warhammer/public';
 
 	/*

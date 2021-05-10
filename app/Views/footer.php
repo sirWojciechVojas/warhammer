@@ -17,6 +17,10 @@
         }
 
         $(function () {
+            var SOCKET_CONNECTING = 0;
+            var SOCKET_OPEN = 1;
+            var SOCKET_CLOSING = 2;
+            var SOCKET_CLOSED = 3;
             var conn = new WebSocket('<?=$wsAddress . session()->get('USER_ID') ?>');
             console.log('<?=$wsAddress . session()->get('USER_ID') ?>');
 
@@ -55,7 +59,43 @@
                 return false
             })
 
-      })
+      }),
+      function ping(client) {
+        if (ws.readyState === SOCKET_OPEN) {
+          ws.send('__ping__');
+        } else {
+          console.log('Server - connection has been closed for client ' + client);
+          removeUser(client);
+        }
+      }
+      function removeUser(client) {
+
+        console.log('Server - removing user: ' + client)
+
+        var found = false;
+        for (var i = 0; i < userList.length; i++) {
+          if (userList[i].name === client) {
+            userList.splice(i, 1);
+            found = true;
+          }
+        }
+
+        //send out the updated users list
+        if (found) {
+          wss.broadcast(JSON.stringify({userList: userList}));
+        };
+
+        return found;
+      }
+
+      function pong(client) {
+        console.log('Server - ' + client + ' is still active');
+        clearTimeout(keepAlive);
+        setTimeout(function () {
+          ping(client);
+        }, keepAliveInterval);
+      }
+
       function MsgText(msg,conn=$conn){
           var messageObj = $('#sendInput input[name="message"]');
           // alert(msg)
@@ -117,7 +157,7 @@
           var color = (author=='Ja') ? '#179907' : '#076099';
           html=`<div class="row">
                 <div class="msg-img col-md-1 justify-content-center align-self-center">
-                  <img data-toggle="tooltip" data-placement="left" data-original-title="` + title + `" class="profile-img-mini" src="<?=dirname(base_url());?>/assets/img/` + imgName + `">
+                  <img data-toggle="tooltip" data-placement="left" data-original-title="` + title + `" class="profile-img-mini" src="<?=base_url();?>/assets/img/` + imgName + `">
                 </div>
                 <div class="col-md-11">
                   <div class="card card-comment">
@@ -134,8 +174,9 @@
           var myId = <?= session()->get('USER_ID') ?>;
 
           for (let index = 0; index < users.length; index++) {
-            // if(myId !== parseInt(users[index].c_user_id)) html += '<li class="list-group-item">['+ users[index].c_user_id+'/'+myId+']'+users[index].c_name +'</li>';
-            html += '<li class="list-group-item">'+users[index].c_name +'</li>';
+            //if(myId !== parseInt(users[index].c_user_id)) html += '<li class="list-group-item">['+ users[index].c_user_id+'/'+myId+']'+users[index].c_name +'</li>';
+            // html += '<li class="list-group-item">'+users[index].c_name +'</li>';
+            html += '<li class="list-group-item">'+ users[index].c_role+' ('+users[index].c_name +')</li>';
             // console.log( JSON.stringify(myId) );
             // console.log( JSON.stringify(users[index].c_user_id) );
           }
@@ -147,12 +188,12 @@
         }
   </script>
 <?php endif ?>
-	<script src="<?= base_url('../warhammer/assets/bs')?>/jquery-ui.min.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="<?= base_url('../warhammer/assets/bs/')?>/popper.min.js" type="text/javascript" charset="utf-8" async defer></script>
-  <script src="<?= base_url('../warhammer/assets/bs/js')?>/bootstrap.min.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="<?= base_url('assets/bs')?>/jquery-ui.min.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="<?= base_url('assets/bs/')?>/popper.min.js" type="text/javascript" charset="utf-8" async defer></script>
+  <script src="<?= base_url('assets/bs/js')?>/bootstrap.min.js" type="text/javascript" charset="utf-8" async defer></script>
 <?php if($methodName!=='pending') : ?>
-  <script src="<?= base_url('../warhammer/assets/bs/js')?>/<?=$js?>" type="text/javascript" charset="utf-8" async defer></script>
+  <script src="<?= base_url('assets/bs/js')?>/<?=$js?>" type="text/javascript" charset="utf-8" async defer></script>
 <?php endif ?>
-	<script src="<?= base_url('../warhammer/assets/bs/js')?>/footer.inc.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="<?= base_url('assets/bs/js')?>/footer.inc.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>
