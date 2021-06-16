@@ -13,10 +13,10 @@
 //
 defined('APP_NAMESPACE') || define('APP_NAMESPACE', 'App');
 
-defined('BASE') || define('BASE','http://localhost');
-// defined('BASE') || define('BASE','http://a81b5f52d454.ngrok.io');
-defined('BASE_WS') || define('BASE_WS','ws://localhost');
-// defined('BASE_WS') || define('BASE_WS','ws://ecd41ea1d96b.ngrok.io');
+// defined('BASE') || define('BASE','http://localhost');
+defined('BASE') || define('BASE','http://9ed6abae1a1d.ngrok.io');
+// defined('BASE_WS') || define('BASE_WS','ws://localhost');
+defined('BASE_WS') || define('BASE_WS','ws://194cb845e310.ngrok.io');
 defined('PORT_WS') || define('PORT_WS',9001);
 
 // defined('SERVER_NAME', $_SERVER['SERVER_NAME']);

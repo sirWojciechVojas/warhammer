@@ -4,7 +4,7 @@
 			<div class="account-wall LOG"><br>
 				<button id="loginChanger" type="button" class="btn btn-default btn-lg GM" title="Zaloguj się jako Game Master"></button>
 				<h4 class="text-center" style="margin-top: -10px">Zaloguj</h4><br>
-				<img class="profile-img" src="<?= base_url('../warhammer/assets/img/photo.png') ?>" alt="Avatar">
+				<img class="profile-img" src="<?= base_url('assets/img/photo.png') ?>" alt="Avatar">
 				<form class="form-signin" action="<?= base_url('public/login/auth') ?>" method="post">
 				<?= $session->getFlashdata('gagal'); ?>
 				<?= $session->getFlashdata('login'); ?>
@@ -19,7 +19,7 @@
 						<input name="pass" type="password" class="form-control" placeholder="Hasło" required>
 					</div>
 					<input type="submit" name="login" value="Zaloguj" class="btn btn-lg btn-primary btn-block">
-				<a href="<?= base_url('login/register') ?>" class="btn btn-lg btn-success btn-block">Rejestracja</a>
+				<a href="<?= base_url('public/login/register') ?>" class="btn btn-lg btn-success btn-block">Rejestracja</a>
 				</form>
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 				<?php foreach($BG as $id): ?>
 					<?php if($id->CAMPAIGN_NAME==3): ?>
 					<li class="col-sm-10 col-md-12">
-						<img class="profile-img" src="<?= base_url("../warhammer/assets/img/$id->USEDNAME.png") ?>" alt="Avatar">
+						<img class="profile-img" src="<?= base_url("assets/img/$id->USEDNAME.png") ?>" alt="Avatar">
 						<h3><?=$id->USEDNAME;?></h3>
 						<h6><?=$id->HISTORY; ?>...</h6>
 					</li>
