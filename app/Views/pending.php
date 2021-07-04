@@ -4,15 +4,15 @@
 			<div class="card card-height" style="margin-top:4%;">
 				<?php foreach($status as $s): if($s->status == FALSE) $a++; if($a>1) continue; ?>
 				<div class="card-header d-flex justify-content-between">
-					<strong><?=$session->get['user'];?></strong>
-					<a href="<?= base_url('login/logout') ?>" class="btn btn-danger btn-xs pull-right">WYLOGUJ</a>
+					<strong><?=$session->get('user');?></strong>
+					<a href="<?= base_url('public/login/logout') ?>" class="btn btn-danger btn-xs pull-right">WYLOGUJ</a>
 					<?php
 						if ($session->get('akses') == 'ADMIN') {
-							echo "<a href=".base_url('chat')." class=\"btn btn-primary btn-xs\" title=\"User Perlu Persetujuan\"><i class=\"glyphicon glyphicon-comment\"></i> Chatbox</a>";
+							echo "<a href=".base_url('public/chat')." class=\"btn btn-primary btn-xs\" title=\"User Perlu Persetujuan\"><i class=\"glyphicon glyphicon-comment\"></i> Chatbox</a>";
 							if($s->status == TRUE) {
-								echo "<a href=".base_url('chat/maintenance')." class=\"btn btn-warning btn-xs\" title=\"Disable Chat\"><i class=\"glyphicon glyphicon-lock\"></i> Maintenance</a>";
+								echo "<a href=".base_url('public/chat/maintenance')." class=\"btn btn-warning btn-xs\" title=\"Disable Chat\"><i class=\"glyphicon glyphicon-lock\"></i> Maintenance</a>";
 							} else {
-								echo "<a href=".base_url('chat/open')." class=\"btn btn-success btn-xs\" title=\"Enable Chat\"><i class=\"glyphicon glyphicon-ok\"></i> Otwórz Chat</a>";
+								echo "<a href=".base_url('public/chat/open')." class=\"btn btn-success btn-xs\" title=\"Enable Chat\"><i class=\"glyphicon glyphicon-ok\"></i> Otwórz Chat</a>";
 							}
 						}
 					?>
@@ -34,12 +34,12 @@
 							<td>
 								<?php
 									if ($o->status == TRUE) {
-										echo "<a href=".base_url("chat/nonaktif/$o->user")." class=\"btn btn-xs btn-warning\" title=\"Dezaktywuj\"><i class=\"glyphicon glyphicon-warning-sign\"></i></a>";
+										echo "<a href=".base_url("public/chat/nonaktif/$o->user")." class=\"btn btn-xs btn-warning\" title=\"Dezaktywuj\"><i class=\"glyphicon glyphicon-warning-sign\"></i></a>";
 									} else {
-										echo "<a href=".base_url("chat/aktif/$o->user")." class=\"btn btn-xs btn-success\" title=\"Aktywuj\"><i class=\"glyphicon glyphicon-check\"></i></a>";
+										echo "<a href=".base_url("public/chat/aktif/$o->user")." class=\"btn btn-xs btn-success\" title=\"Aktywuj\"><i class=\"glyphicon glyphicon-check\"></i></a>";
 									}
 								?>
-								<a href="<?= base_url("chat/delete_user/$o->user") ?>" class="btn btn-xs btn-danger" title="Usuń"><i class="glyphicon glyphicon-trash"></i></a>
+								<a href="<?= base_url("public/chat/delete_user/$o->user") ?>" class="btn btn-xs btn-danger" title="Usuń"><i class="glyphicon glyphicon-trash"></i></a>
 							</td>
 						</tbody>
 						<?php endforeach ?>

@@ -1,0 +1,35 @@
+CRITICAL - 2021-07-03 15:39:21 --> Trying to access array offset on value of type null
+#0 C:\xampp\htdocs\warhammer\app\Views\pending.php(7): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to acces...', 'C:\\xampp\\htdocs...', 7, Array)
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(220): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\Common.php(1217): CodeIgniter\View\View->render('pending', Array, true)
+#4 C:\xampp\htdocs\warhammer\app\Controllers\Chat.php(439): view('pending', Array)
+#5 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Chat->pending()
+#6 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#7 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2021-07-03 15:42:45 --> Call to undefined function App\Controllers\printr()
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Chat->pending()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-03 15:42:46 --> Call to undefined function App\Controllers\printr()
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Chat->pending()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-03 15:43:10 --> Call to undefined function App\Controllers\printr()
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Chat->pending()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-03 15:43:11 --> Call to undefined function App\Controllers\printr()
+#0 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(936): App\Controllers\Chat->pending()
+#1 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Chat))
+#2 C:\xampp\htdocs\warhammer\vendor\codeigniter4\framework\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\warhammer\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}

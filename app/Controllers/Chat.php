@@ -436,6 +436,7 @@ Class Chat extends BaseController {
 			$js['methodName']=$this->router->methodName();
 
 			echo view('header');
+			// $this->printr($data['session']);
 			echo view('pending', $data);
 			echo view('footer',$js);
 		}
