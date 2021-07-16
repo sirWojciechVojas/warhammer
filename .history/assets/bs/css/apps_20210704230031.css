@@ -1812,8 +1812,7 @@ button.BG:hover {
 #diceBox.btn-group > div,
 #diceBox.btn-group > div .btn{
   width: 50px;
-  font-size: 1rem;
-  padding: 0;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 1366px) {

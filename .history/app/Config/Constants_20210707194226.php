@@ -14,7 +14,7 @@
 defined('APP_NAMESPACE') || define('APP_NAMESPACE', 'App');
 
 // defined('BASE') || define('BASE','http://localhost');
-defined('BASE') || define('BASE','http://a759a34999bd.ngrok.io');
+defined('BASE') || define('BASE','http://a759a34999bd.ngrok.io/warhammer/public');
 // defined('BASE_WS') || define('BASE_WS','ws://localhost');
 defined('BASE_WS') || define('BASE_WS','ws://aa293a495620.ngrok.io');
 defined('PORT_WS') || define('PORT_WS',9001);

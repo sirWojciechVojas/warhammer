@@ -1718,7 +1718,7 @@ button.BG:hover {
 }
 
 .card.card-height {
-  margin-top:5%;
+  margin-top:3%;
   max-width: 523px;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -1803,17 +1803,16 @@ button.BG:hover {
   position: fixed;
   top:50%;
   transform: translate(0, -50%);
-  left:.5%;
+  left:1%;
 }
 #diceBox.btn-group > div{
   padding: .2rem 0 !important;
-  height: 50px;
+  height: 60px;
 }
 #diceBox.btn-group > div,
 #diceBox.btn-group > div .btn{
-  width: 50px;
-  font-size: 1rem;
-  padding: 0;
+  width: 60px;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 1366px) {
@@ -1838,9 +1837,6 @@ button.BG:hover {
 @media (max-width: 1280px) {
   .tooltip-inner h4.umzd{
     font: normal 2.25vh Garamond, Verdana, sans-serif;
-  }
-  .card.card-height {
-    margin-top: 3%;
   }
   #diceBox.btn-group > div{
     padding: .2rem 0 !important;
