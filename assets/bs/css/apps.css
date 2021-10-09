@@ -65,6 +65,10 @@ body {
 body,
 html {
   height: 100%;
+  /* min-height: 200vh; */
+}
+.btn-lg {
+  padding: 13px 16px;
 }
 #users{
   position: fixed;
@@ -135,13 +139,15 @@ html {
 #HPMenu .modal-footer{border-style: none;}
 
 #HPMenu .modal-header,
-#characterPromotion .modal-header {
+#characterPromotion .modal-header,
+#trading .modal-header {
   padding: 0;
   border-style: none;
 }
 
 #HPMenu .titleBar ,
-#characterPromotion .titleBar {
+#characterPromotion .titleBar,
+#trading .titleBar {
   background: url('../../img/titleBar-center.png');
   background-size: contain;
   width: 100%;
@@ -153,12 +159,14 @@ html {
 }
 
 #HPMenu .title:first-of-type,
-#characterPromotion .title:first-of-type {
+#characterPromotion .title:first-of-type,
+#trading .title:first-of-type{
   margin-top: 8%;
 }
 
 #HPMenu .title,
-#characterPromotion .title {
+#characterPromotion .title,
+#trading .title {
   width: 100%;
   /*height:5%;*/
   text-align: center;
@@ -181,7 +189,8 @@ html {
   color: #fff;
   /*border:1px solid;*/
 }
-#characterStats {
+#characterStats,
+#tradingStats {
   /* background: url('../../img/inventory/characterExample.png') no-repeat center center fixed; */
   background: url('../../img/CharacterStats-bg.jpg') no-repeat;
   background-size: cover;
@@ -227,7 +236,8 @@ html {
   cursor: auto !important;
 }
 
-#characterStats .cPanel {
+#characterStats .cPanel,
+#trading .cPanel {
   position: relative;
   /*  height:805px !important;
     min-height:805px !important;
@@ -236,7 +246,8 @@ html {
 
 }
 
-#characterStats .cLeft {
+#characterStats .cLeft,
+#trading .cLeft {
   background: url('../../img/frameUni.png'), url('../../img/inventory/equipmentLeftBg.png') left top no-repeat, url('../../img/inventory/equipmentRightBg.png') right top no-repeat, url('../../img/inventory/equipmentBottomBg2.png') center bottom 25px no-repeat;
   /*background-size: 100% auto,auto auto,auto auto,auto auto;*/
   background-size: 100% 100%, 22.5%, 22.5%, 90%;
@@ -951,7 +962,8 @@ html {
   border: none;
   cursor: pointer !important;
 }
-#characterStats .cRight {
+#characterStats .cRight,
+#trading .cRight {
   background: url('../../img/frameUni.png'), url('../../img/inventory/parchmentRight.png') center top no-repeat, url('../../img/inventory/parchmentRight.png') center bottom no-repeat;
   background-size: 100% 100%, 96% 80%, 96% 25%;
   position: relative;
@@ -1431,6 +1443,17 @@ html {
   line-height: 35px;
   padding: 0;
   z-index:5;
+}
+#characterPanel .textSpace .iBottom .btn-group {
+  background: url('../../img/gfx/navbar_button.png') no-repeat !important;
+  background-size: cover !important;
+}
+#characterPanel .textSpace .iBottom .btn-group .btn:hover{
+  background-color: rgba(250, 200, 70, 0.3);
+}
+#characterPanel .textSpace .iBottom .btn-group .btn > i{
+  fill:#fff;
+  color:#fff;
 }
 @media (max-width: 1366px) {
   #characterPanel {

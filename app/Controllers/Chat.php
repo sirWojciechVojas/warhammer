@@ -378,6 +378,10 @@ Class Chat extends BaseController {
 		return $wynik;
 	}
 
+	public function trading() {
+		$data['swv'] = 'sirWojciech';
+		return view('trading',$data);
+	}
 	public function slot() {
 		$data['slot'] = $this->request->getPost('slot');
 		$data['invid'] = $this->request->getPost('invid');

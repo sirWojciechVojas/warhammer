@@ -426,8 +426,7 @@
         <div class="col-md-12 d-flex align-items-center justify-content-md-center"><img src="<?= base_url('assets/img/' . $session->get('USEDNAME') . '.png') ?>"/></div>
     </div>
     <div class="row background d-flex align-items-start justify-content-between">
-        <div class="col-md-3 titleSpace"><button type="button" class="btn btn-primary btn-sm awans" data-toggle="modal" data-target="#exampleModalCenter">Panel BG</button></div>
-        <div class="row col-md-6 titleBar">
+        <div class="row col-md-6 offset-md-3 titleBar">
             <div class="col-md-12 HPBarPlace">
                 <div class="col-md-12 HPBar" style="width:<?= $HP->HPpercent ?>%;"></div>
             </div>
@@ -436,11 +435,22 @@
                 <?= $session->get('USEDNAME') ?></div>
             <div style="width:6.75%;" data-toggle="modal" data-target="#HPModalCenter" data-symbol="1">+</div>
         </div>
-        <div class="col-md-3 titleSpace" align="right"><button class="btn btn-danger btn-sm awans disabled"
-                data-toggle="modal" data-target="#ModalCenter">Awansuj</button></div>
         <div class="row col-md-12 textSpace">
             <div class="iBottom mx-auto d-flex justify-content-center align-items-center">
-                <div class="inventory-table" id="discard-inventory"></div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn" title="Główna" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"><i class="bi-house-door-fill"></i></button>
+                    <button type="button" class="btn" title="Panel BG" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi-person-square"></i></button>
+                    <button type="button" class="btn disabled" title="Mapa"><i class="bi-map-fill"></i></button>
+                    <button type="button" class="btn disabled" title="Historia BG"><i class="bi-journals"></i></button>
+                    <button type="button" class="btn disabled" title="Ekwipunek"><i class="bi-person-square"></i></button>
+                    <button type="button" class="btn disabled" title="Cechy BG"><i class="bi-person"></i></button>
+                    <button type="button" class="btn disabled" title="Notatki"><i class="bi-journal"></i></button>
+                    <button type="button" class="btn" title="Sklep" data-toggle="modal" data-target="#trading"><i class="bi-shop"></i></button>
+                    <button type="button" class="btn disabled" title="Rzuty"><i class="bi-dice-6"></i></button>
+                    <button type="button" class="btn disabled" title="Czary"><i class="bi-person-square"></i></button>
+                    <button type="button" class="btn" title="Awansuj" data-toggle="modal" data-target="#ModalCenter"><i class="bi-person-fill"></i></button>
+                    <button type="button" class="btn disabled" title="Ustawienia"><i class="bi-gear"></i></button>
+                </div>
             </div>
             <!-- <div class="col-md-12 offset-md-1 textBar">Pasek Punktów Doświadczenia</div> -->
         </div>
@@ -503,4 +513,29 @@
         <object name="dicerObject" data="<?=base_url();?>/public/roller" style="width:1000px; height:600px"></object>
     </div>
     <!-- <div class="card-footer">Adjusting by sWV</div> -->
+</div>
+<div class="modal fade modal-wide col-md-8 offset-md-2" id="trading" tabindex="-1" role="dialog" aria-labelledby="tradingModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog cS modal-dialog-centered mw-100" role="document">
+        <div class="modal-content" id="tradingStats">
+            <div class="modal-header mh-5">
+                <div id="tradingModalLongTitle" class="modal-title col-md-12 titleBar">Sklep Buy&Sell
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body cS" style="padding:0 15px;">
+                <div class="row h-100 d-flex">
+                    <div class="col-md-6 cPanel cLeft">nice</div>
+                    <div class="col-md-6 cPanel cRight">nice</div>
+                </div>
+            </div>
+            <div class="col-md-12 modal-footer cBottom d-flex justify-content-between">
+                <div class="col-md-3">GM</div>
+                <div class="col-md-3">Wycena Kupca</div>
+                <div class="col-md-3">Koszt</div>
+                <div class="col-md-3">Targowanie</div>
+            </div>
+        </div>
+    </div>
 </div>

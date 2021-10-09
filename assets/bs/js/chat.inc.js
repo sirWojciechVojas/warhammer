@@ -28,7 +28,7 @@ jQuery(function()
 		//var how = $('.coto').css('background');
 		// alert(W1+' x '+H1);
 
-	$('button[data-target="#exampleModalCenter"]').trigger('click');
+	// $('button[data-target="#exampleModalCenter"]').trigger('click');
 	// $('button[data-target="#ModalCenter"]').trigger('click');
 	// $('#characterStats .cCenter').on('click','.skill-talent[data-toggle="tooltip"]', function (e) {
 	// alert('wow');
@@ -233,7 +233,7 @@ jQuery(function()
 		// alert(e.type);
 		$(this).prevAll().eq(1).find('.HPBar').toggleClass('ShineClass');
 	});
-	activateTooltip();
+	// activateTooltip(); // 1st
 	$('#characterChanger').on('click','li', function (e) {
 		var ID=$(this).attr('data-id');
 		var usedname=$(this).attr('data-usedname');
@@ -278,6 +278,31 @@ jQuery(function()
 		// 	}
 		// });
 	// });
+	$('#trading').on('show.bs.modal', function (e) {
+		$this = $(this);
+		$.ajax({
+			type: 'POST',
+			url: 'chat/trading',
+			data: {
+				ID: 94,
+			},
+			/*dataType:"json",*/
+			success: function(data) {
+				//var data = JSON.parse(data);
+				//alert(JSON.stringify(data));
+				//$this.html(data);
+				// console.log(data);
+				/*
+				$this.parent().html(data).animate({scrollTop: 0}, 0);
+				activateTooltip();
+				tooltipCss();
+				*/
+			},
+			error: function(err) {
+				console.log(JSON.stringify(err));
+			}
+		});
+	});
 	$('#exampleModalCenter').on('hide.bs.modal', function (e) {
 		setPanel($('#skillsPanel').find('.footerBar input'));
 		setPanel($('#talentsPanel').find('.footerBar input'));
@@ -340,7 +365,7 @@ jQuery(function()
 			success: function(data) {
 				//alert(data);
 				$this.parent().html(data).animate({scrollTop: 0}, 0);
-				activateTooltip();
+				// activateTooltip(); //2nd
 				tooltipCss();
 				$('[data-toggle="tooltip"]').tooltip('enable');
 				//return false;
@@ -400,7 +425,7 @@ jQuery(function()
 		// 	}
 		// });
 	});
-	$('.btn-group').on('click','.btn:not(.btn-success):not(.btn-danger)',function(){
+	$('#diceBox .btn-group').on('click','.btn:not(.btn-success):not(.btn-danger)',function(){
 		// alert($(this).parent().attr('class'));
 		var dice=$(this).text();
 		// alert(dice);
@@ -413,10 +438,10 @@ jQuery(function()
 function inventory(type){
 	if(type=='discard'){ var w=$('#characterPanel').width(); var a = 1.8; var nrRow=1; }
 	else if(type=='personal'){ var w=$('#characterStats .cLeft .iBottom').width(); var a = 1.7; var nrRow=3;}
-	else if(type=='ground'){ var w=$('#characterStats .cLeft .iBottom').width(); var a = 12; var nrRow=4;}
+	else if(type=='ground'){ var w=$('#characterStats .cLeft .iBottom').width(); var a = 10; var nrRow=4;}
 	else {var w=0; var a=1; var nrRow=0;}
 	// var w=$('#characterPanel').width();
-	//console.info(w);
+	// console.log(w);
 	var bountify= $('#bountify').val();
 	$.ajax({
 		type: 'POST',
@@ -447,10 +472,13 @@ function inventory(type){
 					// });
 					if(invBG[slot] !== undefined){
 						// invBG[slot]['NAME']+='<div class="fixed-bottom">Szczegóły: PPM.</div>';
-						$(this).html('<div class="inventory-item '+invBG[slot]['IMG_CLASS']+' myPointer" data-item-type="'+invBG[slot]['ITEM_CATEGORY']+'" data-invid="'+invBG[slot]['ID']+'"  data-toggle="tooltip" data-original-title="'+invBG[slot]['NAME']+'"></div>');
+						$(this).html('<div class="inventory-item '+invBG[slot]['IMG_CLASS']+' myPointer" data-item-type="'+invBG[slot]['ITEM_CATEGORY']+'" data-invid="'+invBG[slot]['ID']+'" data-toggle="tooltip" data-original-title="'+invBG[slot]['NAME']+'"></div>');
+
 					}
 					// console.log(y);
 				});
+				activateTooltip(element); //3rd to open (1)
+				tooltipCss();
 			} else if(type=='A' || type=='B' || type=='handy'){
 				var element = $('#'+type+'-inventory .inventory-cell');
 				//alert('FUCK');
@@ -465,26 +493,40 @@ function inventory(type){
 					}
 					//  alert($(this).attr('class').split(' ')[1]);
 				});
+				activateTooltip(element); //3rd to open (2)
+				tooltipCss();
 			}
 			$.getScript(bountify);
-			activateTooltip();
-
 			//$('.tooltip.show .tooltip-inner').addClass('gFrame');
-			tooltipCss();
+			//tooltipCss();
 			//return false;
 		},
 		error : function(err) {
 			console.log(JSON.stringify(err));
 		}
+
+	});
+}
+function activateTooltip(element){
+	//console.log(element.find('div[data-toggle="tooltip"]').data('original-title'));
+	element.find('[data-toggle="tooltip"]').tooltip({
+		html: true,
+		animated : 'fade',
+   		container: 'body',
+		boundary: 'viewport'
 	});
 }
 function tooltipCss(){
 	$('[data-toggle="tooltip"]').on('hide.bs.tooltip', function (e) {
-		//alert('supcio');
+		$('.tooltip-inner').hide();
+	});
+	$('[data-toggle="tooltip"]').on('shown.bs.tooltip', function (e) {
+		// console.log($('.tooltip').html());
+		$('.tooltip-inner').show();
 	});
 	$('[data-toggle="tooltip"]').on('inserted.bs.tooltip', function (e) {
 		//alert($(this).hasClass('abbList'));
-		//alert($(this).attr('class'));
+		// console.log($(this).attr('class'));`
   		if($(this).hasClass('abbList')){
 			$('.tooltip-inner h4').css({
 				'text-align':'justify',
@@ -514,22 +556,16 @@ function tooltipCss(){
 			$('.tooltip-inner').parent().addClass('hFrame');
 			$('.tooltip-inner').addClass('gFrame').prev().remove();
 			$('.tooltip-inner').append('<div class="fixed-bottom">Szczegóły: PPM.</div>');
-			// $('.tooltip.show,.tooltip-inner,.tooltip-inner h3,.tooltip-inner h4').css({
-			// 	'width':'300px',
-			// 	'max-width': '100%'
-			// });
+			$('.tooltip.show,.tooltip-inner,.tooltip-inner h3,.tooltip-inner h4').css({
+				'width':'300px',
+				'max-width': '100%'
+			});
 		}
+		//$('.tooltip-inner').parent().show();
 	});
 
 }
-function activateTooltip(){
-	$('[data-toggle="tooltip"]').tooltip({
-		html: true,
-		animated : 'fade',
-   		container: 'body',
-		boundary: 'viewport'
-	});
-}
+
 function executeInv(){
 	$('#InvModalCenter').on('hide.bs.modal', function(event) {
 		$(this).remove();
