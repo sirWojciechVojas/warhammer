@@ -514,8 +514,8 @@
     </div>
     <!-- <div class="card-footer">Adjusting by sWV</div> -->
 </div>
-<div class="modal fade modal-wide col-md-8 offset-md-2" id="trading" tabindex="-1" role="dialog" aria-labelledby="tradingModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog cS modal-dialog-centered mw-100" role="document">
+<div class="modal fade modal-wide" id="trading" tabindex="-1" role="dialog" aria-labelledby="tradingModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog tS modal-dialog-centered mw-100" role="document">
         <div class="modal-content" id="tradingStats">
             <div class="modal-header mh-5">
                 <div id="tradingModalLongTitle" class="modal-title col-md-12 titleBar">Sklep Buy&Sell
@@ -524,17 +524,48 @@
                     </button>
                 </div>
             </div>
-            <div class="modal-body cS" style="padding:0 15px;">
-                <div class="row h-100 d-flex">
-                    <div class="col-md-6 cPanel cLeft">nice</div>
-                    <div class="col-md-6 cPanel cRight">nice</div>
+            <div class="modal-body" style="padding:0 15px;">
+                <div class="row h-50 d-flex">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="text-light">Pod Kuflem Piwa</div>
+                    </div>
+                    <div class="border col-md-2 d-flex flex-column align-items-center">
+                        <div class="border card square bg-light text-dark">nice1</div>
+                        <div class="border card square bg-light text-dark">nice2</div>
+                    </div>
+                    <div class="border col-md-4 d-flex flex-column align-items-end">
+                        <div class="w-100 h-75 bg-dark"></div>
+                        <div class="input-group mb-4">
+                            <span class="input-group-text">Koszt:</span>
+                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                        </div>
+                        <div class="btn btn-secondary w-50 align-self-center">Kup</div>
+                    </div>
+                    <div class="border col-md-4 d-flex flex-column align-items-start">
+                        <div class="w-100 h-75 bg-dark"></div>
+                        <div class="input-group mb-4">
+                            <span class="input-group-text">Cena:</span>
+                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                        </div>
+                        <div class="btn btn-secondary w-50 align-self-center">Sprzedaj</div>
+                    </div>
+                    <div class="border col-md-2 d-flex flex-column align-items-center">
+                        <div class="border card square bg-light text-dark">nice1</div>
+                        <div class="border card square bg-light text-dark">nice2</div>
+                        <div class="border card square bg-light text-dark">nice3</div>
+                    </div>
+                    <div class="border col-md-12 d-flex justify-content-center" style="padding:0;">
+                        <div class="border col-md-3 text-light">GM</div>
+                        <div class="border col-md-3 text-light">Wycena Kupca</div>
+                        <div class="border col-md-3 text-light">Koszt</div>
+                        <div class="border col-md-3 text-light">Targowanie</div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-12 modal-footer cBottom d-flex justify-content-between">
-                <div class="col-md-3">GM</div>
-                <div class="col-md-3">Wycena Kupca</div>
-                <div class="col-md-3">Koszt</div>
-                <div class="col-md-3">Targowanie</div>
+            <div class="modal-footer" style="padding:0 15px;">
+                <div class="row d-flex">
+
+                </div>
             </div>
         </div>
     </div>
