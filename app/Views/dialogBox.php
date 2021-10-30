@@ -103,7 +103,7 @@
 					</div>
 					<input type="hidden" id="hBrass" value="<?=$hBrass?>"/>
 				<?php elseif($prefix == 'Inv'): ?>
-					<div class="col-md-2 predesc"><img src="<?= base_url('../warhammer/assets/img/inventory/Inventory_L[72x72]/' . $item['IMG_CLASS'] . '.png') ?>"/></div>
+					<div class="col-md-2 predesc"><img src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/' . $item['IMG_CLASS'] . '.png') ?>"/></div>
 					<div class="col-md-10 predesc">
 						<?php if($item['ITEM_CLASS'] == 'WEAPON'): ?>
 						<div class="align-self-center"><?=$item['HANDED']?></div>

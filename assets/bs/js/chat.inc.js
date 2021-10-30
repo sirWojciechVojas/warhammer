@@ -28,12 +28,23 @@ jQuery(function()
 		//var how = $('.coto').css('background');
 		// alert(W1+' x '+H1);
 
+	$('button[data-target="#trading"]').trigger('click');
 	// $('button[data-target="#exampleModalCenter"]').trigger('click');
 	// $('button[data-target="#ModalCenter"]').trigger('click');
 	// $('#characterStats .cCenter').on('click','.skill-talent[data-toggle="tooltip"]', function (e) {
 	// alert('wow');
 	// 	$(this).attr('title', 'NEW_TITLE').tooltip('enable');
 	// });
+	$('#trading').on('click','.tradingGood', function (e) {
+		var hBrass = $(this).find('#hBrass').val();
+		var tB = $(this).parent().parent().find('.input-group .tradingBrassLine');
+		var Crown = tB.find('.crown + div input');
+		var Shilling = tB.find('.shilling + div input');
+		var Brass = tB.find('.brass + div input');
+		Brass.val(hBrass);
+		// alert(sBrass);
+		//$(this).parent().find('.input-group .tradingBrassLine .brass').text(hBrass);
+	});
 	$('#characterStats .cLeft').on('contextmenu','.inventory-item', function (e) {
 		$this = $(this);
 		var invid = $this.data('invid');
@@ -977,8 +988,8 @@ function executeBrass(){
 			// alert('hBrass='+hBrass+'|Brass='+Math.abs(Brass));
 			if(upNum==1 && Math.abs(Brass)>hBrass) Brass=-hBrass;
 
-			// var e = {'crown':[Math.floor(Brass/240),Math.ceil(Brass/240),' zk'],'shilling':[Math.floor((Brass%240)/12),Math.ceil((Brass%240)/12),' s'],'brass':[(Brass%240)%12,(Brass%240)%12,' p']};//Imperium
-			var e = {'crown':[Math.floor(Brass/7680),Math.ceil(Brass/7680),' zf'],'shilling':[Math.floor((Brass%7680)/64),Math.ceil((Brass%7680)/64),' sg'],'brass':[(Brass%7680)%64,(Brass%7680)%64,' mp']};
+			var e = calculateBrass(Brass,1);
+
 			$(this).closest('.addictionBar').find('.btn-group input:last-of-type').val(Brass);
 			$(this).closest('.addictionBar').find('.crown + div input').val(e['crown'][upNum]+e['crown'][2]);
 			$(this).closest('.addictionBar').find('.shilling + div input').val(e['shilling'][upNum]+e['shilling'][2]);
@@ -1253,6 +1264,14 @@ function setPanel(element){
 	var panel=element.parents().eq(2);
 	if(panel.attr('id')=='skillsPanel') panel.css({left:width});
 	else if(panel.attr('id')=='talentsPanel') panel.css({right:width});
+}
+function calculateBrass(Brass,currency){
+	//Bretoński złoty frank oraz srebrne ?guldeny
+	if(currency==1)	var e = {'crown':[Math.floor(Brass/7680),Math.ceil(Brass/7680),' zf'],'shilling':[Math.floor((Brass%7680)/64),Math.ceil((Brass%7680)/64),' sg'],'brass':[(Brass%7680)%64,(Brass%7680)%64,' mp']};
+	//Imperialne złote korony itp.
+	else var e = {'crown':[Math.floor(Brass/240),Math.ceil(Brass/240),' zk'],'shilling':[Math.floor((Brass%240)/12),Math.ceil((Brass%240)/12),' s'],'brass':[(Brass%240)%12,(Brass%240)%12,' p']};//Imperium
+
+	return e;
 }
 function modalBox(){
 	//$('#exampleModalCenter').on('shown.bs.modal', function (e) {
