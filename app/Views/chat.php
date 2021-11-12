@@ -518,7 +518,9 @@
     <div class="modal-dialog tS modal-dialog-centered mw-100" role="document">
         <div class="modal-content" id="tradingStats">
             <div class="modal-header mh-5">
-                <div id="tradingModalLongTitle" class="modal-title col-md-12 titleBar">Kupno & Sprzedaż
+                <div id="tradingModalLongTitle" class="modal-title col-md-12 titleBar">
+                    <button type="button" class="btn btn-default btn-lg GM" title="Zaloguj się jako Game Master"></button>
+                    Kupno & Sprzedaż
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -538,35 +540,8 @@
                         <div class="input-group input-group-md mb-2">
                             <input type="text" class="form-control bg-transparent text-light ih-95" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="Sklep" disabled>
                         </div>
-                        <div class="outline w-100 h-75 text-light bg-transparent mb-2">
-                            <div class="tradingGood outline">
-                                <img src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/cloth_outfit_blouse.png') ?>"/>
-                                <span>Ubranie</span>
-                            </div>
-                            <div class="tradingGood outline">
-                                <img src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/cloth_outfit_blouse.png') ?>"/>
-                                <span>Ubranie</span>
-                            </div>
-                            <div class="tradingGood outline">
-                                <img src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/cloth_outfit_blouse.png') ?>"/>
-                                <span>Ubranie</span>
-                            </div>
-                            <div class="tradingGood outline">
-                                <img src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/cloth_outfit_blouse.png') ?>"/>
-                                <span>Ubranie</span>
-                            </div>
-                            <div class="tradingGood outline">
-                                <img src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/cloth_outfit_blouse.png') ?>"/>
-                                <span>Ubranie</span>
-                            </div>
-                            <div class="tradingGood outline">
-                                <img src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/cloth_outfit_blouse.png') ?>"/>
-                                <span>Ubranie</span>
-                            </div>
-                            <div class="tradingGood outline">
-                                <img src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/cloth_outfit_blouse.png') ?>"/>
-                                <span>Ubranie</span>
-                            </div>
+                        <div id="tradingBuy" class="row d-flex outline w-100 h-75 text-light bg-transparent pm-0 mb-2 align-items-center">
+
                         </div>
                         <div class="input-group input-group-md">
                             <div class="input-group-prepend">
@@ -588,40 +563,19 @@
                         <div class="input-group input-group-md mb-2">
                             <input type="text" class="form-control bg-transparent text-light ih-95" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="Ekwipunek BG" readonly="readonly" disabled>
                         </div>
-                        <div class="tab-content outline w-100 h-75 text-light bg-transparent mb-2">
-                            <div class="tab-pane active tradingGood outline" role="tabpanel">
-                                <img src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/deck.png') ?>"/>
-                                <span class="list-group-item-text">Talia kart</span>
-                                <span>5zk 8s 3p</span>
-                            </div>
-                            <div class="tab-pane active tradingGood outline d-flex align-items-center" role="tabpanel">
-                                <div class="flex-shrink-0">
-                                    <img class="p-2" src="<?= base_url('../assets/img/inventory/Inventory_L[72x72]/cloth_outfit_blouse.png') ?>"/>
-                                </div>
-                                <div class="flex-grow-1 px-2 list-group-item-text"><b>Ubranie</b><br>Super kiop i twoja stara jhgfs...</div>
-                                <div class="tradingBrassLine bg-transparent text-light ih-100 p-0 d-flex align-items-center justify-content-end">
-                                    <div class="crown"></div>
-                                    <div><input type="text" readonly="true" value="<?= $mGold->mCrown ?> zk"></div>
-                                    <div class="shilling"></div>
-                                    <div><input type="text" readonly="true" value="<?= $mGold->mShilling ?> s"></div>
-                                    <div class="brass">1</div>
-                                    <div><input type="text" readonly="true" value="<?= $mGold->mPenny ?> p"></div>
-                                    <input type="hidden" id="hBrass" value="555" />
-                                </div>
-                            </div>
-                        </div>
+                        <div id="tradingSell" class="row d-flex tab-content outline w-100 h-75 text-light bg-transparent pm-0 mb-2 align-items-center"></div>
                         <div class="input-group input-group-md">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-transparent text-light ih-100" id="inputGroup-sizing-lg">Cena:</span>
                             </div>
                             <div class="tradingBrassLine form-control bg-transparent ih-100 text-light p-0 d-flex align-items-center justify-content-end">
                                 <div class="crown"></div>
-                                <div><input type="text" readonly="true" value="500 zk"></div>
+                                <div><input type="text" readonly="true" value="0 zk"></div>
                                 <div class="shilling"></div>
-                                <div><input type="text" readonly="true" value="19 s"></div>
+                                <div><input type="text" readonly="true" value="0 s"></div>
                                 <div class="brass"></div>
-                                <div><input type="text" readonly="true" value="11 p"></div>
-                                <input type="hidden" id="hBrass" value="<?= $mGold->hBrass ?>" />
+                                <div><input type="text" readonly="true" value="0 p"></div>
+                                <input type="hidden" id="hBrass" value="0" />
                             </div>
                         </div>
                         <div class="btn btn-secondary w-50 align-self-center mt-auto">Sprzedaj</div>

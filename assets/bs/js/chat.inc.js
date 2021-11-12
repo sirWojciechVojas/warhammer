@@ -35,13 +35,71 @@ jQuery(function()
 	// alert('wow');
 	// 	$(this).attr('title', 'NEW_TITLE').tooltip('enable');
 	// });
-	$('#trading').on('click','.tradingGood', function (e) {
+	$('#trading').on('click','.GM', function (e) {
+		$this = $(this);
+		$.ajax({
+			url: 'chat/tradingGM',
+			type: 'POST',
+			data: {prefix: 'Inv'},
+			// dataType: 'json',
+			success: function(response){
+				var response = JSON.parse(response);
+				$('#tradingBuy').html(response.tGTemp);
+				$('#tradingBuy').prev().find('input').val('Szablony');
+				$('#tradingSell').html(response.tAdd);
+				$('#tradingSell').prev().find('input').val('Dodaj/edytuj');
+			}
+		});
+		return false;
+	});
+	$('#trading').on('click','input[value="wybierz->"]',function (e) {
+		var what = $(this).parent().prev().find('label').text();
+		$.ajax({
+			url: 'chat/tDetails',
+			type: 'POST',
+			data: {prefix: 'Inv', what: what},
+			// dataType: 'json',
+			success: function(response){
+				var response = JSON.parse(response);
+				$('#tradingSell').parent().next().html(response.tClassEdit);
+			}
+		});
+		return false;
+	});
+	$('#trading').on('click','.tradingGood',function (e) {
+		if($(this).hasClass('template')){
+			var idTemp = $(this).find('input.idTemp').val();
+			$.ajax({
+				url: 'chat/tradingGM',
+				type: 'POST',
+				data: {prefix: 'Inv', idTemp: idTemp},
+				// dataType: 'json',
+				success: function(response){
+					var response = JSON.parse(response);
+					$('#tradingSell').html(response.tEdit);
+				}
+			});
+			return false;
+		}
+
+		var hiddenBrass = $(this).parent().next().find('#hBrass');
+
+		var hPrizeBrass = hiddenBrass.val();
 		var hBrass = $(this).find('#hBrass').val();
 		var tB = $(this).parent().parent().find('.input-group .tradingBrassLine');
 		var Crown = tB.find('.crown + div input');
 		var Shilling = tB.find('.shilling + div input');
 		var Brass = tB.find('.brass + div input');
-		Brass.val(hBrass);
+		var calcBrass = parseInt(hPrizeBrass)+parseInt(hBrass);
+		//alert(calcBrass);
+
+		var e = calculateBrass(hBrass,null);
+
+		Crown.val(e['crown'][0]+e['crown'][2]);
+		Shilling.val(e['shilling'][0]+e['shilling'][2]);
+		Brass.val(e['brass'][0]+e['brass'][2]);
+		hiddenBrass.val(calcBrass);
+		$(this).toggleClass('active');
 		// alert(sBrass);
 		//$(this).parent().find('.input-group .tradingBrassLine .brass').text(hBrass);
 	});
@@ -289,19 +347,19 @@ jQuery(function()
 		// 	}
 		// });
 	// });
-	$('#trading').on('show.bs.modal', function (e) {
-		$this = $(this);
+	$('#trading').on('shown.bs.modal', function (e) {
+		// $tSell = $(this).find('#tradingSell');
 		$.ajax({
 			type: 'POST',
-			url: 'chat/trading',
+			url: 'chat/tGoods',
 			data: {
 				ID: 94,
 			},
 			/*dataType:"json",*/
 			success: function(data) {
 				//var data = JSON.parse(data);
-				//alert(JSON.stringify(data));
-				//$this.html(data);
+				// alert(JSON.stringify(data));
+				$('#tradingSell').html(data);
 				// console.log(data);
 				/*
 				$this.parent().html(data).animate({scrollTop: 0}, 0);
@@ -313,6 +371,7 @@ jQuery(function()
 				console.log(JSON.stringify(err));
 			}
 		});
+
 	});
 	$('#exampleModalCenter').on('hide.bs.modal', function (e) {
 		setPanel($('#skillsPanel').find('.footerBar input'));

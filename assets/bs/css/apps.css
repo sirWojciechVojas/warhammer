@@ -43,6 +43,7 @@
 .h-85 {height: 85% !important;}
 .h-90 {height: 90% !important;}
 .h-95 {height: 95% !important;}
+.ih-50 {height: 50% !important;}
 .ih-95 {height: 95% !important;}
 .ih-99 {height: 99% !important;}
 .ih-100 {height: 100% !important;}
@@ -121,6 +122,7 @@ html {
   }
 }
 
+
 .modal-header .close{
   position: absolute !important;
   right:0;
@@ -187,6 +189,12 @@ html {
   width: 100% !important;
   height: auto !important;
 }
+#tradingSell,
+#tradingBuy
+{
+  overflow-x: hidden;
+  max-height: calc(7 * 5.80249979vh);
+}
 #trading .input-group-text{
   padding: 0 0.75rem !important;
 }
@@ -195,13 +203,22 @@ html {
 }
 #trading .tradingGood{
   width: 100%;
-  height: 14.28571428571429%;
-  padding: 0 !important;
+  /* height: 14.28571428571429% !important; */
+  height: 5.80249979vh !important;
   background: none !important;
 }
-#trading .tradingGood img{
-  width: 72px !important;
-  height: 72px !important;
+#trading .tradingGood > div:nth-of-type(2){
+  font-size: 1.5vh !important;
+}
+#trading .tradingGood div img{
+  width: 5vh !important;
+  height: 5vh !important;
+  padding:0 !important;
+  margin: 0 !important;
+}
+#trading .tradingGood.active .inventory-item{
+  outline:2px orange solid !important;
+
 }
 
 #trading .modal-footer .row > div{height: 5vw;}
@@ -1891,6 +1908,9 @@ button.GM {
 
 button.GM:hover {
   background-image: url('../../img/gm.bak.h.jpg');
+}
+#tradingStats button.GM {
+  left:0;
 }
 
 button.GM:link,

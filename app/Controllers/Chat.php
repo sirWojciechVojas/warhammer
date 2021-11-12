@@ -4,6 +4,7 @@ use App\Models\ChatsModel;
 use App\Controllers\Gui;
 use stdClass;
 
+
 Class Chat extends BaseController {
 
 	public $CI = NULL;
@@ -16,6 +17,7 @@ Class Chat extends BaseController {
 		$this->router = \Config\Services::router();
 		$this->session = \Config\Services::session();
 		$this->request = \Config\Services::request();
+		$this->view = \Config\Services::renderer();
 		$this->bgId = $this->session->get('ID');
 	}
 
@@ -68,7 +70,7 @@ Class Chat extends BaseController {
 			$data['diary'] = $this->chats->getDiary();
 			$data['ip'] = $this->request->getIPAddress();
 			//$this->printr($this->chats->dupa());
-			// $this->printr($data['BG']);
+			// $this->printr($data['mGold']);
 /*
 			foreach($this->chats->getSkillsCurrentId() as $IdNum){
 				$data['allMySkills'][]=$data['skills'][$IdNum['NAME']-1];
@@ -98,7 +100,7 @@ Class Chat extends BaseController {
 			$data['dices']  = array(2,4,6,8,10,12,20,100,'3D');
 			$data['session']=$this->session;
 			$data['a'] = 0;
-			$data['mGoldPanel'] = $this->mGoldPanel('Bretonia',$data['mGold']);
+			$data['mGoldPanel'] = $this->mGoldPanel('Bretonia','BG',$data['mGold']);
 			//$this->printr($_SESSION);
 
 			$js['js']='chat.inc.js';
@@ -117,8 +119,79 @@ Class Chat extends BaseController {
 		}
 	}
 
-	public function mGoldPanel($prefix,$mGold) {
+	public function mGoldCalc($Brass,$currency) {
+
+		$e = new stdClass();
+		if($currency==1){
+			$e->mCrown = floor($Brass/7680);
+			$e->mShilling = floor(($Brass%7680)/64);
+			$e->mPenny = ($Brass%7680)%32;
+			$e->hBrass = $Brass;
+		}
+		else {
+			$e->mCrown = floor($Brass/240);
+			$e->mShilling = floor(($Brass%240)/12);
+			$e->mPenny = ($Brass%240)%12;
+			$e->hBrass = $Brass;
+		}
+
+		return $e;
+	}
+	public function trading() {
+		$data['swv'] = 'sirWojciech';
+		return view('trading',$data);
+	}
+	public function tGoods() {
+
+		$data['tGoods'] = $this->chats->getInvBG();
+		//$data['mGoldPanel'] = $this->mGoldPanel('Imperium','Goods',$data['mGold']);
+		$data['controller'] = $this;
+		// $this->printr($data['tGoods']);
+		return view('tGInd',$data);
+	}
+	public function tDetails() {
+
+		// $data['what'] = ($this->request->getPost('what')!==null) ? $this->chats->getInvTempId($this->request->getPost('idTemp')) : $this->chats->getInvTempId(1);
+		// $this->printr($this->chats->getInvTempId($this->request->getPost('idTemp')));
+		$what = $this->request->getPost('what');
+		$dictArr = array(
+						'ITEM_CLASS'=>'w_itemclass',
+						'ITEM_ID'=>'w_bron',
+						'ITEM_CATEGORY'=>'w_itemclass',
+						'IMG_CLASS'=>'w_itemclass',
+						);
+
+		$outputTbl=new stdClass();
+		$this->view->setVar('iClass', $this->chats->getInvTempDist($dictArr[$what]));
+		// $this->view->setVar('iClass', $dictArr[$what]);
+		$outputTbl->tClassEdit  = $this->view->render('tClassEdit');
+
+		return json_encode($outputTbl);
+	}
+	public function tradingGM() {
+
+		$data['equipFieldNames'] = $this->chats->getInvTempNames();
+		$data['equipFTemplate'] = $this->chats->getInvTemp();
+		$data['invTemp'] = ($this->request->getPost('idTemp')!==null) ? $this->chats->getInvTempId($this->request->getPost('idTemp')) : $this->chats->getInvTempId(1);
+		$data['controller'] = $this;
+		// $this->printr($this->chats->getInvTempId(1));
+
+		$outputTbl=new stdClass();
+		$this->view->setVar('equipFieldNames', $this->chats->getInvTempNames())
+				   ->setVar('equipFTemplate', $this->chats->getInvTemp())
+				   ->setVar('invTemp', $data['invTemp'])
+				   ->setVar('controller', $this);
+		$outputTbl->tEdit  = $this->view->render('tEdit');
+		$outputTbl->tAdd  = $this->view->render('tAdd');
+		$outputTbl->tGTemp = $this->view->render('tGTemp');
+
+		// return $data['idTemp'];
+		return json_encode($outputTbl);
+
+	}
+	public function mGoldPanel($prefix,$type,$mGold) {
 		$data['prefix'] = $prefix;
+		$data['type'] = $type;
 		$data['mGold'] = $mGold;
 		return view('mGold',$data);
 	}
@@ -195,10 +268,6 @@ Class Chat extends BaseController {
 
 			$data['titleBar2'] = ($data['item']['PERSONAL_PSEU']) ? ucfirst($data['item']['PERSONAL_PSEU']) : ucfirst($data['item']['NAME']);
 
-			// foreach($data['item'] as $key => $val){
-			// 	if($val['ITEM_CLASS']=='WEAPON') $val['Vojasik']='Kasiunia';
-			// }
-			//return json_encode($data['item']);
 		}
 		else if($data['prefix']=='UmZd') {
 			$data['details'] = $this->request->getPost('details');
@@ -378,10 +447,7 @@ Class Chat extends BaseController {
 		return $wynik;
 	}
 
-	public function trading() {
-		$data['swv'] = 'sirWojciech';
-		return view('trading',$data);
-	}
+
 	public function slot() {
 		$data['slot'] = $this->request->getPost('slot');
 		$data['invid'] = $this->request->getPost('invid');

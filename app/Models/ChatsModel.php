@@ -59,6 +59,7 @@ class ChatsModel extends Model {
 	public function dupa() {
 		return $this->db->table('w_umzd')->where(['IND'=>2,'CLASS'=>'wiedza'])->get()->getResult()[0]->NAME;
 	}
+
 	public function getAvaibleSorT($AVAIBLE,$tbl) {
 
 		$skills=$this->db->table('w_'.$tbl)->get()->getResult();
@@ -379,7 +380,22 @@ class ChatsModel extends Model {
 		}
 		return $outputTbl;
 	}
-
+	public function getInvTempNames(){
+		return $this->db->getFieldNames('w_ekwipunek');
+	}
+	public function getInvTemp(){
+		return $this->db->table('w_ekwipunek')->get()->getResultArray();
+	}
+	public function getInvTempDist($tName){
+		$table = $this->db->table($tName)->select('NAME')->get()->getResultArray();
+		foreach($table as $key => $val){
+			$outputTbl[$key] = $val['NAME'];
+		}
+		return $outputTbl;
+	}
+	public function getInvTempId($ID){
+		return $this->db->table('w_ekwipunek')->getWhere(['ID'=>$ID])->getRow();
+	}
 	public function getStatus() {
 		return $this->db->table('status')->get()->getResult();
 	}

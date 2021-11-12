@@ -1,6 +1,9 @@
-
+<?php
+if ($type == 'Goods') $nClass='tradingBrassLine bg-transparent text-light ih-50 p-0 d-flex align-items-center justify-content-end outline';
+elseif($type == 'BG') $nClass='col-md-12 d-flex justify-content-center';
+?>
 <?php if ($prefix == 'Imperium'): ?>
-<div class="col-md-12 d-flex justify-content-center" style="padding:0;">
+<div class="<?= $nClass ?>" style="padding:0;">
     <div class="crown"></div>
     <div><input type="text" readonly="true" value="<?= $mGold->mCrown ?> zk"></div>
     <div class="shilling"></div>
@@ -10,7 +13,7 @@
     <input type="hidden" id="hBrass" value="<?= $mGold->hBrass ?>" />
 </div>
 <?php elseif ($prefix == 'Bretonia'): ?>
-<div class="col-md-12 d-flex justify-content-center" style="padding:0;">
+<div class="<?= $nClass ?>" style="padding:0;">
     <div class="crown"></div>
     <div><input type="text" readonly="true" value="<?= $mGold->mCrown ?> zf"></div>
     <div class="shilling"></div>
