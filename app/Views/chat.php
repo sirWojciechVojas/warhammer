@@ -531,7 +531,7 @@
                     <div class="col-md-12 d-flex justify-content-center">
                         <div class="h2 text-light lh-5">Pod Kuflem Piwa</div>
                     </div>
-                    <div class="col-md-2 d-flex flex-column align-items-center justify-content-around">
+                    <div class="col-md-2 d-flex flex-column flank align-items-center justify-content-around">
                         <div class="outline card square bg-light text-dark">nice1</div>
                         <div class="outline card square bg-light text-dark">nice2</div>
                         <div class="outline card square bg-light text-dark">nice3</div>
@@ -540,9 +540,7 @@
                         <div class="input-group input-group-md mb-2">
                             <input type="text" class="form-control bg-transparent text-light ih-95" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="Sklep" disabled>
                         </div>
-                        <div id="tradingBuy" class="row d-flex outline w-100 h-75 text-light bg-transparent pm-0 mb-2 align-items-center">
-
-                        </div>
+                        <div id="tradingBuy" class="row d-flex outline w-100 h-75 text-light bg-transparent pm-0 mb-2 align-items-center justify-content-center"></div>
                         <div class="input-group input-group-md">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-transparent text-light ih-100" id="inputGroup-sizing-lg">Koszt:</span>
@@ -563,7 +561,7 @@
                         <div class="input-group input-group-md mb-2">
                             <input type="text" class="form-control bg-transparent text-light ih-95" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="Ekwipunek BG" readonly="readonly" disabled>
                         </div>
-                        <div id="tradingSell" class="row d-flex tab-content outline w-100 h-75 text-light bg-transparent pm-0 mb-2 align-items-center"></div>
+                        <div id="tradingSell" class="row d-flex tab-content outline w-100 h-75 text-light bg-transparent pm-0 mb-2 align-items-center justify-content-center"></div>
                         <div class="input-group input-group-md">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-transparent text-light ih-100" id="inputGroup-sizing-lg">Cena:</span>
@@ -580,7 +578,7 @@
                         </div>
                         <div class="btn btn-secondary w-50 align-self-center mt-auto">Sprzedaj</div>
                     </div>
-                    <div class="col-md-2 d-flex flex-column align-items-center justify-content-around">
+                    <div class="col-md-2 d-flex flex-column flank align-items-center justify-content-evenly">
                         <div class="outline card square bg-light text-dark">nice1</div>
                         <div class="outline card square bg-light text-dark">nice2</div>
                         <div class="outline card square bg-light text-dark">nice3</div>

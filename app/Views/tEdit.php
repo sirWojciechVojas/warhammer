@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-9">
             <input type="text" id="<?=$val?>" name="fav_language" value="<?=$invTemp->{$val}?>">
-            <input type="button" id="<?=$val?>" name="fav_language" value="wybierz->">
+            <input type="button" id="btn<?=$val?>" name="fav_language" value=">">
         </div>
         <?php elseif ($val == 'ITEM_ID'):?>
             <?php $in = ($invTemp->ITEM_CLASS!=="WEAPON") ? ' invisible': null; ?>
@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-9<?=$in?>">
             <input type="text" id="<?=$val?>" name="fav_language" value="<?=$invTemp->{$val}?>">
-            <input type="button" id="<?=$val?>" name="fav_language" value="wybierz->" >
+            <input type="button" id="btn<?=$val?>" name="fav_language" value=">" >
         </div>
     <?php else: ?>
     <div class="col-md-3">

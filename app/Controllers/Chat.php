@@ -162,7 +162,9 @@ Class Chat extends BaseController {
 						);
 
 		$outputTbl=new stdClass();
-		$this->view->setVar('iClass', $this->chats->getInvTempDist($dictArr[$what]));
+		$this->view->setVar('what', $what)
+					->setVar('content', $this->request->getPost('content'))
+					->setVar('iClass', $this->chats->getInvTempDist($dictArr[$what]));
 		// $this->view->setVar('iClass', $dictArr[$what]);
 		$outputTbl->tClassEdit  = $this->view->render('tClassEdit');
 

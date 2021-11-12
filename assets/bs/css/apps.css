@@ -218,9 +218,15 @@ html {
 }
 #trading .tradingGood.active .inventory-item{
   outline:2px orange solid !important;
-
 }
-
+#trading .flank{
+  height: 55.53457172vh !important;
+  overflow-x: hidden;
+}
+#trading .flank input{
+  width: 100% !important;
+  scroll-snap-align: start !important;
+}
 #trading .modal-footer .row > div{height: 5vw;}
 #HPMenu .modal-footer{border-style: none;}
 

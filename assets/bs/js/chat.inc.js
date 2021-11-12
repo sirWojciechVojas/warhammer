@@ -42,6 +42,11 @@ jQuery(function()
 			type: 'POST',
 			data: {prefix: 'Inv'},
 			// dataType: 'json',
+			beforeSend: function() {
+				$('#tradingBuy').html('<div class="spinner-border text-info"></div>');
+				$('#tradingSell').html('<div class="spinner-border text-info"></div>');
+				// $('#loader').show();
+			},
 			success: function(response){
 				var response = JSON.parse(response);
 				$('#tradingBuy').html(response.tGTemp);
@@ -52,13 +57,26 @@ jQuery(function()
 		});
 		return false;
 	});
-	$('#trading').on('click','input[value="wybierz->"]',function (e) {
+	$('#trading').on('click','.flank input',function (e) {
+		// alert($(this).parent().find('#what').val());
+		var what = $(this).parent().find('#what').val();
+		var content = decodeHtml($(this).parent().find('#content').val());
+		var data = (what=='ITEM_ID') ? $(this).data('key') : $(this).val();
+		$('#'+what).val(data);
+		$('#tradingSell').parent().next().html(content);
+	});
+	$('#trading').on('click','input[value=">"]',function (e) {
 		var what = $(this).parent().prev().find('label').text();
+		var content = $('#tradingSell').parent().next().html();
 		$.ajax({
 			url: 'chat/tDetails',
 			type: 'POST',
-			data: {prefix: 'Inv', what: what},
+			data: {prefix: 'Inv', what: what, content: content},
 			// dataType: 'json',
+			beforeSend: function() {
+				$('#tradingSell').parent().next().html('<div class="spinner-border text-info"></div>');
+				// $('#loader').show();
+			},
 			success: function(response){
 				var response = JSON.parse(response);
 				$('#tradingSell').parent().next().html(response.tClassEdit);
@@ -74,6 +92,10 @@ jQuery(function()
 				type: 'POST',
 				data: {prefix: 'Inv', idTemp: idTemp},
 				// dataType: 'json',
+				beforeSend: function() {
+					$('#tradingSell').html('<div class="spinner-border text-info"></div>');
+					// $('#loader').show();
+				},
 				success: function(response){
 					var response = JSON.parse(response);
 					$('#tradingSell').html(response.tEdit);
@@ -356,9 +378,15 @@ jQuery(function()
 				ID: 94,
 			},
 			/*dataType:"json",*/
+			beforeSend: function() {
+				$('#tradingBuy').html('<div class="spinner-border text-info"></div>');
+				$('#tradingSell').html('<div class="spinner-border text-info"></div>');
+				// $('#loader').show();
+			},
 			success: function(data) {
 				//var data = JSON.parse(data);
 				// alert(JSON.stringify(data));
+				$('#tradingBuy').html(data);
 				$('#tradingSell').html(data);
 				// console.log(data);
 				/*
