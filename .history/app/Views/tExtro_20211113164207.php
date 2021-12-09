@@ -1,0 +1,1 @@
+<?php ob_clean(); var_dump($co); ?>

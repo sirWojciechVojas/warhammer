@@ -1,0 +1,2 @@
+<?php ob_clean();
+ $controller->printr($co);?>
